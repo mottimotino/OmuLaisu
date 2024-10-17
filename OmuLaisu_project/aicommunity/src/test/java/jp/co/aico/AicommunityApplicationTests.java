@@ -1,4 +1,4 @@
-package jp.co.sss.aico;
+package jp.co.aico;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
