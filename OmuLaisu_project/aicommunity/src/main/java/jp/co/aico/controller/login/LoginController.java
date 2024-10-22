@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jakarta.servlet.http.HttpSession;
 
-public class SessionController {
+public class LoginController {
 
 	@RequestMapping(path = "/loginOnSession", method = RequestMethod.GET)
 	public String loginOnSession() {
