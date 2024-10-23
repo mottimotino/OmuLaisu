@@ -1,5 +1,5 @@
 package jp.co.aico.entity;
 
-public class registEntity {
+public class UsersEntity {
 
 }
