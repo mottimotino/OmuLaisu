@@ -1,5 +1,5 @@
 package jp.co.aico.repository;
 
-public class ogata {
+public interface ComRepository {
 
 }
