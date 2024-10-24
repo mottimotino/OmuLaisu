@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -20,10 +21,12 @@ public class PrizeEntity {
 	@Column
 	private String prizeName;
 	
+	//default制約の書き方→@Columnで大丈夫
 	@Column
 	private Integer deleteFlag;
 	
+	//一旦確認
 	@ManyToOne
 	@JoinColumn(name = "category_id",referencedColumnName = "usersId")
-	private Integer category_id
+	private Integer categoryId;
 }
