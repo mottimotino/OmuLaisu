@@ -1,5 +1,29 @@
 package jp.co.aico.entity;
 
-public class PrizeEntity {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "prize")
+public class PrizeEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_prize_gen")
+	@SequenceGenerator(name = "seq_prize_gen", sequenceName = "seq_prize",allocationSize = 1)
+	private Integer prizeId;
+	
+	@Column
+	private String prizeName;
+	
+	@Column
+	private Integer deleteFlag;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id",referencedColumnName = "usersId")
+	private Integer category_id
 }

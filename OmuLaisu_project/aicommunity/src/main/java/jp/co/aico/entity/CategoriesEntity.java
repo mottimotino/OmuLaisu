@@ -14,11 +14,11 @@ public class CategoriesEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_categories_gen")
 	@SequenceGenerator(name = "seq_categories_gen", sequenceName = "seq_categories",allocationSize = 1)
-	private Integer category_id;
+	private Integer categoryId;
 	
 	@Column
-	private String category_name;
+	private String categoryName;
 	
 	@Column
-	private Integer category_type;
+	private Integer categoryType;
 }
