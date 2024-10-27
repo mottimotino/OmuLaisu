@@ -27,6 +27,39 @@ public class PrizeEntity {
 	
 	//一旦確認
 	@ManyToOne
-	@JoinColumn(name = "category_id",referencedColumnName = "usersId")
+	@JoinColumn(name = "category_id",referencedColumnName = "categoryId")
 	private Integer categoryId;
+
+	public Integer getPrizeId() {
+		return prizeId;
+	}
+
+	public void setPrizeId(Integer prizeId) {
+		this.prizeId = prizeId;
+	}
+
+	public String getPrizeName() {
+		return prizeName;
+	}
+
+	public void setPrizeName(String prizeName) {
+		this.prizeName = prizeName;
+	}
+
+	public Integer getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
+	
 }
