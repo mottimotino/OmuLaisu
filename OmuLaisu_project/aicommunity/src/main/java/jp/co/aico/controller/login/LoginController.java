@@ -21,7 +21,7 @@ public class LoginController {
 		return "login/login";
 	}
 
-	@RequestMapping(path = "/doLgin", method = RequestMethod.POST)
+	@RequestMapping(path = "/doLogin", method = RequestMethod.POST)
 	public String doLoginOnSession(UsersForm form, HttpSession session) {
 		//入力されたメールアドレスを受け取る
 		String mail = form.getMail();
@@ -31,6 +31,12 @@ public class LoginController {
 		
 		
 		return "";
+		
+	}
+	@RequestMapping(path = "/doLogin",method = RequestMethod.POST)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "top:/";
 	}
 
 }
