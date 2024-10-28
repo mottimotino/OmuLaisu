@@ -1,6 +1,7 @@
 package jp.co.aico.entity;
 
 import java.util.Date;
+import java.util.Locale.Category;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,6 +42,70 @@ public class QuizEntity {
 	//Category型とは？
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
-	private Integer categoryId;
+	private Category categoryId;
+
+	public Integer getQue_id() {
+		return que_id;
+	}
+
+	public void setQue_id(Integer que_id) {
+		this.que_id = que_id;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public Integer getDelete_flag() {
+		return delete_flag;
+	}
+
+	public void setDelete_flag(Integer delete_flag) {
+		this.delete_flag = delete_flag;
+	}
+
+	public Date getInsert_date() {
+		return insert_date;
+	}
+
+	public void setInsert_date(Date insert_date) {
+		this.insert_date = insert_date;
+	}
+
+	public String getMean() {
+		return mean;
+	}
+
+	public void setMean(String mean) {
+		this.mean = mean;
+	}
+
+	public String getRead() {
+		return read;
+	}
+
+	public void setRead(String read) {
+		this.read = read;
+	}
+
+	public Category getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Category categoryId) {
+		this.categoryId = categoryId;
+	}
 
 }
