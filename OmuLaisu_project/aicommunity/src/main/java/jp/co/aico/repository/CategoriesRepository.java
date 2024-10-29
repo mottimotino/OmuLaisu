@@ -2,8 +2,8 @@ package jp.co.aico.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import jp.co.aico.entity.ManagementEntity;
+import jp.co.aico.entity.CategoriesEntity;
 
-public interface CategoriesRepository extends JpaRepository<ManagementEntity, Integer>  {
+public interface CategoriesRepository extends JpaRepository<CategoriesEntity, Integer>  {
 
 }
