@@ -1,5 +1,5 @@
 package jp.co.aico.repository;
 
-public interface QuizRepository {
+public interface ComRepository {
 
 }

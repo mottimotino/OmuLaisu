@@ -1,5 +1,7 @@
 package jp.co.aico.controller.login;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +18,8 @@ import jp.co.aico.repository.UsersRepository;
  */
 public class LoginController {
 
+//	@Autowired
+//	UsersRepository;
 	//会員テーブルのリポジトリ
 	@Autowired
 	UsersRepository usersRepository;
@@ -28,6 +32,8 @@ public class LoginController {
 		return "login/login";
 	}
 
+	@RequestMapping(path = "/doLgin", method = RequestMethod.POST)
+	public String doLoginOnSession(UsersForm form, HttpSession session) {
 	/**
 	 * ログイン認証
 	 * @param form 入力されたメールアドレス,パスワード
@@ -43,6 +49,9 @@ public class LoginController {
 		//入力された内容で条件検索
 		UsersEntity users = usersRepository.findByMailAndPassword(mail, password);
 		
+		
+		
+		return "";
 		//ログインに成功
 		if(users != null) {
 			//入力内容をsessionで保存
