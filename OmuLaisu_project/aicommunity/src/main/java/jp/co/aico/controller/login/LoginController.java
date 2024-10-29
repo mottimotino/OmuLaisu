@@ -18,8 +18,9 @@ import jp.co.aico.repository.UsersRepository;
  */
 public class LoginController {
 
-//	@Autowired
-//	UsersRepository;
+//	//会員テーブルのリポジトリ
+	@Autowired
+	UsersRepository usersRepository;
 	//会員テーブルのリポジトリ
 	@Autowired
 	UsersRepository usersRepository;
@@ -32,15 +33,12 @@ public class LoginController {
 		return "login/login";
 	}
 
-	@RequestMapping(path = "/doLgin", method = RequestMethod.POST)
-	public String doLoginOnSession(UsersForm form, HttpSession session) {
-	/**
+/**
 	 * ログイン認証
 	 * @param form 入力されたメールアドレス,パスワード
 	 * @param session メールアドレス,パスワードを保存
 	 * @return top内のdotop.html/login内のlogin.html
-	 */
-	@RequestMapping(path = "/doLogin", method = RequestMethod.POST)
+	 */	@RequestMapping(path = "/doLogin", method = RequestMethod.POST)
 	public String doLogin(UsersForm form, HttpSession session) {
 		//入力されたメールアドレスを受け取る
 		String mail = form.getMail();
@@ -49,10 +47,7 @@ public class LoginController {
 		//入力された内容で条件検索
 		UsersEntity users = usersRepository.findByMailAndPassword(mail, password);
 		
-		
-		
-		return "";
-		//ログインに成功
+	//ログインに成功
 		if(users != null) {
 			//入力内容をsessionで保存
 			session.setAttribute("mail", mail);
@@ -63,7 +58,10 @@ public class LoginController {
 		} else {
 			//入力画面に遷移
 			return "login/login";
-		}
+		}	}
+	@RequestMapping(path = "/doLogin",method = RequestMethod.POST)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "top:/";
 	}
-
 }
