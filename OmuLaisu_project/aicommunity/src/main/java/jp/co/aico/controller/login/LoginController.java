@@ -11,16 +11,9 @@ import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.UsersForm;
 import jp.co.aico.repository.UsersRepository;
 
-/**
- * ログイン機能のコントローラー
- * @author 水野
- *
- */
 public class LoginController {
 
-//	@Autowired
-//	UsersRepository;
-	//会員テーブルのリポジトリ
+//	//会員テーブルのリポジトリ
 	@Autowired
 	UsersRepository usersRepository;
 	/**
@@ -47,7 +40,6 @@ public class LoginController {
 		//入力された内容で条件検索
 		UsersEntity users = usersRepository.findByMailAndPassword(mail, password);
 		
-		
 		//ログインに成功
 		if(users != null) {
 			//入力内容をsessionで保存
@@ -60,6 +52,12 @@ public class LoginController {
 			//入力画面に遷移
 			return "login/login";
 		}
+	}
+	
+	@RequestMapping(path = "/doLogin",method = RequestMethod.POST)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "top:/";
 	}
 
 }
