@@ -32,8 +32,6 @@ public class LoginController {
 		return "login/login";
 	}
 
-	@RequestMapping(path = "/doLgin", method = RequestMethod.POST)
-	public String doLoginOnSession(UsersForm form, HttpSession session) {
 	/**
 	 * ログイン認証
 	 * @param form 入力されたメールアドレス,パスワード
@@ -50,8 +48,6 @@ public class LoginController {
 		UsersEntity users = usersRepository.findByMailAndPassword(mail, password);
 		
 		
-		
-		return "";
 		//ログインに成功
 		if(users != null) {
 			//入力内容をsessionで保存
