@@ -20,7 +20,7 @@ public class ManagementController {
 	 * 入力フォーム
 	 * @param manaId
 	 * @param model
-	 * @return
+	 * @return input
 	 * 
 	 */
 	@RequestMapping("user/update/input/{manaId}")
@@ -28,27 +28,33 @@ public class ManagementController {
 		ManagementEntity Entity = repository.getReferenceById(manaId);
 		ManagementBean bean = new ManagementBean();
 		BeanUtils.copyProperties(Entity, bean);
-		model.addAttribute("up", bean);
-		return "";
+		model.addAttribute("oldPassword", bean);
+		return "user/update/input";
 
 	}
-	@RequestMapping()
-	public String check(Managementform form) {
-		
-		return null;
+	/**
+	 * 確認form
+	 * @param form
+	 * @param model
+	 * @return check
+	 */
+	@RequestMapping("user/update/check")
+	public String check(Managementform form,Model model) {
+		model.addAttribute("passwordSave",form);
+		return "user/update/check";
 		
 }
 /**
  * 更新完了処理
  * @param manaId
  * @param Managementform
- * @return
+ * @return complete
  */
 	@RequestMapping("user/update/complete/{manaId}")
-	public String update(@PathVariable Integer manaId ,  Managementform form) {
+	public String update(@PathVariable Integer manaId,Managementform form) {
 		 ManagementEntity Entity = repository.getReferenceById(manaId);
 		BeanUtils.copyProperties(form, Entity, "manaId");
 		Entity = repository.save(Entity);
-		return "";
+		return "user/update/complete";
 	}
 }

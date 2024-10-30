@@ -3,6 +3,7 @@ public class ManagementBean {
 private Integer manaId;
 private Integer prizeId;
 private Integer usersId;
+private String password;
 public Integer getManaId() {
 	return manaId;
 }
@@ -20,6 +21,12 @@ public Integer getUsersId() {
 }
 public void setUsersId(Integer usersId) {
 	this.usersId = usersId;
+}
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
 }
 
 }
