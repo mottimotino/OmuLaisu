@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
 import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.UsersForm;
 import jp.co.aico.repository.UsersRepository;
@@ -36,11 +37,12 @@ public String registCheck(Model model,UsersForm form) {
 }
 //完了画面
 @RequestMapping(path="/user/regist/complete",method=RequestMethod.POST)
-public String registComplete(UsersForm form) {
+public String registComplete(UsersForm form,HttpSession session) {
 	UsersEntity Entity = new UsersEntity();
 	Entity.setName(form.getName());
 	Entity.setPassword(form.getPassword());
-	 repository.save(Entity);
+	Entity =  repository.save(Entity);
+	session.setAttribute("userId", Entity.getUsersId());
 	return "/user/regist/complete";
 }
 }
