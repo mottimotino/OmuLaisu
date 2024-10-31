@@ -20,10 +20,6 @@ public class LoginController {
 
 //	//会員テーブルのリポジトリ
 	@Autowired
-	UsersRepository usersRepository;
-	//会員テーブルのリポジトリ
-	@Autowired
-	UsersRepository usersRepository;
 	UsersRepository usersRepository;	
 	/**
 	 * ログイン画面を表示
