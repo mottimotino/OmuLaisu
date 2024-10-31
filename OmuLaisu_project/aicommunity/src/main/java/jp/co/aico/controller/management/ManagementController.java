@@ -17,6 +17,7 @@ public class ManagementController {
 	@Autowired
 	ManagementRepository repository;
 	/**
+	 * パスワード変更
 	 * 入力フォーム
 	 * @param manaId
 	 * @param model
@@ -33,6 +34,7 @@ public class ManagementController {
 
 	}
 	/**
+	 * パスワード変更
 	 * 確認form
 	 * @param form
 	 * @param model
@@ -46,6 +48,7 @@ public class ManagementController {
 }
 /**
  * 更新完了処理
+ * パスワード変更
  * @param manaId
  * @param Managementform
  * @return complete
