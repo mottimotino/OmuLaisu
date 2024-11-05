@@ -6,16 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aico.bean.ManagementBean;
 import jp.co.aico.entity.ManagementEntity;
+import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.Managementform;
 import jp.co.aico.repository.ManagementRepository;
+import jp.co.aico.repository.UsersRepository;
 
 @Controller
 public class ManagementController {
 	@Autowired
 	ManagementRepository repository;
+	
+	@Autowired
+	UsersRepository usersRepository;
+	
 	/**
 	 * パスワード変更
 	 * 入力フォーム
@@ -59,5 +66,21 @@ public class ManagementController {
 		BeanUtils.copyProperties(form, Entity, "manaId");
 		Entity = repository.save(Entity);
 		return "user/update/complete";
+	}
+	
+	/**
+	 * マイページ
+	 * @param userId ユーザーのID
+	 * @param model ユーザー情報
+	 * @return user/info.html
+	 */
+	@RequestMapping(path="user/info/{userId}",method=RequestMethod.GET)
+	public String user_info(@PathVariable Integer userId,Model model) {
+		//ユーザーの情報を検索
+		UsersEntity  usersEntity= usersRepository.getReferenceById(userId);
+		//検索した内容を保存
+		model.addAttribute("user",usersEntity);
+		//正答率情報を取得してmodelで保存(未実装)
+		return "user/info";
 	}
 }
