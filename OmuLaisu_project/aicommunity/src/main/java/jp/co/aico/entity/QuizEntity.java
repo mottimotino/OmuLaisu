@@ -1,7 +1,6 @@
 package jp.co.aico.entity;
 
 import java.util.Date;
-import java.util.Locale.Category;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +24,7 @@ public class QuizEntity {
 	private String question;
 	
 	@Column
-	private String answer;
+	private Integer answer;
 	
 	@Column
 	private Integer delete_flag;
@@ -38,74 +37,89 @@ public class QuizEntity {
 	
 	@Column
 	private String read;
-	
+	@Column
+	private String choise1;
+	@Column
+	private String choise2;
+	@Column
+	private String choise3;
+	@Column
+	private String choise4;
 	//Category型とは？
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
-	private Category categoryId;
-
+	private CategoriesEntity categoriesEntity;
 	public Integer getQue_id() {
 		return que_id;
 	}
-
 	public void setQue_id(Integer que_id) {
 		this.que_id = que_id;
 	}
-
 	public String getQuestion() {
 		return question;
 	}
-
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-
-	public String getAnswer() {
+	public Integer getAnswer() {
 		return answer;
 	}
-
-	public void setAnswer(String answer) {
+	public void setAnswer(Integer answer) {
 		this.answer = answer;
 	}
-
 	public Integer getDelete_flag() {
 		return delete_flag;
 	}
-
 	public void setDelete_flag(Integer delete_flag) {
 		this.delete_flag = delete_flag;
 	}
-
 	public Date getInsert_date() {
 		return insert_date;
 	}
-
 	public void setInsert_date(Date insert_date) {
 		this.insert_date = insert_date;
 	}
-
 	public String getMean() {
 		return mean;
 	}
-
 	public void setMean(String mean) {
 		this.mean = mean;
 	}
-
 	public String getRead() {
 		return read;
 	}
-
 	public void setRead(String read) {
 		this.read = read;
 	}
-
-	public Category getCategoryId() {
-		return categoryId;
+	public String getChoise1() {
+		return choise1;
 	}
-
-	public void setCategoryId(Category categoryId) {
-		this.categoryId = categoryId;
+	public void setChoise1(String choise1) {
+		this.choise1 = choise1;
+	}
+	public String getChoise2() {
+		return choise2;
+	}
+	public void setChoise2(String choise2) {
+		this.choise2 = choise2;
+	}
+	public String getChoise3() {
+		return choise3;
+	}
+	public void setChoise3(String choise3) {
+		this.choise3 = choise3;
+	}
+	public String getChoise4() {
+		return choise4;
+	}
+	public void setChoise4(String choise4) {
+		this.choise4 = choise4;
+	}
+	public CategoriesEntity getCategoriesEntity() {
+		return categoriesEntity;
+	}
+	public void setCategoriesEntity(CategoriesEntity categoriesEntity) {
+		this.categoriesEntity = categoriesEntity;
 	}
 
 }
