@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<p>予約が完了しました。</p>
+	<p>リンク</p>
+	<!--ここにリンクを貼る-->
+	<p><a href="https://sankogakuen-jp.zoom.us/j/86456067413?pwd=QOSu35bGwPgKUqWnhUsjqGHUb543Wf.1#success"></a></p>
+	
+	<form method="post" th:action="@{top/dotop}">
+		<input type="button" name="top" value="トップ画面に戻る">
+	</form>
+	
 
 </body>
 </html>

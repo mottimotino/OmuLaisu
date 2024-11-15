@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<p>この日程で予約しますか？</p>
+	
+	<form method="post" th:action="@{calender/input}">
+		<input type="button" name="yes" value="予約する">
+	</form>
+	<form method="post" th:action="@{calender/view}">
+		<input type="button" name="no" value="戻る">
+	</form>
+	
 
 </body>
 </html>
