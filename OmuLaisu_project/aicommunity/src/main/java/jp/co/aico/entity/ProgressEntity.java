@@ -19,18 +19,15 @@ public class ProgressEntity {
 	private Integer proId;
 	
 	@Column
-	private Integer progress;
-	
-	@Column
 	private Integer missFlag;
 	
 	@ManyToOne
 	@JoinColumn(name = "users_id",referencedColumnName = "usersId")
-	private Integer usersId;
+	private UsersEntity usersEntity;
 	
 	@ManyToOne
 	@JoinColumn(name = "que_id",referencedColumnName = "queId")
-	private Integer queId;
+	private QuizEntity quizEntity;
 
 	public Integer getProId() {
 		return proId;
@@ -38,14 +35,6 @@ public class ProgressEntity {
 
 	public void setProId(Integer proId) {
 		this.proId = proId;
-	}
-
-	public Integer getProgress() {
-		return progress;
-	}
-
-	public void setProgress(Integer progress) {
-		this.progress = progress;
 	}
 
 	public Integer getMissFlag() {
@@ -56,21 +45,23 @@ public class ProgressEntity {
 		this.missFlag = missFlag;
 	}
 
-	public Integer getUsersId() {
-		return usersId;
+	public UsersEntity getUsersEntity() {
+		return usersEntity;
 	}
 
-	public void setUsersId(Integer usersId) {
-		this.usersId = usersId;
+	public void setUsersEntity(UsersEntity usersEntity) {
+		this.usersEntity = usersEntity;
 	}
 
-	public Integer getQueId() {
-		return queId;
+	public QuizEntity getQuizEntity() {
+		return quizEntity;
 	}
 
-	public void setQueId(Integer queId) {
-		this.queId = queId;
+	public void setQuizEntity(QuizEntity quizEntity) {
+		this.quizEntity = quizEntity;
 	}
+
+	
 	
 
 }
