@@ -2,9 +2,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>会員登録情報変更</title>
 </head>
 <body>
+	<h2>情報変更</h2>
+	<!--th属性リンク変えておく-->
+	<form method="post" th:action="@{quiz/list}" >
+		<input type="text" name="input">
+		<input type="submit" name="update" value="変更">
+		<input type="submit" name="back" value="戻る">
+		
+	</form method="post">
 
 </body>
 </html>

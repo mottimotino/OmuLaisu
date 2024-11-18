@@ -53,11 +53,14 @@
   color: #aaa;
 }
 .calendar .today {
-  background-color: #7d7d7d;
+  background-color: yellow;
 }
 .calendar .off {
-  background-color: #fadcdb;
+  background-color: #7d7d7d;
 }
-	
+
+.a{
+	display: block;
+}
 
 

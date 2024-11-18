@@ -5,6 +5,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h2>問題</h2>
+	<!--ここに問題文-->
+	
+	<form method="post" th:action="@{quiz/explain}">
+		<input type="button" name="one" value="選択肢1">
+		<input type="button" name="two" value="選択肢2">
+		<input type="button" name="three" value="選択肢3">
+		<input type="button" name="four" value="選択肢4">
+	</form>
 
 </body>
 </html>

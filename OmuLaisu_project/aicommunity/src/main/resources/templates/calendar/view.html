@@ -2,134 +2,154 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css" /> 
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../static/css/style.css" /> 
 <!--会話日程予約機能-->
 </head>
 <body>
 	<h2>日程予約</h2>
-	<p>予約したい日程を選択してください。</p>
-	<div class="calendar-wrap">
-	  <table class="calendar">
-	    <thead>
-	      <tr>
-	        <th class="sun">Sun</th>
-	        <th>Mon</th>
-	        <th>Tue</th>
-	        <th>Wed</th>
-	        <th>Thu</th>
-	        <th>Fri</th>
-	        <th class="sat">Sat</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td class="mute">29</td>
-	        <td class="mute">30</td>
-	        <td>1</td>
-	        <td>2</td>
-	        <td>3</td>
-	        <td>4</td>
-	        <td>5</td>
-	      </tr>
-	      <tr>
-	        <td>6</td>
-	        <td class="off">7</td>
-	        <td>8</td>
-	        <td>9</td>
-	        <td>10</td>
-	        <td>11</td>
-	        <td>12</td>
-	      </tr>
-	      <tr>
-	        <td class="today">13</td>
-	        <td class="off">14</td>
-	        <td>15</td>
-	        <td>16</td>
-	        <td>17</td>
-	        <td>18</td>
-	        <td>19</td>
-	      </tr>
-	      <tr>
-	        <td>20</td>
-	        <td class="off">21</td>
-	        <td>22</td>
-	        <td>23</td>
-	        <td>24</td>
-	        <td>25</td>
-	        <td>26</td>
-	      </tr>
-	      <tr>
-	        <td>27</td>
-	        <td class="off">28</td>
-	        <td>29</td>
-	        <td>30</td>
-	        <td>31</td>
-	        <td class="mute">1</td>
-	        <td class="mute">2</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  <table class="calendar">
-	    <thead>
-	      <tr>
-	        <th class="sun">Sun</th>
-	        <th>Mon</th>
-	        <th>Tue</th>
-	        <th>Wed</th>
-	        <th>Thu</th>
-	        <th>Fri</th>
-	        <th class="sat">Sat</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td class="mute">27</td>
-	        <td class="mute">28</td>
-	        <td class="mute">29</td>
-	        <td class="mute">30</td>
-	        <td class="mute">31</td>
-	        <td>1</td>
-	        <td>2</td>
-	      </tr>
-	      <tr>
-	        <td>3</td>
-	        <td class="off">4</td>
-	        <td>5</td>
-	        <td>6</td>
-	        <td>7</td>
-	        <td>8</td>
-	        <td>9</td>
-	      </tr>
-	      <tr>
-	        <td class="today">10</td>
-	        <td class="off">11</td>
-	        <td>12</td>
-	        <td>13</td>
-	        <td>14</td>
-	        <td>15</td>
-	        <td>16</td>
-	      </tr>
-	      <tr>
-	        <td>17</td>
-	        <td class="off">18</td>
-	        <td>19</td>
-	        <td>20</td>
-	        <td>21</td>
-	        <td>22</td>
-	        <td>23</td>
-	      </tr>
-	      <tr>
-	        <td>24</td>
-	        <td class="off">25</td>
-	        <td>26</td>
-	        <td>27</td>
-	        <td>28</td>
-	        <td>29</td>
-	        <td>30</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	</div>
+	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>
+		<div class="calendar-wrap">
+		  <table class="calendar">
+		    <thead>
+		      <tr>
+		        <th class="sun">Sun</th>
+		        <th>Mon</th>
+		        <th>Tue</th>
+		        <th>Wed</th>
+		        <th>Thu</th>
+		        <th>Fri</th>
+		        <th class="sat">Sat</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+				
+		        <td class="mute sun">29</td>
+		        <td class="mute">30</td>
+		        <td><a href="/calendar/check" class="a">1</a></td>
+		        <td><a href="/calendar/check" class="a">2</a></td>
+		        <td><a href="/calendar/check" class="a">3</a></td>
+		        <td><a href="/calendar/check" class="a">4</a></td>
+		        <td class="sat">5</td>
+<!--		        <td>2</td>-->
+<!--		        <td>3</td>-->
+<!--		        <td>4</td>-->
+<!--		        <td>5</td>-->
+		        
+		      </tr>
+		      <tr>
+		        <td class="sun">6</td>
+		        <td class="off"><a href="/calendar/check" class="a">7</a></td>
+		        <td><a href="/calendar/check" class="a">8</a></td>
+		        <td><a href="/calendar/check" class="a">9</a></td>
+		        <td><a href="/calendar/check" class="a">10</a></td>
+		        <td><a href="/calendar/check" class="a">11</a></td>
+		        <td class="sat">12</td>
+<!--		        <td><a href="/calendar/check" class="a">8</a></td>-->
+<!--		        <td>9</td>-->
+<!--		        <td>10</td>-->
+<!--		        <td>11</td>-->
+<!--		        <td>12</td>-->
+		      </tr>
+		      <tr>
+		        <td class="today" class="sun">13</td>
+		        <td class="off"><a href="/calendar/check" class="a">14</a></td>
+		        <td><a href="/calendar/check" class="a">15</a></td>
+		        <td><a href="/calendar/check" class="a">16</a></td>
+		        <td><a href="/calendar/check" class="a">17</a></td>
+		        <td><a href="/calendar/check" class="a">18</a></td>
+<!--		        <td>16</td>-->
+<!--		        <td>17</td>-->
+<!--		        <td>18</td>-->
+		        <td class="sat">19</td>
+		      </tr>
+		      <tr>
+		        <td class="sun">20</td>
+		        <td class="off"><a href="/calendar/check" class="a">21</a></td>
+		        <td><a href="/calendar/check" class="a">22</a></td>
+		        <td><a href="/calendar/check" class="a">23</a></td>
+		        <td><a href="/calendar/check" class="a">24</a></td>
+		        <td><a href="/calendar/check" class="a">25</a></td>
+<!--		        <td>23</td>-->
+<!--		        <td>24</td>-->
+<!--		        <td>25</td>-->
+		        <td class="sat">26</td>
+		      </tr>
+		      <tr>
+		        <td class="sun">27</td>
+		        <td class="off"><a href="/calendar/check" class="a">28</a></td>
+		        <td><a href="/calendar/check" class="a">29</a></td>
+		        <td><a href="/calendar/check" class="a">30</a></td>
+		        <td><a href="/calendar/check" class="a">31</a></td>
+		        <td class="mute">1</td>
+		        <td class="mute sat">2</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		  <table class="calendar">
+		    <thead>
+		      <tr>
+		        <th class="sun">Sun</th>
+		        <th>Mon</th>
+		        <th>Tue</th>
+		        <th>Wed</th>
+		        <th>Thu</th>
+		        <th>Fri</th>
+		        <th class="sat">Sat</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td class="mute">27</td>
+		        <td class="mute">28</td>
+		        <td class="mute">29</td>
+		        <td class="mute">30</td>
+		        <td class="mute">31</td>
+		        <td>1</td>
+		        <td>2</td>
+		      </tr>
+		      <tr>
+		        <td>3</td>
+		        <td class="off">4</td>
+		        <td>5</td>
+		        <td>6</td>
+		        <td>7</td>
+		        <td>8</td>
+		        <td>9</td>
+		      </tr>
+		      <tr>
+		        <td class="today">10</td>
+		        <td class="off">11</td>
+		        <td>12</td>
+		        <td>13</td>
+		        <td>14</td>
+		        <td>15</td>
+		        <td>16</td>
+		      </tr>
+		      <tr>
+		        <td>17</td>
+		        <td class="off">18</td>
+		        <td>19</td>
+		        <td>20</td>
+		        <td>21</td>
+		        <td>22</td>
+		        <td>23</td>
+		      </tr>
+		      <tr>
+		        <td>24</td>
+		        <td class="off">25</td>
+		        <td>26</td>
+		        <td>27</td>
+		        <td>28</td>
+		        <td>29</td>
+		        <td>30</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+		
+		<!--今はth:href="@{変数式}"にするとリンクにならない為一時的に外します-->
+		<a href="/calendar/check" class="a">1</a>
 </body>
 </html>
