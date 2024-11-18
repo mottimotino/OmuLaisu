@@ -1,0 +1,15 @@
+11/12
+
+参加メンバー
+全員出席　
+
+資料作成、ファンギュ
+コントロラー作成　村越、水野
+HTML　
+
+
+
+
+フッター未完成
+style="background-color: #333; color: white; padding: 20px; text-align: center;"
+
