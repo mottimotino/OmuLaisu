@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>会員情報変更確認</title>
@@ -9,9 +9,11 @@
 	
 	<p>変更前</p>
 	<!--ここに変更前のメルアド、パスワードを貼る-->
-	
+	<p th:action="${user.password}">
 	<p>変更後</p>
 	<!--ここに変更後のメルアド、パスワードを貼る-->
+	<!--htmlだけでできる？-->
+	<p th:action="${user.password}">
 
 </body>
 </html>

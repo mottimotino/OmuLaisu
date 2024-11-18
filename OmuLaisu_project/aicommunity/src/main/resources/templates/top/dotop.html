@@ -2,10 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ログイン後トップ</title>
 </head>
 <body>
 	<!--ログイン後画面-->
+	<form method="post" th:action="@{user/calender/view}" >
+		<input type="submit" name="back" value="日程選択">
+	</form method="post">
+	
+	<form method="post" th:action="@{user/chat/view}" >
+		<input type="submit" name="back" value="チャット">
+	</form method="post">
+	
+	<form method="post" th:action="@{user/calender/view}" >
+		<input type="submit" name="back" value="日程選択">
+	</form method="post">
+	
+	<form method="post" th:action="@{user/quiz/list}" >
+		<input type="submit" name="back" value="クイズに進む">
+	</form method="post">
+	
+	
 
 </body>
 </html>
