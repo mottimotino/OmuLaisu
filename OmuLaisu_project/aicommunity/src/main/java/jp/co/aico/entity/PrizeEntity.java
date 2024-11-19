@@ -28,7 +28,7 @@ public class PrizeEntity {
 	//一旦確認
 	@ManyToOne
 	@JoinColumn(name = "category_id",referencedColumnName = "categoryId")
-	private Integer categoryId;
+	private CategoriesEntity categoriesEntity;
 
 	public Integer getPrizeId() {
 		return prizeId;
@@ -54,12 +54,12 @@ public class PrizeEntity {
 		this.deleteFlag = deleteFlag;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
+	public CategoriesEntity getCategoriesEntity() {
+		return categoriesEntity;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoriesEntity(CategoriesEntity categoriesEntity) {
+		this.categoriesEntity = categoriesEntity;
 	}
-	
+
 }
