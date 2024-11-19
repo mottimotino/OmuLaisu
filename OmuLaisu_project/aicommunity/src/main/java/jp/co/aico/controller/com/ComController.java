@@ -41,6 +41,7 @@ public String views(Model model) {
 	model.addAttribute("timesAll", timesAll);
     return "calendar/view";
 }
+
 @RequestMapping("/checks")
 public String Checks(@RequestBody ReservationEntity reservationRequest){
 	//nullチェック
@@ -58,6 +59,7 @@ public String Checks(@RequestBody ReservationEntity reservationRequest){
     }
     // 日程が見つからない場合、再度選択に戻す
     }
+
     @RequestMapping("/complete")
     public String complete(@RequestBody ReservationEntity reservationRequest) {
         Optional<TimesEntity> timesCheck = timesRepository.findById(reservationRequest.getTimesEntity().getTimesId());
