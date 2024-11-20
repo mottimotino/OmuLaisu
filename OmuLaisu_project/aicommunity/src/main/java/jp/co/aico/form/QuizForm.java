@@ -11,8 +11,10 @@ public class QuizForm {
 	private Integer queId;
 	/** 選択した番号 */
 	private  Integer answer;
-	/** 問題のジャンル */
+	/** 問題のジャンル(読み/書き) */
 	private Integer categoryType;
+	/** 問題のジャンル */
+	private String categoryName;
 
 	public Integer getQueId() {
 		return queId;
@@ -37,6 +39,16 @@ public class QuizForm {
 	public void setCategoryType(Integer categoryType) {
 		this.categoryType = categoryType;
 	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	
 
 	
 	
