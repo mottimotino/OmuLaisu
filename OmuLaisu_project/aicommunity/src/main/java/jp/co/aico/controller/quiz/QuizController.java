@@ -16,6 +16,7 @@ import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.QuizForm;
 import jp.co.aico.form.UsersForm;
 import jp.co.aico.repository.AccuracyRepository;
+import jp.co.aico.repository.CategoriesRepository;
 import jp.co.aico.repository.ProgressRepository;
 import jp.co.aico.repository.QuizRepository;
 
@@ -28,6 +29,8 @@ public class QuizController {
 	ProgressRepository progressRepository;
 	@Autowired
 	AccuracyRepository accuracyRepository;
+	@Autowired
+	CategoriesRepository categoriesRepository;
 
 	/**
 	 * クイズのカテゴリーを選択する画面
@@ -46,8 +49,6 @@ public class QuizController {
 	 */
 	@RequestMapping(path = "/quiz/explain", method = RequestMethod.POST)
 	public String quiz_explain(Model model, QuizForm quizForm,UsersForm usersForm) {
-		//解いた問題数を1増やす
-		
 		//正解判定
 		int queId = quizForm.getQueId();
 		//正解の番号をanswerに入れる
@@ -62,11 +63,7 @@ public class QuizController {
 		//問題IDを保存
 		QuizEntity quizEntity = new QuizEntity();
 		quizEntity.setQueId(quizForm.getQueId());
-		progressEntity.setQuizEntity(quizEntity);
-		//カテゴリーIDを保存
-		CategoriesEntity categoriesEntity = new CategoriesEntity();
-		categoriesEntity.setCategoryId(quizForm.getCategoryType());
-		
+		progressEntity.setQuizEntity(quizEntity);		
 		
 		//選んだ選択肢の番号を取得する処理を考える
 		//正解or不正解を保存(書き換え予定)
@@ -99,7 +96,16 @@ public class QuizController {
 		//オブジェクト生成
 		CategoriesEntity categoriesEntity = new CategoriesEntity();
 		//categoryName(htmlのnameの値)をセットする
-		categoriesEntity.setCategoryName(quizForm.getCategoryName());
+		String categoryName = quizForm.getCategoryName();
+		String categoryType = quizForm.getCategoryType();
+		//漢字の読み書きの場合はカテゴリーと読み書きで検索
+		if(quizForm.getCategoryType() != null) {
+			CategoriesEntity categories = categoriesRepository.findByCategoryNameContainingAndCategoryNameContaining(categoryName,categoryType);
+			categoriesEntity.setCategoryName(categories.getCategoryName());
+		} else if(categoryName.equals("挨拶編") || categoryName.equals("メール編") || categoryName.equals("公の場編")){
+			categoriesEntity.setCategoryName(categoryName);
+		}
+		
 		//オブジェクト生成 
 		QuizEntity quizEntity = new QuizEntity();
 		UsersEntity usersEntity = new UsersEntity();
