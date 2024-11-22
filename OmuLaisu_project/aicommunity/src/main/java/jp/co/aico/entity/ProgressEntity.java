@@ -28,7 +28,11 @@ public class ProgressEntity {
 	@ManyToOne
 	@JoinColumn(name = "que_id",referencedColumnName = "queId")
 	private QuizEntity quizEntity;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id",referencedColumnName = "categoryId")
+	private CategoriesEntity categoriesEntity;
+	
 	public Integer getProId() {
 		return proId;
 	}
@@ -59,6 +63,14 @@ public class ProgressEntity {
 
 	public void setQuizEntity(QuizEntity quizEntity) {
 		this.quizEntity = quizEntity;
+	}
+
+	public CategoriesEntity getCategoriesEntity() {
+		return categoriesEntity;
+	}
+
+	public void setCategoriesEntity(CategoriesEntity categoriesEntity) {
+		this.categoriesEntity = categoriesEntity;
 	}
 
 	

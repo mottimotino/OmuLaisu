@@ -11,6 +11,8 @@ public interface QuizRepository extends JpaRepository<QuizEntity,Integer > {
 	
 	List<QuizEntity> findByCategoriesEntity(CategoriesEntity categories);
 	
-	QuizEntity findByIdAndCategoriesEntity(Integer queId,CategoriesEntity categories);
+	QuizEntity findByQueIdAndCategoriesEntity(Integer queId,CategoriesEntity categories);
+	
+	List<QuizEntity> findByCategoriesEntityContaining(CategoriesEntity categories);
 
 }

@@ -5,5 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import jp.co.aico.entity.CategoriesEntity;
 
 public interface CategoriesRepository extends JpaRepository<CategoriesEntity, Integer>  {
+	
+	CategoriesEntity findByCategoryNameContainingAndCategoryNameContaining(String categoryName,String categoryType);
+	
 
 }
