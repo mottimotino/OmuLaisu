@@ -18,10 +18,12 @@
 	<li><a href="#">クイズ</a></li>
 	<li><a href="#">チャット</a></li>
 	 </ul>
+	 <a th:href="@{/sidebar}">=</a>
 	</nav>
 	</header>
 	
 	<section>
+		<p th:text=${Entity.name}></p>
 		<p th:text=${session.mail}></p>
 		<p th:text=${session.password}></p>
 	</section>	
