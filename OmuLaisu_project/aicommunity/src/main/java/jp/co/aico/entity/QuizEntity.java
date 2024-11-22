@@ -38,6 +38,10 @@ public class QuizEntity {
 	
 	@Column
 	private String read;
+	
+	@Column
+	private String explanation;
+	
 	@Column
 	private String choise1;
 	@Column
@@ -91,6 +95,13 @@ public class QuizEntity {
 	}
 	public void setRead(String read) {
 		this.read = read;
+	}
+	
+	public String getExplanation() {
+		return explanation;
+	}
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
 	}
 	public String getChoise1() {
 		return choise1;

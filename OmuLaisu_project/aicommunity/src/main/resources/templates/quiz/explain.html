@@ -25,25 +25,23 @@
 	
 	<h2>解答</h2>
 	<!--ここに解答を入力-->
+	<span th:text="${question.explanation}"></span><br>
 	
-	
-	<a href="/quiz/question">次の問題へ</a>
-<!--	<form method="post" th:action="@{quiz/question}">-->
-<!--		<input type="button" name="next" value="次の問題へ">-->
-<!--	</form>-->
+	<form method="post" th:action="@{/quiz/question}">
+		<input type="submit" name="next" value="次の問題へ">
+		<input type="hidden" name="queId" th:value="${question.queId}">
+		<input type="hidden" name="categoryName" value="${question.categoriesEntity.categoryName}" />
+		<input type="hidden" name="usersId" value=1>
+	</form>
 
+	<form method="get" th:action="@{/quiz/list}">
+		<input type="submit" value="選択画面へ戻る">
+	</form>
 
-	<a href="/quiz/list">選択画面へ戻る</a>
-<!--	<form method="post" th:action="@{quiz/list}">-->
-<!--		<input type="button" name="back" value="選択画面へ戻る">-->
-<!--	</form>-->
-	
-			<!--フッター -->
+<!--フッター -->
 	<footer>
 	    <p>&copy; AI Community</p>
 	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
 	</footer>
-
-
 </body>
 </html>

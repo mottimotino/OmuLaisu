@@ -6,7 +6,7 @@ import jp.co.aico.entity.CategoriesEntity;
 
 public interface CategoriesRepository extends JpaRepository<CategoriesEntity, Integer>  {
 	
-	CategoriesEntity findByCategoryNameContainingAndCategoryNameContaining(String categoryName,String categoryType);
+	CategoriesEntity findByCategoryName(String categoryName);
 	
 
 }

@@ -7,7 +7,8 @@
 <!--会話日程予約機能-->
 </head>
 <body>
-	<header>
+
+<header>
 	<h1 class="header02-logo" >AI Community
 	</h1>
 		<!--ナビ①-->
@@ -24,47 +25,28 @@
 	<br>
 	
 	<h2>問題</h2>
+	<!--ここに問題文-->	
+	<h2>問題</h2>
 	<!--ここに問題文-->
-	
 	<main>
-
-    
-	    <h2></h2>
-	   <p>クイズ選択</p>
-	選択肢1    
-	   <div class="form-check">
-	    <input class="form-check-input" type="checkbox" id="gridCheck">
-	    <label class="form-check-label" for="gridCheck">
-	<br>
+	<span th:text="${total}"></span>問中
+	<span th:text="${collect}"></span>問正解 正答率
+	<span th:text="${collectAnswerRate}"></span>%
 	
-	選択肢2
-	     <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="gridCheck">
-	        <label class="form-check-label" for="gridCheck">
-	<br>
-	
-	選択肢3          
-	    <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="gridCheck">
-	        <label class="form-check-label" for="gridCheck">
-	<br>
-	
-	選択肢4
-	    <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="gridCheck">
-	        <label class="form-check-label" for="gridCheck">
-	<br>
-	<div class="col-auto">
-	    <button type="submit" class="btn btn-primary mb-3">送信</button>
-	  
-	</div>
-	
-	        
-	
-	
+	<h2>問題</h2>
+	<span th:text="${question.question}"></span><br>
+	<form th:action="@{/quiz/explain}" method="post">
+		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 />
+		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 />
+		<button type="submit" name = "answer" th:text="${question.choise3}" value=3 />
+		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 />
+		
+		<input type="hidden" name="queId" th:value="${question.queId}">
+		<input type="hidden" name="usersId" th:value=1>
+	</form>	
 	</main>
 	
-			<!--フッター -->
+<!--フッター -->
 	<footer>
 	    <p>&copy; AI Community</p>
 	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
@@ -75,7 +57,5 @@
 <!--		<input type="button" name="two" value="選択肢2">-->
 <!--		<input type="button" name="three" value="選択肢3">-->
 <!--		<input type="button" name="four" value="選択肢4">-->
-<!--	</form>-->
-
-</body>
+<!--	</form>--></body>
 </html>
