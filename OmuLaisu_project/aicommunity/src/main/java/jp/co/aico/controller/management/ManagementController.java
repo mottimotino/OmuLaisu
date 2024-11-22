@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aico.bean.ManagementBean;
+import jp.co.aico.entity.CategoriesEntity;
 import jp.co.aico.entity.ManagementEntity;
 import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.Managementform;
+import jp.co.aico.repository.AccuracyRepository;
 import jp.co.aico.repository.ManagementRepository;
+import jp.co.aico.repository.ProgressRepository;
 import jp.co.aico.repository.UsersRepository;
 
 @Controller
@@ -22,6 +25,12 @@ public class ManagementController {
 	
 	@Autowired
 	UsersRepository usersRepository;
+	
+	@Autowired
+	AccuracyRepository accuracyRepository;
+	
+	@Autowired
+	ProgressRepository progressRepository;
 	
 	/**
 	 * パスワード変更
@@ -80,7 +89,19 @@ public class ManagementController {
 		UsersEntity  usersEntity= usersRepository.getReferenceById(userId);
 		//検索した内容を保存
 		model.addAttribute("user",usersEntity);
-		//正答率情報を取得してmodelで保存(未実装)
+		//正答率情報を取得してmodelで保存
+		/** 正答率を表示する処理 */
+		CategoriesEntity categoriesEntity = new CategoriesEntity();
+		//ユーザーの問題を解いた数を数える
+		int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity,categoriesEntity).size();
+		model.addAttribute("total",total);
+		//正解数を数える
+		int collect = progressRepository.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0,categoriesEntity).size();
+		model.addAttribute("collect",collect);
+		//正答率をスコープに格納,正答率テーブルに保存
+		int collectAnswerRate = collect/total;
+		model.addAttribute("collectAnswerRate",collectAnswerRate);
+			
 		return "user/info";
 	}
 }

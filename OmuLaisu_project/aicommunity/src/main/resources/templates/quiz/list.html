@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -9,14 +9,21 @@
 	<h2>クイズ画面</h2>
 	<p></p>
 	
-	<form method="post" th:action="@{quiz/question}">
+	<form th:action="@{/quiz/question}" method="post" >
+		
+		<label><input type="radio" name="categoryType" value="読み"/>読み</label>
+		<label><input type="radio" name="categoryType" value="書き"/>書き</label>
 
-		<input type="button" name="easy" value="初級">
-		<input type="button" name="normal" value="中級">
-		<input type="button" name="hard" value="上級">
-		<input type="button" name="greeting" value="挨拶編">
-		<input type="button" name="mail" value="メール編">
-		<input type="button" name="public" value="公の場編">
+		<input type="submit" name="categoryName" value="初級">
+		<input type="submit" name="categoryName" value="中級">
+		<input type="submit" name="categoryName" value="上級">
+		<input type="submit" name="categoryName" value="挨拶編">
+		<input type="submit" name="categoryName" value="メール編">
+		<input type="submit" name="categoryName" value="公の場編">
+		<!--valueはログインしたusersIdに変更する-->
+		<input type="hidden" name="usersId" value=1>
+		<!--クイズの1問目から表示する-->
+		<input type="hidden" name="queId" value="0">
 	</form>
 
 	
