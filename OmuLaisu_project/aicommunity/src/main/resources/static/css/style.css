@@ -41,6 +41,10 @@ body{
 	background-color: #f5f5f5;
 }
 
+.sidebar{
+	background-color: lightcyan;
+}
+
 /*カレンダーのcss*/
 .calendar-wrap {
   margin: 0 auto;
