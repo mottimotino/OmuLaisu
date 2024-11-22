@@ -8,12 +8,50 @@
 	<h2>問題</h2>
 	<!--ここに問題文-->
 	
-	<form method="post" th:action="@{quiz/explain}">
-		<input type="button" name="one" value="選択肢1">
-		<input type="button" name="two" value="選択肢2">
-		<input type="button" name="three" value="選択肢3">
-		<input type="button" name="four" value="選択肢4">
-	</form>
+	<main>
+
+    
+	    <h2></h2>
+	   <p>クイズ選択</p>
+	選択肢1    
+	   <div class="form-check">
+	    <input class="form-check-input" type="checkbox" id="gridCheck">
+	    <label class="form-check-label" for="gridCheck">
+	<br>
+	
+	選択肢2
+	     <div class="form-check">
+	        <input class="form-check-input" type="checkbox" id="gridCheck">
+	        <label class="form-check-label" for="gridCheck">
+	<br>
+	
+	選択肢3          
+	    <div class="form-check">
+	        <input class="form-check-input" type="checkbox" id="gridCheck">
+	        <label class="form-check-label" for="gridCheck">
+	<br>
+	
+	選択肢4
+	    <div class="form-check">
+	        <input class="form-check-input" type="checkbox" id="gridCheck">
+	        <label class="form-check-label" for="gridCheck">
+	<br>
+	<div class="col-auto">
+	    <button type="submit" class="btn btn-primary mb-3">送信</button>
+	  
+	</div>
+	
+	        
+	
+	
+	</main>
+		
+<!--	<form method="post" th:action="@{quiz/explain}">-->
+<!--		<input type="button" name="one" value="選択肢1">-->
+<!--		<input type="button" name="two" value="選択肢2">-->
+<!--		<input type="button" name="three" value="選択肢3">-->
+<!--		<input type="button" name="four" value="選択肢4">-->
+<!--	</form>-->
 
 </body>
 </html>
