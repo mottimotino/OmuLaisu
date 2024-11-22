@@ -3,16 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../static/css/style.css" /> 
+<!--会話日程予約機能-->
 </head>
 <body>
-	<p>予約が完了しました。</p>
-	<p>リンク</p>
-	<!--ここにリンクを貼る(今仮で牧瀬Tのリンク貼ってます)-->
-	<a href="https://sankogakuen-jp.zoom.us/j/86456067413?pwd=QOSu35bGwPgKUqWnhUsjqGHUb543Wf.1#success" target="_blank">このリンクをクリック</a>
+	<header>
+	<h1 class="header02-logo" >AI Community
+	</h1>
+		<!--ナビ①-->
+	<nav class="nav">
+	 <ul class="menu">
+	<li><a href="#">Top</a></li>
+	<li><a href="#">Q&A</a></li>
+	<li><a href="#">クイズ</a></li>
+	<li><a href="#">チャット</a></li>
+	 </ul>
+<!--	 <a th:href="@{/top/sidebar}">=</a>-->
+	<a href="#">=</a>
+	</nav>
+	</header>
+
+	<br>
 	
-	<form method="post" th:action="@{top/dotop}">
+	<section class="complete">
+	<p>予約が完了しました。</p>
+
+	<!--ここにリンクを貼る(今仮で牧瀬Tのリンク貼ってます)-->
+	<a href="https://sankogakuen-jp.zoom.us/j/86456067413?pwd=QOSu35bGwPgKUqWnhUsjqGHUb543Wf.1#success" target="_blank" style="font-size: 20px;">https://sankogakuen-jp.zoom.us/j/86456067413?pwd=QOSu35bGwPgKUqWnhUsjqGHUb543Wf.1#success</a>
+	
+	<form method="post" th:action="@{top/dotop}" style="margin-top: 50px;">
 		<input type="button" name="top" value="トップ画面に戻る">
 	</form>
+	</section>
+	
+	
+		<!--フッター -->
+	<footer>
+	    <p>&copy; AI Community</p>
+	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
+	</footer>
 	
 
 </body>

@@ -2,7 +2,7 @@
 /*作成：鈴木*/
 
 header{
-  height:auto;
+  height: 100%;
   padding: 5px;
   background-image: url(../ヘッダーフッター使用画像.jpeg);
 /*  background:#00DAFC;*/
@@ -11,13 +11,19 @@ header{
   font-size: 150%;
 }
 nav{
-  display:flex;
-  justify-content: left;
+  width: 100%;
+  height: 80%;
+/*  display:flex;*/
+/*  justify-content: left;*/
   list-style:none;
   float:left;
   background-color: #ffffff;
+  margin-bottom: 50px;
+  
 }
-/*nav li{display:inline-block;}*/
+nav li{
+	display:inline-block;
+	}
 nav ul li a{
   display:flex;
   padding:3px 15px;
@@ -101,7 +107,19 @@ body{
 	display: block;
 }
 
+.complete{
+	font-size: 40px;
+}
+
+section{
+	height: 500px;
+	text-align: center;
+}
+
+
+
 footer{
+	width: 100%;
 	background-image: url(../ヘッダーフッター使用画像.jpeg);
 	text-align: center;
 }

@@ -3,8 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン後トップ</title>
+<link rel="stylesheet" href="../../static/css/style.css" /> 
+<!--会話日程予約機能-->
 </head>
 <body>
+	<header>
+	<h1 class="header02-logo" >AI Community
+	</h1>
+		<!--ナビ①-->
+	<nav class="nav">
+	 <ul class="menu">
+	<li><a href="#">Top</a></li>
+	<li><a href="#">Q&A</a></li>
+	<li><a href="#">クイズ</a></li>
+	<li><a href="#">チャット</a></li>
+	 </ul>
+	</nav>
+	</header>
+
 	<!--ログイン後画面-->
 	<form method="post" th:action="@{user/calender/view}" >
 		<input type="submit" name="back" value="日程選択">
@@ -21,6 +37,12 @@
 	<form method="post" th:action="@{user/quiz/list}" >
 		<input type="submit" name="back" value="クイズに進む">
 	</form method="post">
+	
+			<!--フッター -->
+	<footer>
+	    <p>&copy; AI Community</p>
+	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
+	</footer>
 	
 	
 

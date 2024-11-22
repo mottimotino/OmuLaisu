@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ログイン前トップ</title>
+<link rel="stylesheet" href="../../static/css/style.css" /> 
+<!--会話日程予約機能-->
 </head>
 <body>
+	<header>
+	<h1 class="header02-logo" >AI Community
+	</h1>
+		<!--ナビ①-->
+	<nav class="nav">
+	 <ul class="menu">
+	<li><a href="#">Top</a></li>
+	<li><a href="#">Q&A</a></li>
+	<li><a href="#">クイズ</a></li>
+	<li><a href="#">チャット</a></li>
+	 </ul>
+	 <a th:href="@{/sidebar}">=</a>
+	</nav>
+	</header>
+
 	<form method="post" th:action="@{user/regist/input2}" >
 		<input type="submit" name="regist" value="会員登録">
 	</form method="post">
@@ -12,6 +29,13 @@
 	<form method="post" th:action="@{user/regist/input2}" >
 		<input type="submit" name="regist" value="会員登録">
 	</form method="post">
+	
+	
+			<!--フッター -->
+	<footer>
+	    <p>&copy; AI Community</p>
+	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
+	</footer>
 	
 
 </body>
