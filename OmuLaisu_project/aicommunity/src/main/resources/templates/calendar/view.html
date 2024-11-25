@@ -13,10 +13,10 @@
 		<!--ナビ①-->
 	<nav class="nav">
 	 <ul class="menu">
-	<li><a th:href="#">Top</a></li>
-	<li><a th:href="#">Q&A</a></li>
-	<li><a th:href="#">クイズ</a></li>
-	<li><a th:href="#">チャット</a></li>
+	<li><a th:href="@{/top/dotop}">Top</a></li>
+	<li><a th:href="@{/top/dotop}">Q&A</a></li>
+	<li><a th:href="@{/quiz/list}">クイズ</a></li>
+	<li><a th:href="@{/chat/view}">チャット</a></li>
 	 </ul>
 	 <a th:href="@{/sidebar}">=</a>
 	</nav>
@@ -113,7 +113,7 @@
 	<!--フッター -->
 	<footer>
 	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
+	    <p><a th:href="@{/help/question}" style="color: #fff;">お問い合わせ</a></p>
 	</footer>
 
 
