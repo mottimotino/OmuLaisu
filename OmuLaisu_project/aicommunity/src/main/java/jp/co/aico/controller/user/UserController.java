@@ -15,11 +15,11 @@ public class UserController {
 		return "calender/view";
 	}
 	
-	//クイズ(quizコントローラーから持ってきた)
-	@RequestMapping(path = "/quiz/list", method = RequestMethod.GET)
-	public String quiz_list() {
-		return "quiz/list";
-	}
+	//クイズの遷移はQuizControllerにあります
+//	@RequestMapping(path = "/quiz/list", method = RequestMethod.GET)
+//	public String quiz_list() {
+//		return "quiz/list";
+//	}
 	
 	//マイページ
 	@RequestMapping(path = "/user/info", method = RequestMethod.GET)
