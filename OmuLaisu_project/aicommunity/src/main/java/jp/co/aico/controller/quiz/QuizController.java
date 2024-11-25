@@ -1,7 +1,5 @@
 package jp.co.aico.controller.quiz;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,19 +47,29 @@ public class QuizController {
 	 */
 	@RequestMapping(path = "/quiz/explain", method = RequestMethod.POST)
 	public String quiz_explain(Model model, QuizForm quizForm, UsersForm usersForm) {
+
+		//現在の問題のカテゴリーを取得
+		QuizEntity quizEntity = quizRepository.getReferenceById(quizForm.getQueId());
+		int categoryId = quizEntity.getCategoriesEntity().getCategoryId();
+		CategoriesEntity categoriesEntity = new CategoriesEntity();
+		categoriesEntity.setCategoryId(categoryId);
+
+		//正答率を保存するEntity
+		ProgressEntity progressEntity = new ProgressEntity();
+		
+		progressEntity.setCategoriesEntity(categoriesEntity);
+
 		//正解判定
 		int queId = quizForm.getQueId();
 		//正解の番号をanswerに入れる
 		int answer = quizRepository.getReferenceById(queId).getAnswer();
 
-		//正答率を保存するEntity
-		ProgressEntity progressEntity = new ProgressEntity();
 		//ユーザーIDを保存
 		UsersEntity usersEntity = new UsersEntity();
 		usersEntity.setUsersId(usersForm.getUsersId());
 		progressEntity.setUsersEntity(usersEntity);
 		//問題IDを保存
-		QuizEntity quizEntity = new QuizEntity();
+		quizEntity = new QuizEntity();
 		quizEntity.setQueId(quizForm.getQueId());
 		progressEntity.setQuizEntity(quizEntity);
 
@@ -80,27 +88,25 @@ public class QuizController {
 		progressRepository.save(progressEntity);
 
 		/** 正解率を更新 */
-		//現在の問題のカテゴリーを取得
-		CategoriesEntity categoriesEntity = quizRepository.getReferenceById(quizForm.getQueId()).getCategoriesEntity();
 		//カテゴリーとユーザーで正答率を取得
 		AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
 				usersEntity);
 		//正答率が存在しない(初回の)場合ユーザーIDとカテゴリーで登録する
-		if(accuracyEntity == null) {
+		if (accuracyEntity == null) {
 			accuracyEntity = new AccuracyEntity();
 			accuracyEntity.setCategoriesEntity(categoriesEntity);
 			accuracyEntity.setUsersEntity(usersEntity);
 		}
 		//正答率をエンティティに保存
 		//ユーザーの問題を解いた数を数える
-		int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity).size();
+		int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity);
 		//正解数を数える
 		int collect = progressRepository
-				.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity).size();
+				.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
 		//正答率をスコープに格納,正答率テーブルに保存
-		long collectAnswerRate = 0;
+		double collectAnswerRate = 0;
 		if (total != 0) {
-			collectAnswerRate = collect / total * 100;
+			collectAnswerRate = (double)collect / total *100;
 		}
 		accuracyEntity.setProgress(collectAnswerRate);
 		accuracyRepository.save(accuracyEntity);
@@ -126,10 +132,10 @@ public class QuizController {
 		String categoryType = quizForm.getCategoryType();
 		//問題のジャンルを連結(例:「初級」+「読み」)
 		//条件:カテゴリー名が存在しない(「初級」など登録されているデータに「読み/書き」とついているもの)
-		if(categoriesRepository.findByCategoryName(categoryName) == null) {
+		if (categoriesRepository.findByCategoryName(categoryName) == null) {
 			categoryName += categoryType;
 		}
-		
+
 		//漢字の読み書きの場合は読み/書きであいまい検索
 		if (categoryName != null) {
 			categoriesEntity = categoriesRepository.findByCategoryName(categoryName);
@@ -146,14 +152,15 @@ public class QuizController {
 
 		/** 正答率を表示する処理 */
 		//ユーザーの問題を解いた数を数える
-		int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity).size();
+		int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity);
 		model.addAttribute("total", total);
 		//正解数を数える
 		int collect = progressRepository
-				.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity).size();
+				.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
 		model.addAttribute("collect", collect);
 		//現在の正答率情報(カテゴリー検索)を変数に入れる
-		AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,usersEntity);
+		AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
+				usersEntity);
 		if (accuracyEntity == null) {
 			model.addAttribute("collectAnswerRate", 0);
 		} else {
@@ -162,8 +169,7 @@ public class QuizController {
 		//IDを取得
 		int queId = quizForm.getQueId();
 		//問題数をsizeに入れる
-		List<QuizEntity> findAll = quizRepository.findAll();
-		int size = findAll.size();
+		int size = quizRepository.findAllCount();
 		//問題が入るまで処理を続ける
 		//問題をquizEntityに入れる
 		while (queId < size) {

@@ -20,7 +20,7 @@ public class AccuracyEntity {
 	private Integer accuracyId;
 	
 	@Column
-	private Long progress;
+	private Double progress;
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
@@ -29,6 +29,7 @@ public class AccuracyEntity {
 	@ManyToOne
 	@JoinColumn(name = "users_id", referencedColumnName = "usersId")
 	private UsersEntity usersEntity;
+	
 
 	public Integer getAccuracyId() {
 		return accuracyId;
@@ -38,11 +39,11 @@ public class AccuracyEntity {
 		this.accuracyId = accuracyId;
 	}
 
-	public Long getProgress() {
+	public Double getProgress() {
 		return progress;
 	}
 
-	public void setProgress(Long progress) {
+	public void setProgress(Double progress) {
 		this.progress = progress;
 	}
 
