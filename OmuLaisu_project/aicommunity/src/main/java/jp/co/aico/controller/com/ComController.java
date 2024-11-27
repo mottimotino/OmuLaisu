@@ -1,6 +1,5 @@
 package jp.co.aico.controller.com;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +26,7 @@ public class ComController {
 private  ;
 @Autowired
 private TimesRepository timesRepository;
+
 /**
  * @author 村越
  * @return　view
@@ -34,20 +34,22 @@ private TimesRepository timesRepository;
  */
 //カレンダー機能
 RequestMapping("/allViews")
-public String allDays() {
-	return"calendar/view";
 
-}
-@RequestMapping("/check")
-//formクラス作成
-public String Check(Model model,ComForm Comform) {
-model.addAttribute("dateTime",Comform);
-	return"calendar/check";
-}
+	public String allDays() {
+		return "calendar/view";
 
-@RequestMapping("/complete")
-public String complete() {
-Entity = repository.save(Entity);
-	return"calendar/input";
-}
+	}
+
+	@RequestMapping("/check")
+	//formクラス作成
+	public String Check(Model model, ComForm Comform) {
+		model.addAttribute("dateTime", Comform);
+		return "calendar/check";
+	}
+
+	@RequestMapping("/complete")
+	public String complete() {
+		Entity = repository.save(Entity);
+		return "calendar/input";
+	}
 }
