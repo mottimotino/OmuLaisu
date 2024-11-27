@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.aico.entity.ReservationEntity;
-import jp.co.aico.entity.TimesEntity;
+import jp.co.aico.entity.ReservationDateEntity;
 import jp.co.aico.form.ComForm;
-import jp.co.aico.repository.ReservationRepository;
+import jp.co.aico.repository.ReservationDateRepository;
 import jp.co.aico.repository.TimesRepository;
 
 /**
@@ -22,25 +22,24 @@ import jp.co.aico.repository.TimesRepository;
  */
 @Controller
 public class ComController {
-@Autowired
-private  ;
-@Autowired
-private TimesRepository timesRepository;
+	@Autowired
+	ReservationDateRepository rdRepository;
+	@Autowired
+	TimesRepository timesRepository;
 
-/**
- * @author 村越
- * @return　view
- * カレンダーの日程を全件検索で表示するメソット
- */
-//カレンダー機能
-RequestMapping("/allViews")
-
+	/**
+	 * @author 村越
+	 * @return　view
+	 * カレンダーの日程を全件検索で表示するメソット
+	 */
+	//カレンダー機能
+	@RequestMapping("/allViews")
 	public String allDays() {
 		return "calendar/view";
 
 	}
 
-	@RequestMapping("/check")
+	@RequestMapping(path="/check",method = RequestMethod.POST)
 	//formクラス作成
 	public String Check(Model model, ComForm Comform) {
 		model.addAttribute("dateTime", Comform);
@@ -49,7 +48,8 @@ RequestMapping("/allViews")
 
 	@RequestMapping("/complete")
 	public String complete() {
-		Entity = repository.save(Entity);
+		ReservationDateEntity ReservationDateEntity = new ReservationDateEntity();
+		ReservationDateEntity = rdRepository.save(ReservationDateEntity);
 		return "calendar/input";
 	}
 }
