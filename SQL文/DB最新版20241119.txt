@@ -1,0 +1,145 @@
+--ユーザー定義
+ALTER SESSION SET CONTAINER = xepdb1;
+CREATE USER aico_user IDENTIFIED BY kikakuaiit;
+GRANT ALL PRIVILEGES TO aico_user;
+
+--テーブル作成
+--b:会員テーブル
+CREATE TABLE users(
+users_id NUMBER(8,0) PRIMARY KEY,
+password VARCHAR2(15 CHAR) NOT NULL,
+name VARCHAR2(30 CHAR) NOT NULL,
+mail VARCHAR2(319 CHAR) NOT NULL,
+authority NUMBER(1,0) NOT NULL,
+possession_point NUMBER(4,0),
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL,
+insert_date DATE  DEFAULT sysdate NOT NULL
+);
+
+--c:Q&Aテーブル
+CREATE TABLE QA(
+qa_id NUMBER(4,0) PRIMARY KEY,
+contents VARCHAR2(500 CHAR) NOT NULL
+);
+
+--d:カテゴリーテーブル
+CREATE TABLE categories(
+category_id NUMBER(2,0) PRIMARY KEY,
+category_name VARCHAR2(20 CHAR) NOT NULL,
+category_type NUMBER(3,0) DEFAULT 0 NOT NULL
+);
+
+--a,f:問題テーブル
+CREATE TABLE quiz(
+que_id NUMBER(4,0) PRIMARY KEY, 
+question VARCHAR2(100 CHAR) NOT NULL,
+answer VARCHAR2(100) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id),
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL ,
+insert_date DATE DEFAULT sysdate NOT NULL,
+mean VARCHAR2(30 CHAR),
+read VARCHAR2(20 CHAR),
+explanation VARCHAR2(300 CHAR)
+);
+
+--e:進捗度テーブル
+CREATE TABLE progress(
+pro_id NUMBER(8,0) PRIMARY KEY,
+users_id NUMBER(8,0) REFERENCES users(users_id),
+que_id NUMBER(4,0) REFERENCES quiz(que_id),
+progress NUMBER(3,0) NOT NULL,
+miss_flag NUMBER(1,0) NOT NULL
+);
+
+--g:チャットテーブル
+CREATE TABLE chat(
+chat_id NUMBER(8,0) PRIMARY KEY,
+send_user NUMBER(8,0) REFERENCES users(users_id),
+rece_user NUMBER(8,0) REFERENCES users(users_id),
+message VARCHAR2(300 CHAR) NOT NULL
+);
+
+--h:景品テーブル
+CREATE TABLE prize(
+prize_id NUMBER(8,0) PRIMARY KEY,
+prize_name VARCHAR2(30 CHAR) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id),
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL
+);
+
+--i:管理テーブル
+CREATE TABLE management(
+mana_id NUMBER(4,0) PRIMARY KEY,
+prize_id NUMBER(8,0) REFERENCES prize(prize_id),
+users_id NUMBER(8,0) REFERENCES users(users_id)
+);
+
+--シーケンス
+CREATE SEQUENCE seq_quiz NOCACHE;
+CREATE SEQUENCE seq_users NOCACHE; 
+CREATE SEQUENCE seq_qa NOCACHE;
+CREATE SEQUENCE seq_categories NOCACHE; 
+CREATE SEQUENCE seq_progress NOCACHE; 
+CREATE SEQUENCE seq_chat NOCACHE;
+CREATE SEQUENCE seq_prize NOCACHE;
+CREATE SEQUENCE seq_mana NOCACHE;
+CREATE SEQUENCE seq_reservationNOCACHE;
+CREATE SEQUENCE seq_timesNOCACHE;
+CREATE SEQUENCE seq_allreservationNOCACHE;
+CREATE SEQUENCE seq_acc NOCACHE;
+
+--予約テーブル
+CREATE TABLE reservation(
+reservation_id NUMBER(7,0) PRIMARY KEY, 
+users_id NUMBER(8,0)REFERENCES users(users_id),
+Monday VARCHAR2(5 CHAR)Not Null,
+Tuesday VARCHAR2(5 CHAR)Not Null,
+Wednesday VARCHAR2(5 CHAR)Not Null,
+Thursday VARCHAR2(5 CHAR)Not Null,
+Friday VARCHAR2(5 CHAR)Not Null,
+Saturday VARCHAR2(5 CHAR)Not Null,
+Sunday VARCHAR2(5 CHAR)Not Null,
+times_id Number(4,0) REFERENCES times(times_id)
+);
+--時間テーブル
+create table times(
+times_id Number(4,0) PRIMARY KEY, 
+Start_times DATE Not null,
+End_times DATE Not null);
+--予約日テーブル
+create table all_reservation(
+all_id NUMBER(7,0) PRIMARY KEY, 
+days VARCHAR2(5 CHAR)Not Null,
+Start_times DATE Not null,
+End_times DATE Not null);
+
+--正答率テーブル
+CREATE TABLE accuracy(
+accuracy_id NUMBER(4,0) PRIMARY KEY,
+progress NUMBER(3,0) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id)
+);
+
+
+--クイズテーブル修正
+
+ALTER TABLE quiz ADD(
+choise1 VARCHAR2(15 CHAR),
+choise2 VARCHAR2(15 CHAR),
+choise3 VARCHAR2(15 CHAR),
+choise4 VARCHAR2(15 CHAR)
+);
+
+ALTER TABLE quiz MODIFY(
+answer NUMBER(4,0)
+);
+
+--進捗度テーブルに列追加
+ALTER TABLE progress ADD(
+category_id NUMBER(2,0) REFERENCES categories(category_id)
+);
+
+--INSERT文
+
+
+COMMIT;

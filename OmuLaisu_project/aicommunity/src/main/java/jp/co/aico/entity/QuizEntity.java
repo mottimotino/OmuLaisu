@@ -15,10 +15,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "quiz")
 public class QuizEntity {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_quiz_gen")
 	@SequenceGenerator(name = "seq_quiz_gen",sequenceName = "seq_quiz",allocationSize = 1)
-	private Integer que_id;
+	private Integer queId;
 	
 	@Column
 	private String question;
@@ -37,6 +38,10 @@ public class QuizEntity {
 	
 	@Column
 	private String read;
+	
+	@Column
+	private String explanation;
+	
 	@Column
 	private String choise1;
 	@Column
@@ -49,11 +54,11 @@ public class QuizEntity {
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
 	private CategoriesEntity categoriesEntity;
-	public Integer getQue_id() {
-		return que_id;
+	public Integer getQueId() {
+		return queId;
 	}
-	public void setQue_id(Integer que_id) {
-		this.que_id = que_id;
+	public void setQueId(Integer queId) {
+		this.queId = queId;
 	}
 	public String getQuestion() {
 		return question;
@@ -90,6 +95,13 @@ public class QuizEntity {
 	}
 	public void setRead(String read) {
 		this.read = read;
+	}
+	
+	public String getExplanation() {
+		return explanation;
+	}
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
 	}
 	public String getChoise1() {
 		return choise1;

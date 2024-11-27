@@ -19,11 +19,11 @@ public class ManagementEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "prize_id", referencedColumnName = "prizeId")
-	private Integer prizeId;
+	private PrizeEntity prizeEntity;
 	
 	@ManyToOne
 	@JoinColumn(name = "users_id", referencedColumnName = "usersId")
-	private Integer usersId;
+	private UsersEntity usersEntity;
 
 	public Integer getManaId() {
 		return manaId;
@@ -33,20 +33,20 @@ public class ManagementEntity {
 		this.manaId = manaId;
 	}
 
-	public Integer getPrizeId() {
-		return prizeId;
+	public PrizeEntity getPrizeEntity() {
+		return prizeEntity;
 	}
 
-	public void setPrizeId(Integer prizeId) {
-		this.prizeId = prizeId;
+	public void setPrizeEntity(PrizeEntity prizeEntity) {
+		this.prizeEntity = prizeEntity;
 	}
 
-	public Integer getUsersId() {
-		return usersId;
+	public UsersEntity getUsersEntity() {
+		return usersEntity;
 	}
 
-	public void setUsersId(Integer usersId) {
-		this.usersId = usersId;
+	public void setUsersEntity(UsersEntity usersEntity) {
+		this.usersEntity = usersEntity;
 	}
 
 }

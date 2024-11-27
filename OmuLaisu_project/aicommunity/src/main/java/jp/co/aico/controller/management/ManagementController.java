@@ -12,7 +12,9 @@ import jp.co.aico.bean.ManagementBean;
 import jp.co.aico.entity.ManagementEntity;
 import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.Managementform;
+import jp.co.aico.repository.AccuracyRepository;
 import jp.co.aico.repository.ManagementRepository;
+import jp.co.aico.repository.ProgressRepository;
 import jp.co.aico.repository.UsersRepository;
 
 @Controller
@@ -22,6 +24,12 @@ public class ManagementController {
 	
 	@Autowired
 	UsersRepository usersRepository;
+	
+	@Autowired
+	AccuracyRepository accuracyRepository;
+	
+	@Autowired
+	ProgressRepository progressRepository;
 	
 	/**
 	 * パスワード変更
@@ -80,7 +88,8 @@ public class ManagementController {
 		UsersEntity  usersEntity= usersRepository.getReferenceById(userId);
 		//検索した内容を保存
 		model.addAttribute("user",usersEntity);
-		//正答率情報を取得してmodelで保存(未実装)
+		//ユーザーの正答率をスコープに格納
+		model.addAttribute("accuracy",accuracyRepository.findByAccuracyId(userId));
 		return "user/info";
 	}
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ログイン前トップ</title>
 <link rel="stylesheet" href="../../static/css/style.css" /> 
 <!--会話日程予約機能-->
 </head>
@@ -18,24 +18,36 @@
 	<li><a href="#">クイズ</a></li>
 	<li><a href="#">チャット</a></li>
 	 </ul>
+<!--	 <a th:href="@{/sidebar}">=</a>-->
 	</nav>
 	</header>
+	
+<!--	サイドバー-->
+	<h2>sidebar</h2>
+	
+	<section class="sidebar">
+		
+<!--	<a th:href="../calendar/view.html">メンター予約</a>-->
+	<a href="../calendar/view.html">メンター予約</a>
+	
+<!--	<a th:href="../quiz/list.html">クイズ</a>-->
+	<a href="../quiz/list.html">クイズ</a>
+	
+	
+<!--	<a th:href="@{/user/info}">マイページ</a>-->
+	<a href="../user/info.html">マイページ</a>
 
-	<section>
-	<p>この日程で予約しますか？</p>
+
+
 	
-	<!--ここに入力した日程を表示-->
-	
-	<form method="post" th:action="@{calender/input}">
-		<input type="button" name="yes" value="予約する">
-	</form>
-	<form method="post" th:action="@{calender/view}">
-		<input type="button" name="no" value="戻る">
-	</form>
+
+
 	
 	</section>
+
 	
-	<!--フッター -->
+	
+			<!--フッター -->
 	<footer>
 	    <p>&copy; AI Community</p>
 	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>

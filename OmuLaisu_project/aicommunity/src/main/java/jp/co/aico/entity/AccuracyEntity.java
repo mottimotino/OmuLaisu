@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -20,11 +20,16 @@ public class AccuracyEntity {
 	private Integer accuracyId;
 	
 	@Column
-	private Integer progress;
+	private Double progress;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
 	private CategoriesEntity categoriesEntity;
+	
+	@ManyToOne
+	@JoinColumn(name = "users_id", referencedColumnName = "usersId")
+	private UsersEntity usersEntity;
+	
 
 	public Integer getAccuracyId() {
 		return accuracyId;
@@ -34,11 +39,11 @@ public class AccuracyEntity {
 		this.accuracyId = accuracyId;
 	}
 
-	public Integer getProgress() {
+	public Double getProgress() {
 		return progress;
 	}
 
-	public void setProgress(Integer progress) {
+	public void setProgress(Double progress) {
 		this.progress = progress;
 	}
 
@@ -48,6 +53,14 @@ public class AccuracyEntity {
 
 	public void setCategoriesEntity(CategoriesEntity categoriesEntity) {
 		this.categoriesEntity = categoriesEntity;
+	}
+
+	public UsersEntity getUsersEntity() {
+		return usersEntity;
+	}
+
+	public void setUsersEntity(UsersEntity usersEntity) {
+		this.usersEntity = usersEntity;
 	}
 	
 	

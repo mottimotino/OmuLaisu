@@ -18,9 +18,6 @@ public class CategoriesEntity {
 	
 	@Column
 	private String categoryName;
-	
-	@Column
-	private Integer categoryType;
 
 	public Integer getCategoryId() {
 		return categoryId;
@@ -36,14 +33,6 @@ public class CategoriesEntity {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
-	}
-
-	public Integer getCategoryType() {
-		return categoryType;
-	}
-
-	public void setCategoryType(Integer categoryType) {
-		this.categoryType = categoryType;
 	}
 	
 	

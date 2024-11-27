@@ -22,12 +22,12 @@ public class ChatEntity {
 	private String message;
 	
 	@ManyToOne
-	@JoinColumn(name = "users_id", referencedColumnName = "usersId")
-	private Integer sendUser;
+	@JoinColumn(name = "send_user", referencedColumnName = "usersId")
+	private UsersEntity sendUsersEntity;
 	
 	@ManyToOne
-	@JoinColumn(name = "users_id", referencedColumnName = "usersId")
-	private Integer receUser;
+	@JoinColumn(name = "rece_user", referencedColumnName = "usersId")
+	private UsersEntity receUsersEntity;
 
 	public Integer getChatId() {
 		return chatId;
@@ -45,21 +45,20 @@ public class ChatEntity {
 		this.message = message;
 	}
 
-	public Integer getSendUser() {
-		return sendUser;
+	public UsersEntity getSendUsersEntity() {
+		return sendUsersEntity;
 	}
 
-	public void setSendUser(Integer sendUser) {
-		this.sendUser = sendUser;
+	public void setSendUsersEntity(UsersEntity sendUsersEntity) {
+		this.sendUsersEntity = sendUsersEntity;
 	}
 
-	public Integer getReceUser() {
-		return receUser;
+	public UsersEntity getReceUsersEntity() {
+		return receUsersEntity;
 	}
 
-	public void setReceUser(Integer receUser) {
-		this.receUser = receUser;
+	public void setReceUsersEntity(UsersEntity receUsersEntity) {
+		this.receUsersEntity = receUsersEntity;
 	}
-	
 
 }
