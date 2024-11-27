@@ -83,6 +83,8 @@ body{
   .calendar td {
     padding: 6px;
     font-size: 12px;
+/*    意味ない*/
+    display: inline-block;
   }
   .calendar th {
     padding: 3px 6px;
@@ -119,6 +121,14 @@ section{
 	height: 500px;
 	text-align: center;
 }
+
+button.a{
+	margin:0px auto;
+	border: none;
+	background-color: #ffffff;
+	
+}
+
 
 
 

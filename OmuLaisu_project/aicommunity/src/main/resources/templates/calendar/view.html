@@ -26,6 +26,7 @@
 	<h2>日程予約</h2>
 	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>
 		<div class="calendar-wrap">
+		<form th:action="@{/calendar/check}">
 		  <table class="calendar">
 		    <thead>
 		      <tr>
@@ -43,8 +44,10 @@
 				
 		        <td class="mute sun">29</td>
 		        <td class="mute">30</td>
-		        <td><a th:href="@{/calendar/check}" class="a">1</a></td>
-		        <td><a th:href="@{/calendar/check}" class="a">2</a></td>
+<!--		        ボタンのサイズ変えてみる？ -->
+		        <td><button value = "1" name = "day" class="a">1</button></td>
+		        <td><button value = "2" name = "day" class="a">2</button></td>
+<!--		        <td><a th:href="@{/calendar/check}" class="a">2</a></td>-->
 		        <td><a th:href="@{/calendar/check}" class="a">3</a></td>
 		        <td><a th:href="@{/calendar/check}" class="a">4</a></td>
 		        <td class="sat">5</td>
@@ -103,6 +106,7 @@
 		      </tr>
 		    </tbody>
 		  </table>
+		  </form>
 		  
 		</div>
 		

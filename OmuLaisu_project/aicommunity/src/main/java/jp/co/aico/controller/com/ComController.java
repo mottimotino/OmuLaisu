@@ -35,7 +35,7 @@ private TimesRepository timesRepository;
  * カレンダーの日程を全件検索で表示するメソット
  */
 //カレンダー機能
-@RequestMapping("allViews")
+@RequestMapping("/allViews")
 public String views(Model model) {
 	List<TimesEntity> timesAll = timesRepository.findAll();
 	model.addAttribute("timesAll", timesAll);
