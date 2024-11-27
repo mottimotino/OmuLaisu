@@ -1,128 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../static/css/style.css" /> 
-<!--会話日程予約機能-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日程選択</title>
 </head>
 <body>
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a th:href="@{/top/dotop}">Top</a></li>
-	<li><a th:href="@{/top/dotop}">Q&A</a></li>
-	<li><a th:href="@{/quiz/list}">クイズ</a></li>
-	<li><a th:href="@{/chat/view}">チャット</a></li>
-	 </ul>
-	 <a th:href="@{/sidebar}">=</a>
-	</nav>
-	</header>
-
-	<br>
-	<h2>日程予約</h2>
-	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>
-		<div class="calendar-wrap">
-		<form th:action="@{/calendar/check}">
-		  <table class="calendar">
-		    <thead>
-		      <tr>
-		        <th class="sun">Sun</th>
-		        <th>Mon</th>
-		        <th>Tue</th>
-		        <th>Wed</th>
-		        <th>Thu</th>
-		        <th>Fri</th>
-		        <th class="sat">Sat</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <tr>
-				
-		        <td class="mute sun">29</td>
-		        <td class="mute">30</td>
-<!--		        ボタンのサイズ変えてみる？ -->
-		        <td><button value = "1" name = "day" class="a">1</button></td>
-		        <td><button value = "2" name = "day" class="a">2</button></td>
-<!--		        <td><a th:href="@{/calendar/check}" class="a">2</a></td>-->
-		        <td><a th:href="@{/calendar/check}" class="a">3</a></td>
-		        <td><a th:href="@{/calendar/check}" class="a">4</a></td>
-		        <td class="sat">5</td>
-<!--		        <td>2</td>-->
-<!--		        <td>3</td>-->
-<!--		        <td>4</td>-->
-<!--		        <td>5</td>-->
-		        
-		      </tr>
-		      <tr>
-		        <td class="sun">6</td>
-		        <td class="off"><a href="@{/calendar/check}" class="a">7</a></td>
-		        <td><a href="@{/calendar/check}" class="a">8</a></td>
-		        <td><a href="@{/calendar/check}" class="a">9</a></td>
-		        <td><a href="@{/calendar/check}" class="a">10</a></td>
-		        <td><a href="@{/calendar/check}" class="a">11</a></td>
-		        <td class="sat">12</td>
-<!--		        <td><a href="/calendar/check" class="a">8</a></td>-->
-<!--		        <td>9</td>-->
-<!--		        <td>10</td>-->
-<!--		        <td>11</td>-->
-<!--		        <td>12</td>-->
-		      </tr>
-		      <tr>
-		        <td class="today" class="sun">13</td>
-		        <td class="off"><a href="@{/calendar/check}" class="a">14</a></td>
-		        <td><a href="@{/calendar/check}" class="a">15</a></td>
-		        <td><a href="@{/calendar/check}" class="a">16</a></td>
-		        <td><a href="@{/calendar/check}" class="a">17</a></td>
-		        <td><a href="@{/calendar/check}" class="a">18</a></td>
-<!--		        <td>16</td>-->
-<!--		        <td>17</td>-->
-<!--		        <td>18</td>-->
-		        <td class="sat">19</td>
-		      </tr>
-		      <tr>
-		        <td class="sun">20</td>
-		        <td class="off"><a href="@{/calendar/check}" class="a">21</a></td>
-		        <td><a href="@{/calendar/check}" class="a">22</a></td>
-		        <td><a href="@{/calendar/check}" class="a">23</a></td>
-		        <td><a href="@{/calendar/check}" class="a">24</a></td>
-		        <td><a href="@{/calendar/check}" class="a">25</a></td>
-<!--		        <td>23</td>-->
-<!--		        <td>24</td>-->
-<!--		        <td>25</td>-->
-		        <td class="sat">26</td>
-		      </tr>
-		      <tr>
-		        <td class="sun">27</td>
-		        <td class="off"><a href="@{/calendar/check}" class="a">28</a></td>
-		        <td><a href="@{/calendar/check}" class="a">29</a></td>
-		        <td><a href="@{/calendar/check}" class="a">30</a></td>
-		        <td><a href="@{/calendar/check}" class="a">31</a></td>
-		        <td class="mute">1</td>
-		        <td class="mute sat">2</td>
-		      </tr>
-		    </tbody>
-		  </table>
-		  </form>
-		  
-		</div>
-		
-		<!--今はth:href="@{変数式}"にするとリンクにならない為一時的に外します-->
-<!--		<a href="/calendar/check" class="a">1</a>-->
-		
-		
-	<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a th:href="@{/help/question}" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
-
-
-</body>
-</html>
-
-</body>
+ <form action="check.html" method="POST">
+    <p>予約可能な時間帯を選択してください:</p>
+    <ul>
+      <li>
+        <label><input type="radio" name="timeSlot" value="1" required> 10:00 - 11:00</label>
+      </li>
+      <li>
+        <label><input type="radio" name="timeSlot" value="2"> 11:00 - 12:00</label>
+      </li>
+      <li>
+        <label><input type="radio" name="timeSlot" value="3"> 13:00 - 14:00</label>
+      </li>
+    </ul>
+    <button type="submit">次へ</button>
+  </form></body>
 </html>
