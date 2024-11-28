@@ -1,4 +1,5 @@
 package jp.co.aico.form;
+/*
  * クイズ機能のform
  * @author 水野学
  *
