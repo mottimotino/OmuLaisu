@@ -1,0 +1,38 @@
+11月26
+
+作業会議
+全員参加
+
+
+今週の作業
+
+
+クイズ、インサート文（10～20）
+緒方
+
+コントローラー
+水野、紫
+
+
+
+
+
+.inner-block {
+  position: relative;
+  width: calc(100% - 60px);
+  margin: 0 auto;
+  max-width: 1000px;
+}
+ 
+.quiz {
+  min-height: 100vh;
+  padding: 100px 0;
+  background: #fff5db;
+}
+ 
+.quiz-content {
+  border: 1px solid #222;
+  background-color: rgba(#fff, 0.4);
+  box-shadow: 2px 2px 4px rgba(color #000, alpha 0.1);
+  position: relative;
+}
