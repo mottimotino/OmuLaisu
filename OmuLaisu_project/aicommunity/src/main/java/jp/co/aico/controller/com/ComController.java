@@ -64,4 +64,8 @@ public class ComController {
 		ReservationDateEntity = rdRepository.save(ReservationDateEntity);
 		return "calendar/input";
 	}
+	@RequestMapping("/chat/view")
+	public String chat() {
+		return "chat/view";
+	}
 }
