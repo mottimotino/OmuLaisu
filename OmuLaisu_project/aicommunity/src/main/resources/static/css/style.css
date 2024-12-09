@@ -122,6 +122,10 @@ section{
 	text-align: center;
 }
 
+button{
+	display: inline-block;
+}
+
 button.a{
 	margin:0px auto;
 	border: none;
@@ -129,10 +133,85 @@ button.a{
 	
 }
 
+.seitouritu{
+	background-color: darkorange;
+	padding: 10px;
+}
+
+.main{
+	height: 600px;
+}
 
 
+/*フォームの幅をwidthで調節*/
+/*display:flex;タイル状にブロックを並べる*/
+.mondai{
+    display: flex;
+    width: 1000px;
+    flex-wrap: wrap;
+    margin:auto 400px
+/*    margin-left: 440px;*/
+}
+
+.btn{
+    width: 300px;
+    height: 100px;
+    margin-right: 80px;
+    margin-bottom: 40px;
+}
+
+.one{
+	border:solid;
+	border-color: red;
+}
+
+.two{
+	border:solid;
+	border-color: blue;
+}
+
+.three{
+	border:solid;
+	border-color: yellow;
+}
+
+.four{
+	border:solid;
+	border-color: green;
+}
+
+.quiz{
+	margin:100px 100px;
+	text-align: center;
+}
+
+
+.choice1{
+	margin-bottom: 20px;	
+}
+/*.choice2 {*/
+/*	display: flex;*/
+/*    width: 1000px;*/
+/*    flex-wrap: wrap;*/
+/*    margin-top: 50px;*/
+/*    margin-left: 600px;*/
+/*}*/
+
+.kanzi{
+	width: 300px;
+	height:70px;
+	margin:auto 50px;
+}
+
+.business{
+	width: 300px;
+	height:70px;
+	margin-top: 100px;
+	margin:auto 50px;
+}
 
 footer{
+	margin-top: 300px;
 	width: 100%;
 	background-image: url(../ヘッダーフッター使用画像.jpeg);
 	text-align: center;

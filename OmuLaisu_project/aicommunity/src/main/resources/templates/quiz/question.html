@@ -26,20 +26,20 @@
 	
 	<h2>問題</h2>
 	<!--ここに問題文-->	
-	<h2>問題</h2>
-	<!--ここに問題文-->
-	<main>
+	<main class="quiz">
+	<span class="seitouritu">	
 	<span th:text="${total}"></span>問中
 	<span th:text="${collect}"></span>問正解 正答率
 	<span th:text="${collectAnswerRate}"></span>%
+	</span>
 	
-	<h2>問題</h2>
+	<h2>問題文</h2>
 	<span th:text="${question.question}"></span><br>
-	<form th:action="@{/quiz/explain}" method="post">
-		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 />
-		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 />
-		<button type="submit" name = "answer" th:text="${question.choise3}" value=3 />
-		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 />
+	<form th:action="@{/quiz/explain}" method="post" class="mondai">
+		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 class="btn one"/>サンプル1
+		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 class="btn two"/>サンプル2
+		<button type="submit" name = "answer" th:text="${question.choise3}" value=3 class="btn three"/>サンプル3
+		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 class="btn four"/>サンプル4
 		
 		<input type="hidden" name="queId" th:value="${question.queId}">
 		<input type="hidden" name="usersId" th:value=1>

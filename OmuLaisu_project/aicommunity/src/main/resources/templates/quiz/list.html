@@ -21,24 +21,35 @@
 	</nav>
 	</header>
 
-	<br>
-	<h2>クイズ画面</h2>
-	<p></p>
+
 	
-	<form th:action="@{/quiz/question}" method="post" >
+	<form th:action="@{/quiz/question}" method="post" class="main">
 		
+		
+		<div class="quiz">
+		<h2 style="text-align: center; font-size: 40px;">漢字クイズ</h2>
+		<form class="choice1">
 		<label><input type="radio" name="categoryType" value="読み"/>読み</label>
 		<label><input type="radio" name="categoryType" value="書き"/>書き</label>
-		<input type="submit" name="categoryName" value="初級">
-		<input type="submit" name="categoryName" value="中級">
-		<input type="submit" name="categoryName" value="上級">
-		<input type="submit" name="categoryName" value="挨拶編">
-		<input type="submit" name="categoryName" value="メール編">
-		<input type="submit" name="categoryName" value="公の場編">
+		</form>
+		
+		<form>
+		<input type="submit" name="categoryName" value="初級" class="kanzi">
+		<input type="submit" name="categoryName" value="中級" class="kanzi">
+		<input type="submit" name="categoryName" value="上級" class="kanzi">
+		</form>
+		
+		<div class="quiz">
+		<h2 style="text-align: center; font-size: 40px;">ビジネスマナークイズ</h2>
+		<input type="submit" name="categoryName" value="挨拶編" class="business">
+		<input type="submit" name="categoryName" value="メール編" class="business">
+		<input type="submit" name="categoryName" value="公の場編" class="business">
+		</div>
 		<!--valueはログインしたusersIdに変更する-->
 		<input type="hidden" name="usersId" value=1>
 		<!--クイズの1問目から表示する-->
 		<input type="hidden" name="queId" value="0">
+		</span>
 	</form>
 	
 	</section>
