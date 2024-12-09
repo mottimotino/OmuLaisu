@@ -13,10 +13,11 @@
 		<!--ナビ①-->
 	<nav class="nav">
 	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
+	<li><a th:href="@{/top/dotop}">Top</a></li>
+	<li><a th:href="@{/help/question}">Q&A</a></li>
+	<li><a th:href="@{/quiz/list}">クイズ</a></li>
+	<li><a th:href="@{/chat/view}">チャット</a></li>
+
 	 </ul>
 	</nav>
 	</header>
@@ -24,19 +25,19 @@
 	<!--ログイン後画面-->
 	<form method="post" th:action="@{user/calender/view}" >
 		<input type="submit" name="back" value="日程選択">
-	</form method="post">
+	</form>
 	
 	<form method="post" th:action="@{user/chat/view}" >
 		<input type="submit" name="back" value="チャット">
-	</form method="post">
+	</form>
 	
 	<form method="post" th:action="@{user/calender/view}" >
 		<input type="submit" name="back" value="日程選択">
-	</form method="post">
+	</form>
 	
 	<form method="post" th:action="@{user/quiz/list}" >
 		<input type="submit" name="back" value="クイズに進む">
-	</form method="post">
+	</form>
 	
 	<a th:href="@{/user/info}">マイページ</a>
 <!--	コントローラーも作成-->
