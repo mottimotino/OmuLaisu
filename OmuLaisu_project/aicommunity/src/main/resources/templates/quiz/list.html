@@ -33,7 +33,7 @@
 		<label><input type="radio" name="categoryType" value="書き"/>書き</label>
 		</form>
 		
-		<form>
+		<form th:action="@{/quiz/question}" method="post" class="main">
 		<input type="submit" name="categoryName" value="初級" class="kanzi">
 		<input type="submit" name="categoryName" value="中級" class="kanzi">
 		<input type="submit" name="categoryName" value="上級" class="kanzi">
