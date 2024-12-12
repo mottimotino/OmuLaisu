@@ -61,9 +61,10 @@ public class LoginController {
 		session.invalidate();
 		return "top:/";
 	}
-	//パスワード再設定画面への遷移
-	@RequestMapping("user/update/input")
-	public String passwordChange() {
-		return "user/update/input";
-	}
+	//マネジメントコントローラーに記載
+//	//パスワード再設定画面への遷移
+//	@RequestMapping("user/update/input")
+//	public String passwordChange() {
+//		return "user/update/input";
+//	}
 }
