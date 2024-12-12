@@ -21,7 +21,7 @@ public class UserController {
 //		return "quiz/list";
 //	}
 	
-	//マイページ
+	//マイページ(ManagementControllerに記載)
 	@RequestMapping(path = "/user/info", method = RequestMethod.GET)
 	public String mypage() {
 		return "user/info";

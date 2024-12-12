@@ -68,4 +68,6 @@ public class ComController {
 	public String chat() {
 		return "chat/view";
 	}
+	
+	
 }
