@@ -210,6 +210,18 @@ button.a{
 	margin:auto 50px;
 }
 
+.login{
+	background-color: whitesmoke;
+	width: 800px;
+	height: 300px;
+	margin-top: 40px;
+}
+
+.loginform{
+	width: 600px;
+/*	margin:30px;*/
+}
+
 footer{
 	margin-top: 300px;
 	width: 100%;
