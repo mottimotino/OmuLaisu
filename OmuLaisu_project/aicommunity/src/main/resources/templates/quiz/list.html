@@ -28,16 +28,13 @@
 		
 		<div class="quiz">
 		<h2 style="text-align: center; font-size: 40px;">漢字クイズ</h2>
-		<form class="choice1">
-		<label><input type="radio" name="categoryType" value="読み"/>読み</label>
-		<label><input type="radio" name="categoryType" value="書き"/>書き</label>
-		</form>
-		
 		<form th:action="@{/quiz/question}" method="post" class="main">
+		<label><input type="radio" name="categoryType" value="読み"/>読み</label>
+		<label><input type="radio" name="categoryType" value="書き"/>書き</label><br>
+		
 		<input type="submit" name="categoryName" value="初級" class="kanzi">
 		<input type="submit" name="categoryName" value="中級" class="kanzi">
 		<input type="submit" name="categoryName" value="上級" class="kanzi">
-		</form>
 		
 		<div class="quiz">
 		<h2 style="text-align: center; font-size: 40px;">ビジネスマナークイズ</h2>
@@ -50,7 +47,7 @@
 		<!--クイズの1問目から表示する-->
 		<input type="hidden" name="queId" value="0">
 		</span>
-	</form>
+		</form>
 	
 	</section>
 	
