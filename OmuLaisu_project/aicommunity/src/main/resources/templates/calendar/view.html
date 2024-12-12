@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>日程選択</title>
-  <link rel="stylesheet" href="/css/style.css" /> 
+  <link rel="stylesheet" th:href="@{/css/style.css}" /> 
 </head>
 <body>
 	
@@ -25,7 +25,7 @@
 	</header>
 	
 		<h2>日程予約</h2>
- 	<form action="check.html" method="POST">		
+ 	<form th:action="@{/timesCheck}" method="get">		
 	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>
 		<div class="calendar-wrap">
 		  <table class="calendar">
@@ -45,9 +45,9 @@
 				
 		        <td class="mute sun">29</td>
 		        <td class="mute">30</td>
-		        <td><a th:href="@{/calendar/check}" class="a">1</a></td>
-		        <td><a th:href="@{/calendar/check}" class="a">2</a></td>
-		        <td><a th:href="@{/calendar/check}" class="a">3</a></td>
+		        <td><a th:href="@{/check/12-1}" class="a">1</a></td>
+		        <td><a th:href="@{/check/12}" class="a">2</a></td>
+		        <td><a th:href="@{/check}" class="a">3</a></td>
 		        <td><a th:href="@{/calendar/check}" class="a">4</a></td>
 		        <td class="sat">5</td>
 <!--		        <td>2</td>-->
@@ -107,18 +107,7 @@
 		  </table>
 		</div>
 
-    <p>予約可能な時間帯を選択してください:</p>
-    <ul>
-      <li>
-        <label><input type="radio" name="timeSlot" value="1" required> 10:00 - 11:00</label>
-      </li>
-      <li>
-        <label><input type="radio" name="timeSlot" value="2"> 11:00 - 12:00</label>
-      </li>
-      <li>
-        <label><input type="radio" name="timeSlot" value="3"> 13:00 - 14:00</label>
-      </li>
-    </ul>
+    
     <button type="submit">次へ</button>
   </form>
   
