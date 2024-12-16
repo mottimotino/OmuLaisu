@@ -1,6 +1,5 @@
 package jp.co.aico.controller.management;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.aico.bean.ManagementBean;
-import jp.co.aico.entity.ManagementEntity;
 import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.Managementform;
 import jp.co.aico.repository.AccuracyRepository;
@@ -39,12 +36,10 @@ public class ManagementController {
 	 * @return input
 	 * 
 	 */
-	@RequestMapping("user/update/input/{manaId}")
-	public String kousin(@PathVariable Integer manaId, Model model) {
-		ManagementEntity Entity = repository.getReferenceById(manaId);
-		ManagementBean bean = new ManagementBean();
-		BeanUtils.copyProperties(Entity, bean);
-		model.addAttribute("oldPassword", bean);
+	@RequestMapping("user/update/input/{usersId}")
+	public String kousin(@PathVariable Integer usersId, Model model) {
+		UsersEntity Entity = usersRepository.getReferenceById(usersId);
+		model.addAttribute("oldPassword", Entity);
 		return "user/update/input";
 
 	}
@@ -68,11 +63,12 @@ public class ManagementController {
  * @param Managementform
  * @return complete
  */
-	@RequestMapping("user/update/complete/{manaId}")
-	public String update(@PathVariable Integer manaId,Managementform form) {
-		 ManagementEntity Entity = repository.getReferenceById(manaId);
-		BeanUtils.copyProperties(form, Entity, "manaId");
-		Entity = repository.save(Entity);
+	@RequestMapping("user/update/complete/{usersId}")
+	public String update(@PathVariable Integer usersId,Managementform form) {
+		UsersEntity Entity = usersRepository.getReferenceById(usersId);
+		//BeanUtils.copyProperties(form, Entity, "usersId");
+		Entity.setPassword(form.getPassword());
+		Entity = usersRepository.save(Entity);
 		return "user/update/complete";
 	}
 	
