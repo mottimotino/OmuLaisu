@@ -211,7 +211,7 @@ button.a{
 }
 
 .login{
-	background-color: whitesmoke;
+	background-image: url(../ログイン画面.png);
 	width: 800px;
 	height: 300px;
 	margin-top: 40px;
