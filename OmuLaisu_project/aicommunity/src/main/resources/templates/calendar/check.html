@@ -27,7 +27,13 @@
 	<!--ここに入力した日程を表示-->
 	<form method="post" th:action="@{calender/input}">
 		<span th:text="${day}"></span><br>
+		<span th:text="${timesId.startTimes}"></span>
+	    -<span th:text="${timesId.endTimes}"></span>
+
 		<input type="submit" name="yes" value="予約する">
+		<input type="hidden" name="timesId" th:value="${timesId.timesId}">
+		<input type="hidden" name="day" th:value="${day}">
+
 	</form>
 	<form method="post" th:action="@{calender/view}">
 		<input type="button" name="no" value="戻る">

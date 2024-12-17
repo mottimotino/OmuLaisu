@@ -55,6 +55,7 @@ public class ComController {
 		TimesEntity timesEntity = timesRepository.getReferenceById(Comform.getTimesId());
 		model.addAttribute("timesId", timesEntity);
 		model.addAttribute("day", Comform.getDay());
+		model.addAttribute("weekDay",Comform.getWeekday());
 		return "calendar/check";
 	}
 
@@ -62,10 +63,11 @@ public class ComController {
 	/*
 	 * 時間確認画面の遷移
 	 */
-	@RequestMapping(path = "/check/{day}", method = RequestMethod.GET)
+	@RequestMapping(path = "/check/{day}/{weekDay}", method = RequestMethod.GET)
 
-	public String Check(Model model, ComForm Comform, @PathVariable String day) {
+	public String Check(Model model, ComForm Comform, @PathVariable String day,String weekDay) {
 		model.addAttribute("day", day);
+		model.addAttribute("weekDay",weekDay);
 		return "calendar/timesCheck";
 	}
 
