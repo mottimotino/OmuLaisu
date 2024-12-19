@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../static/css/style.css" />
+<link rel="stylesheet" th:href="@{/css/style.css}"/> 
 <!--会話日程予約機能-->
 </head>
 <body>
@@ -25,12 +25,13 @@
 	
 	<h2>解答</h2>
 	<!--ここに解答を入力-->
+	<span>意味:</span><span th:text="${question.mean}"></span><br>
 	<span th:text="${question.explanation}"></span><br>
 	
 	<form method="post" th:action="@{/quiz/question}">
 		<input type="submit" name="next" value="次の問題へ">
 		<input type="hidden" name="queId" th:value="${question.queId}">
-		<input type="hidden" name="categoryName" value="${question.categoriesEntity.categoryName}" />
+		<input type="hidden" name="categoryName" th:value="${question.categoriesEntity.categoryName}" />
 		<input type="hidden" name="usersId" value=1>
 	</form>
 

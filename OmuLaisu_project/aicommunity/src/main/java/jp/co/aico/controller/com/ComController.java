@@ -1,6 +1,9 @@
 package jp.co.aico.controller.com;
 
-import org.springframework.beans.BeanUtils;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,9 +68,11 @@ public class ComController {
 	 */
 	@RequestMapping(path = "/check/{day}/{weekDay}", method = RequestMethod.GET)
 
-	public String Check(Model model, ComForm Comform, @PathVariable String day,String weekDay) {
+	public String Check(Model model, ComForm Comform, @PathVariable String day,@PathVariable String weekDay) {
 		model.addAttribute("day", day);
 		model.addAttribute("weekDay",weekDay);
+		//時間の選択肢の情報をモデルに格納
+		model.addAttribute("times",timesRepository.findAll());
 		return "calendar/timesCheck";
 	}
 
@@ -76,15 +81,21 @@ public class ComController {
 	 * 登録処理
 	 */
 	@RequestMapping("/complete")
-	public String complete(ComForm Comform) {
+	public String complete(ComForm Comform) throws ParseException {
 		ReservationDateEntity ReservationDateEntity = new ReservationDateEntity();
 		TimesEntity timesEntity = new TimesEntity();
 		timesEntity.setTimesId(Comform.getTimesId());
 		UsersEntity usersEntity = new UsersEntity();
 		usersEntity.setUsersId(Comform.getUsersId());
-		BeanUtils.copyProperties(Comform, ReservationDateEntity, "dateId");
+		//BeanUtils.copyProperties(Comform, ReservationDateEntity, "dateId");
 		//もし、上がダメだった場合以下のコメントアウトしたコードを実装する
-		//ReservationDateEntity.setDay(Comform.getDay());
+		
+		//Date型に変換
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date day = dateFormat.parse(Comform.getDay());
+		
+		ReservationDateEntity.setDay(day);
+		ReservationDateEntity.setWeekday(Comform.getWeekday());
 		ReservationDateEntity.setTimesEntity(timesEntity);
 		ReservationDateEntity.setUsersEntity(usersEntity);
 		ReservationDateEntity = rdRepository.save(ReservationDateEntity);
