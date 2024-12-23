@@ -17,16 +17,46 @@
 	<li><a href="#">Q&A</a></li>
 	<li><a href="#">クイズ</a></li>
 	<li><a href="#">チャット</a></li>
+<!--	右寄せ-->
+	<li style="margin-left: 950px;"><a th:href="@{/sidebar}">=</a></li>
 	 </ul>
-	 <a th:href="@{/sidebar}">=</a>
+	 
 	</nav>
 	</header>
 	
 	<section>
-		<p th:text=${Entity.name}></p>
-		<p th:text=${Entity.mail}></p>
-		<p th:text=${Entity.password}></p>
+		<span class="userinfo">
+		<h2>UserName</h2>
+		<p>Mail-Address</p><a href="update/input.html">変更する</a>
+		<p>password</p><a href="update/input.html">変更する</a>
+		</span>
+		
+		<div>
+			<p>漢字クイズ正答率</p>
+<!--			ここに円グラフ-->
+				
+　
+			<div class="graph-wrap">
+<!--		<svg width="幅" height="高さ" viewBox="min-x min-y width height"></svg>-->
+			  <svg class="circle" viewBox = "0 0 64 64">
+			  <circle cx="50%" cy="50%" r="15.9154"></circle>
+			  <circle cx="50%" cy="50%" r="15.9154"></circle>
+			  　
+
+			</div>
+		
+		<div>
+			<p>ビジネスマナークイズ</p>
+<!--			ここに円グラフ-->
+		</div>
 	</section>	
+	
+<!--	消さない-->
+<!--	<section>-->
+<!--		<h2 th:text=${Entity.name}></h2>-->
+<!--		<p th:text=${Entity.mail}></p>-->
+<!--		<p th:text=${Entity.password}></p>-->
+<!--	</section>	-->
 	
 				<!--フッター -->
 	<footer>

@@ -1,63 +1,74 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/main.css">
-	<title>AICommunity</title>
+<meta charset="UTF-8">
+<title>AIcommunity 会員登録</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 
-<body>
-	<!--バックグラウンド-->
+<!--<body style="background-image: url(../../../static/会員登録使用画像.jpg); background-size:cover;">-->
+<body class="test">	
 
-	<body background="C:\Users\81908\Downloads\名称未設定のデザイン.png">
+	<header>
+	<h1 class="header02-logo" >AI Community
+	</h1>
 
-		<!--ヘッダー -->
-		<header>
-			<h1 class="header02-logo" style="text-align:center">AI Community
-				<img src="C:\Users\81908\Downloads\ヘッダーフッター使用画像 (1).jpeg" alt="" width="10000" height="100px">
-				</a>
-			</h1>
-<!--ナビ①-->
-			<ul class="nav">
-				<li><a href="#">Top</a></li>
-				<li><a href="#">Q&A</a></li>
-				<li><a href="#">Language</a></li>
-				<li><a href="#">チャット</a></li>
-			</ul>
+	</header>
+			<!--ナビ①-->
+	<nav class="nav">
+	 <ul class="menu">
+	<li><a href="#">Top</a></li>
+	<li><a href="#">Q&A</a></li>
+	<li><a href="#">クイズ</a></li>
+	<li><a href="#">チャット</a></li>
+	 </ul>
+	</nav>
 <!--ナビ②-->
-			<nav class="nav">
-				<a class="nav-link active" aria-current="page" href="#">Top</a>
-				<a class="nav-link" href="#">Q&A</a>
-				<a class="nav-link" href="#">Language</a>
-				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">チャット</a>
-			</nav>
-		</header>
+<!--			<nav class="nav">-->
+<!--				<a class="nav-link active" aria-current="page" href="#">Top</a>-->
+<!--				<a class="nav-link" href="#">Q&A</a>-->
+<!--				<a class="nav-link" href="#">Language</a>-->
+<!--				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">チャット</a>-->
+<!--			</nav>-->
 
+		<h2 class="registh2">会員登録</h2>
+<div  class="registback">
+		<!--バックグラウンド-->
 
-
+<!--		<body background="C:\Users\81908\Downloads\名称未設定のデザイン.png">-->
 		<!--画像の中の文-->
-		<div class="form-floating mb-3">
-			<label for="floatingInput">メールアドレス</label>
-			<input type="email" class="form-control" id="floatingInput" placeholder="メールアドレス">
+		<!--	formタグにする？-->
 
-		</div>
-		<div class="form-floating">
-			<label for="floatingPassword">パスワード</label>
-			<input type="password" class="form-control" id="floatingPassword" placeholder="パスワード">
+		<form th:action="@{/check}">
+<!--		ユーザー名-->			
+			<label for="floatingInput">ユーザー名</label><br>
+			<input type="text" class="form-control" id="floatingInput" placeholder="Username"><br>
 
-		</div>
-		<div class="col-auto">
-			<button type="submit" class="btn btn-primary mb-3">登録</button>
-		</div>
+<!--		メールアドレス-->
+			<label for="floatingInput">メールアドレス</label><br>
+			<input type="email" class="form-control" id="floatingInput" placeholder="Mail-address"><br>
 
+<!--		パスワード-->
+			<label for="floatingPassword">パスワード</label><br>
+			<input type="password" class="form-control" id="floatingPassword" placeholder="Password"><br>
 
+			<button type="submit" th:formaction="@{/check}" class="registbottun">登録</button>
 
+			<button type="submit" th:formaction="@{/top/top}" class="registbottun">戻る</button>
+		</form>
+<!--		<form th:action="@{/top/top}" class="back">	-->
+<!--		戻るリンクつける-->
+<!--			<button type="submit" class="registbottun">戻る</button>-->
+		
+<!--		</form>-->
+
+</div>
 
 		<!--　フッター -->
-		<footer style="background-color: #333; color: white; padding: 20px; text-align: center;">
-			<p>&copy; AI Community</p>
-			<p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
+		<footer>
+			<p>&copy; 2024 OmuLaisu</p>
+			<p><a href="mailto:info@yourwebsite.com">お問い合わせ</a></p>
+		</footer>
 
 	</body>
 

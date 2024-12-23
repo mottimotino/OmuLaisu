@@ -3,16 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../../static/css/style.css" />
 </head>
-<body>
+
+<body style="background-image: url(../../../static/会員登録使用画像.jpg); background-size:cover;">
+	<header>
+	<h1 class="header02-logo" >AI Community
+	</h1>
+
+	</header>
+			<!--ナビ①-->
+	<nav class="nav">
+	 <ul class="menu">
+	<li><a href="#">Top</a></li>
+	<li><a href="#">Q&A</a></li>
+	<li><a href="#">クイズ</a></li>
+	<li><a href="#">チャット</a></li>
+	 </ul>
+	</nav>
+	
+	<div class="registback">
 	<h2>こちらで登録しますか？</h2>
+	
 	<address>
-	<p>メールアドレス</p>
+	<p>メールアドレス</p><br>
+	<p th:text="${users.usersId}"></p>
+	
 	</address>
 	
-	<p>パスワード</p>
+	<p>パスワード</p><br>
+	<p th:text="${users.password}"></p>
 	
-	<p>ユーザー名</p>
+	<p>ユーザー名</p><br>
+	<p th:text="${users.username}"></p>
+	
+	<form action="complete.html">
+		<input type="submit" value="登録" style="margin-top: 30px;">
+	</form>
+	
+	<form action="input.html">
+		<input type="submit" value="戻る" style="margin-top: 30px;">
+	</form>
+	</div>
+	
+	
+	<!--　フッター -->
+		<footer>
+			<p>&copy; 2024 OmuLaisu</p>
+			<p><a href="mailto:info@yourwebsite.com">お問い合わせ</a></p>
+		</footer>
+	
+	
+	
+	
 
 </body>
 </html>
