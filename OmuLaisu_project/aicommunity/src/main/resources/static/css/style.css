@@ -285,19 +285,19 @@ display: flex;
 }
 
 /*円グラフの文字*/
-.ct-label{
-	font-size: 1rem;
-	fill: #fff;
-}
+/*.ct-label{*/
+/*	font-size: 1rem;*/
+/*	fill: #fff;*/
+/*}*/
 
 /*円グラフ*/
-.ct-series-a .ct-slice-pie {
-	fill: crimson;
-}
+/*.ct-series-a .ct-slice-pie {*/
+/*	fill: crimson;*/
+/*}*/
 
-.ct-series-b .ct-slice-pie {
-	fill: blue;
-}
+/*.ct-series-b .ct-slice-pie {*/
+/*	fill: blue;*/
+/*}*/
 
 
 footer{
