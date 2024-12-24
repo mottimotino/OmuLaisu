@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>マイページ</title>
-<link rel="stylesheet" href="../../static/css/style.css" /> 
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.css}" /> 
+<link rel="stylesheet" th:href="@{/css/style.css}" /> 
 <!--会話日程予約機能-->
 </head>
 <body>
@@ -24,6 +25,8 @@
 	</nav>
 	</header>
 	
+
+	
 	<section>
 		<span class="userinfo">
 		<h2>UserName</h2>
@@ -34,16 +37,9 @@
 		<div>
 			<p>漢字クイズ正答率</p>
 <!--			ここに円グラフ-->
-				
-　
-			<div class="graph-wrap">
-<!--		<svg width="幅" height="高さ" viewBox="min-x min-y width height"></svg>-->
-			  <svg class="circle" viewBox = "0 0 64 64">
-			  <circle cx="50%" cy="50%" r="15.9154"></circle>
-			  <circle cx="50%" cy="50%" r="15.9154"></circle>
-			  　
-
-			</div>
+				<div class="kanzi_right_answer">
+					<canvas id="myChart"></canvas>
+				</div>
 		
 		<div>
 			<p>ビジネスマナークイズ</p>
@@ -64,5 +60,7 @@
 	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
 	</footer>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/chart.min.js"></script>
+	<script src="../../static/js/info.js"></script>
 </body>
 </html>

@@ -284,25 +284,19 @@ display: flex;
 
 }
 
-.circle circle {
-  fill: none;
-  stroke-width: 14px;
+/*円グラフの文字*/
+.ct-label{
+	font-size: 1rem;
+	fill: #fff;
 }
 
-.circle circle:nth-child(1) {
-  stroke: #f46060;
-  stroke-dasharray: 40,100;
-  stroke-dashoffset: 0;
+/*円グラフ*/
+.ct-series-a .ct-slice-pie {
+	fill: crimson;
 }
 
-.circle {
-  transform:rotate(-90deg);
-}
-
-.circle circle:nth-child(2) {
-  stroke: #54cccc;
-  stroke-dasharray: 30,100;
-/*  stroke-dashoffset: 90;←追加したコード*/
+.ct-series-b .ct-slice-pie {
+	fill: blue;
 }
 
 
