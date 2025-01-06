@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+/* FAQ like message */
+
+.faq_area {
+    margin: 0 auto;
+    /* ここでチャットの高さを指定 */
+    height: 500px;
+    background-color: #efeeee;
+    /* スクロール */
+    overflow: auto;
+    /* ここまで追記 */
+    
+}
+
+.faq_area div {
+    width: 100%;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.faq_area dt,
+.faq_area dd {
+    min-width: 80px;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 10px;
+    background: #0096e5;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    /* 追記 */
+    font-size: 120%;
+    margin: auto 50px;
+    color: #000000;
+    font-weight:bold;
+}
+
+.faq_area dt {
+    margin-bottom: 20px;
+    background: #9dffaa;
+}
+
+.faq_area dt:before {
+    content: "";
+    border: 10px solid transparent;
+    border-right: 20px solid #9dffaa;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.faq_area dd {
+    margin-top: 20px;
+    background: #ffd2d2;
+}
+
+.faq_area dd:after {
+    content: "";
+    border: 10px solid transparent;
+    border-left: 20px solid #ffd2d2;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* ここから追記 */
+.text_area {
+    background-color: #e0dfdf;
+    height: 45px;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.text_area textarea {
+    height: 35px;
+    width: 90%;
+    font-size: 120%;
+    resize: none;
+}
+
+.text_area input {
+    height: 40px;
+    width: 5%;
+    font-size: 120%;
+    margin-left: 10px;
+}
+/* ここまで追記 */
