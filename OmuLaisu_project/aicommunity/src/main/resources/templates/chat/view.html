@@ -1,10 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+	<link rel="stylesheet" th:href="@{/css/chat.css}"/>
+	
+	<script>
+		var form = document.getElementsByClassName("text_area");
+		var message = document.getElementsByName("message");
+		var submit = document.getElementsByClassName("submit");
+		
+	</script> 
+
 </head>
+
 <body>
+	<dl class="faq_area">
+	    <span th:each="message: ${messages}">
+			<span th:if="${message.receUsersEntity.usersId} == ${user.usersId}">
+				<div>
+					<dt th:text="${message.message}"></dt>
+					<span></span>
+				</div>
+			</span>
+			<span th:if="${message.sendUsersEntity.usersId} == ${user.usersId}">
+				<div>
+					<span></span>
+					<dd th:text="${message.message}"></dd>
+				</div>
+			</span>
+		</span>
+    </dl>
+
+
+    <form method="post" th:action="@{/chat/send}" class="text_area" >
+		<!--メッセージを入力-->
+        <textarea name="message" required></textarea>
+        <input type="submit" class="submit" value="送信" disabled>
+        
+		<!--一般ユーザーの場合の処理-->
+        <div th:if="${user.authority} == 2">
+			<!--送信する(ログインしている)ユーザー-->
+        	<input type="hidden" name="sendUser" th:value="${user.usersId}"/>
+			<!--受け取るユーザー-->
+			<!--相手がメンターの場合はusersIdを保存しない-->
+        	<input type="hidden" name="receUser" value=""/>
+		</div>
+		
+		<!--メンターの場合の処理-->
+<!--		<div th:if="${user.authority} == 3">-->
+			<!--送信するユーザー-->
+<!--        	<input type="hidden" name="sendUser" th:value="${user.usersId}"/>-->
+			<!--受け取るユーザー-->
+			<!--valueは仮-->
+<!--        	<input type="hidden" name="receUser" value="1"/>-->
+<!--		</div>-->
+			
+		
+    </form>
+
+
 
 </body>
+
 </html>

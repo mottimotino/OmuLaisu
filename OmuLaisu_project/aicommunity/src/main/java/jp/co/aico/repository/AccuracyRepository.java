@@ -12,6 +12,9 @@ public interface AccuracyRepository extends JpaRepository<AccuracyEntity, Intege
 	
 	AccuracyEntity findByCategoriesEntityAndUsersEntity(CategoriesEntity categoriesEntity,UsersEntity usersEntity);
 	
-	List<AccuracyEntity> findByAccuracyId(Integer accuracyId);
+	List<AccuracyEntity> findByUsersEntity(UsersEntity usersEntity);
+	
+//	@Query("SELECT a FROM AccuracyEntity a WHERE a.categoriesEntity <= :categoriesEntity AND a.usersEntity = :usersEntity")
+//	public List<AccuracyEntity> findByCategoriesEntityAndUsersEntityQuery(@Param("categoriesEntity") CategoriesEntity categoriesEntity,@Param("usersEntity") UsersEntity usersEntity);
 
 }

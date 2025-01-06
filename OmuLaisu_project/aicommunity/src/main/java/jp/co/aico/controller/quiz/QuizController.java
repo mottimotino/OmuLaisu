@@ -59,7 +59,7 @@ public class QuizController {
 		
 		progressEntity.setCategoriesEntity(categoriesEntity);
 
-		//正解判定
+		/* 正解判定 */
 		int queId = quizForm.getQueId();
 		//正解の番号をanswerに入れる
 		int answer = quizRepository.getReferenceById(queId).getAnswer();
@@ -76,11 +76,9 @@ public class QuizController {
 		//選んだ選択肢の番号を取得する処理を考える
 		//正解or不正解を保存(書き換え予定)
 		if (quizForm.getAnswer() == answer) {
-			model.addAttribute("judge", "正解");
 			//間違いフラグに正解(0)を入れる
 			progressEntity.setMissFlag(0);
 		} else {
-			model.addAttribute("judge", "不正解");
 			//間違いフラグに不正解(1)を入れる
 			progressEntity.setMissFlag(1);
 		}
@@ -136,10 +134,10 @@ public class QuizController {
 			categoryName += categoryType;
 		}
 
-		//漢字の読み書きの場合は読み/書きであいまい検索
+		//入力されたカテゴリーで検索
 		if (categoryName != null) {
 			categoriesEntity = categoriesRepository.findByCategoryName(categoryName);
-			//読み書きが選択されていない場合の処理
+		//正しくカテゴリーが選択されていない場合の処理
 		} else {
 			return "redirect:/quiz/list";
 		}

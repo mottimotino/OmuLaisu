@@ -13,36 +13,39 @@ import jp.co.aico.repository.UsersRepository;
 
 @Controller
 public class RegistationController {
-@Autowired
-UsersRepository repository;
-/**
- * /RepositoryをAutowiredの下にインスタンス化してください
- * 入力ホーム
- * 村越
- * 	return input.html
- */
-@RequestMapping("/user/regist/Input")
-public String registForm() {
-	return "/user/regist/input";
-}
-/**
- * 確認ホーム
- * 村越
- * returnで/user/regist/checkに遷移
- */
-@RequestMapping("/user/regist/check")
-public String registCheck(Model model,UsersForm form) {
-	model.addAttribute("Users",form);
-	return "/user/regist/check";
-}
-//完了画面
-@RequestMapping(path="/user/regist/complete",method=RequestMethod.POST)
-public String registComplete(UsersForm form,HttpSession session) {
-	UsersEntity Entity = new UsersEntity();
-	Entity.setName(form.getName());
-	Entity.setPassword(form.getPassword());
-	Entity =  repository.save(Entity);
-	session.setAttribute("userId", Entity.getUsersId());
-	return "/user/regist/complete";
-}
+	@Autowired
+	UsersRepository repository;
+
+	/**
+	 * /RepositoryをAutowiredの下にインスタンス化してください
+	 * 入力ホーム
+	 * 村越
+	 * 	return input.html
+	 */
+	@RequestMapping("/user/regist/input")
+	public String registForm() {
+		return "/user/regist/input";
+	}
+
+	/**
+	 * 確認ホーム
+	 * 村越
+	 * returnで/user/regist/checkに遷移
+	 */
+	@RequestMapping("/user/regist/check")
+	public String registCheck(Model model, UsersForm form) {
+		model.addAttribute("Users", form);
+		return "/user/regist/check";
+	}
+
+	//完了画面
+	@RequestMapping(path = "/user/regist/complete", method = RequestMethod.POST)
+	public String registComplete(UsersForm form, HttpSession session) {
+		UsersEntity Entity = new UsersEntity();
+		Entity.setName(form.getName());
+		Entity.setPassword(form.getPassword());
+		Entity = repository.save(Entity);
+		session.setAttribute("userId", Entity.getUsersId());
+		return "/user/regist/complete";
+	}
 }

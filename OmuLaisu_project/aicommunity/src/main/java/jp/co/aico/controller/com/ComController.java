@@ -3,6 +3,7 @@ package jp.co.aico.controller.com;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.aico.entity.ChatEntity;
 import jp.co.aico.entity.ReservationDateEntity;
 import jp.co.aico.entity.TimesEntity;
 import jp.co.aico.entity.UsersEntity;
+import jp.co.aico.form.ChatForm;
 import jp.co.aico.form.ComForm;
+import jp.co.aico.repository.ChatRepository;
 import jp.co.aico.repository.ReservationDateRepository;
 import jp.co.aico.repository.TimesRepository;
+import jp.co.aico.repository.UsersRepository;
 
 /**
  * 会話予約
@@ -33,6 +38,11 @@ public class ComController {
 	ReservationDateRepository rdRepository;
 	@Autowired
 	TimesRepository timesRepository;
+
+	@Autowired
+	ChatRepository chatRepository;
+	@Autowired
+	UsersRepository usersRepository;
 
 	/**
 	 * @author 村越
@@ -58,7 +68,7 @@ public class ComController {
 		TimesEntity timesEntity = timesRepository.getReferenceById(Comform.getTimesId());
 		model.addAttribute("timesId", timesEntity);
 		model.addAttribute("day", Comform.getDay());
-		model.addAttribute("weekDay",Comform.getWeekday());
+		model.addAttribute("weekDay", Comform.getWeekday());
 		return "calendar/check";
 	}
 
@@ -68,11 +78,11 @@ public class ComController {
 	 */
 	@RequestMapping(path = "/check/{day}/{weekDay}", method = RequestMethod.GET)
 
-	public String Check(Model model, ComForm Comform, @PathVariable String day,@PathVariable String weekDay) {
+	public String Check(Model model, ComForm Comform, @PathVariable String day, @PathVariable String weekDay) {
 		model.addAttribute("day", day);
-		model.addAttribute("weekDay",weekDay);
+		model.addAttribute("weekDay", weekDay);
 		//時間の選択肢の情報をモデルに格納
-		model.addAttribute("times",timesRepository.findAll());
+		model.addAttribute("times", timesRepository.findAll());
 		return "calendar/timesCheck";
 	}
 
@@ -89,11 +99,11 @@ public class ComController {
 		usersEntity.setUsersId(Comform.getUsersId());
 		//BeanUtils.copyProperties(Comform, ReservationDateEntity, "dateId");
 		//もし、上がダメだった場合以下のコメントアウトしたコードを実装する
-		
+
 		//Date型に変換
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date day = dateFormat.parse(Comform.getDay());
-		
+
 		ReservationDateEntity.setDay(day);
 		ReservationDateEntity.setWeekday(Comform.getWeekday());
 		ReservationDateEntity.setTimesEntity(timesEntity);
@@ -101,11 +111,71 @@ public class ComController {
 		ReservationDateEntity = rdRepository.save(ReservationDateEntity);
 		return "calendar/input";
 	}
-
-	@RequestMapping("/chat/view")
-	public String chat() {
+	
+	//メンターのusersIdを受け取る処理を追加予定(追加機能)
+	/**
+	 * チャット画面
+	 * @author 水野
+	 * @param usersId ログイン中のid
+	 * @param model メッセージ,ログイン中のユーザー
+	 * @return チャット画面
+	 */
+	@RequestMapping("/chat/view/{usersId}")
+	public String chat(@PathVariable Integer usersId, Model model) {
+		UsersEntity usersEntity = new UsersEntity();
+		usersEntity.setUsersId(usersId);
+		//送ったメッセージを格納
+		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
+		//一般ユーザーが送ったメッセージの処理
+		//送られたユーザーIDをnullにしない為に仮で0を入れる
+		for(int i = 0; i < chatEntity.size(); i++) {
+			ChatEntity chat = chatEntity.get(i);
+			if(chat.getReceUsersEntity() == null) {
+				UsersEntity users = new UsersEntity();
+				users.setUsersId(0);
+				chat.setReceUsersEntity(users);
+				chatEntity.set(i, chat);
+//				chatEntity.add(chat);
+			}
+		}
+		
+		model.addAttribute("messages",chatEntity);
+		//ユーザーの情報をmodelに格納
+		model.addAttribute("user",usersRepository.getReferenceById(usersId));
+		
 		return "chat/view";
 	}
-	
-	
+
+	/**
+	 * メッセージを送る(登録する)処理
+	 * @param form sendUsersId,receUsersId,message
+	 * @return chat/view.html
+	 */
+	@RequestMapping(path = "/chat/send", method = RequestMethod.POST)
+	public String chat_send(ChatForm form) {
+		
+		ChatEntity chatEntity = new ChatEntity();
+		//送るユーザーのid
+		UsersEntity sendUser = new UsersEntity();
+		sendUser.setUsersId(form.getSendUser());
+		chatEntity.setSendUsersEntity(sendUser);
+		//受け取るユーザーのid
+		UsersEntity raceUser = new UsersEntity();
+		if(form.getReceUser() != null) {
+			raceUser.setUsersId(form.getReceUser());
+			chatEntity.setReceUsersEntity(raceUser);
+		}
+
+		//メッセージの内容
+		chatEntity.setMessage(form.getMessage());
+		//メッセージが入力されていない場合の処理
+		if(form.getMessage() == "") {
+			chatEntity.setMessage(" ");
+		}
+		//chatテーブルにデータ登録
+		chatRepository.save(chatEntity);
+		
+		return "redirect:/chat/view/" + form.getSendUser();
+	}
+
 }
