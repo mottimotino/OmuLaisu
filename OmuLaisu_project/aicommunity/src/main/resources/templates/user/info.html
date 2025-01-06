@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <title>マイページ</title>
 <!--<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.css}" /> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 <link rel="stylesheet" th:href="@{/css/style.css}" /> 
 <!--会員情報表示機能-->
-
+<style>
+.chart-wrapper {
+ width: 95vh;
+ margin: auto;
+} 
+</style>
 
 
 </head>
@@ -14,84 +20,128 @@
 	<header>
 	<h1 class="header02-logo" >AI Community
 	</h1>
-		<!--ナビ①-->
+
+	</header>
+			<!--ナビ①-->
 	<nav class="nav">
 	 <ul class="menu">
 	<li><a href="#">Top</a></li>
 	<li><a href="#">Q&A</a></li>
 	<li><a href="#">クイズ</a></li>
 	<li><a href="#">チャット</a></li>
-<!--	右寄せ-->
-	<li style="margin-left: 950px;"><a th:href="@{/sidebar}">=</a></li>
 	 </ul>
-	 
 	</nav>
-	</header>
 	
 
-	
-	<section>
-		<span class="userinfo">
-		<h2>UserName</h2>
-		<p>Mail-Address</p><a th:href="@{/update/input}">変更する</a>
-		<p>password</p><a th:href="@{/update/input}">変更する</a>
-		</span>
-		
+
+	<section class="sectioninfo">
 		<div>
+<!--		springと接続<p th:text="${users.name}" style="font-size: 40px;"></p>-->
+		<p style="font-size: 40px;">Username</p>
+		<div>
+<!--		<p th:text="${users.mail}">Mail-Address <a th:href="@{/update/input}">変更する</a></p><br>-->
+		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/update/input}">変更する</a></p></p><br>
+		</div>
+		<div>
+<!--		<p th:text="${users.password}">password <a th:href="@{/update/input}">変更する</a></p>-->
+		<p>password <br><p>パスワード仮置き     <a th:href="@{/update/input}">変更する</a></p></p>
+		</div>
+		</div>
+
+		
 			<p>漢字クイズ正答率</p>
 			<!--			ここに円グラフ-->
-
-		
-		<div>
-			<p>ビジネスマナークイズ</p>
-<!--			ここに円グラフ-->
-		</div>
-	</section>	
+			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
+			  <canvas id="myChart" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
+			  <p class="s1">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
+<!--			  ↑<p th:text=${}></p>-->
+<!--困ったときはflexbox!!!-->
+			  
+			</div>
+			
+			<div>
+			
+			
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+		<script>
+		const ctx = document.getElementById('myChart')
 	
-<!--	消さない-->
-<!--	<section>-->
-<!--		<h2 th:text=${Entity.name}></h2>-->
-<!--		<p th:text=${Entity.mail}></p>-->
-<!--		<p th:text=${Entity.password}></p>-->
-<!--	</section>	-->
-	
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
-   <script>
-	const ctx = document.getElementById('myChart')
-
 	//この2つの値を設定するだけ!!
-	const percentage = 76 //グラフのパーセンテージ(76%)
-	const backgroundColor = 'rgba(255, 0, 0, 1)' //グラフの色(赤)
+	const percentage = 50 //グラフのパーセンテージ(50%)
+	const backgroundColor = 'rgb(255, 0, 0)' //グラフの色(赤)
+	const backgroundColor2 = 'rgb(0, 0, 255)' //グラフの色(黒)
 	
 	new Chart(ctx, {
 	  type: 'doughnut',
 	  data: {
+		  labels: ["仮","仮２"],
 	    datasets: [{
 	      data: [percentage, 100 - percentage],
 	      backgroundColor: [
 	        backgroundColor, //赤色
-	        'rgba(0, 0, 0, 0)',
+	        backgroundColor2,//青色
+	        
 	      ],
 	      borderWidth: 0
 	    }]
 	  }
 	})
-	</script>
-<style>
-.chart-wrapper {
- width: 95vh;
- margin: auto;
-} 
-</style>	
+</script>
+
+			</div>
+<!--<p th:text="${}"></p>-->
+
+
+
+		
+		<div>
+			<p style="margin-top: 50px;">ビジネスマナークイズ</p>
+<!--			ここに円グラフ--><!--			ここに円グラフ-->
+			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
+			  <canvas id="myChart2" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
+			  <p style="width: 300px;">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
+			  <!--			  ↑<p th:text=${}></p>-->
+			</div>
+		</div>	
+			
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+		<script>
+		const ctxB = document.getElementById('myChart2')
 	
-<div class="chart-wrapper">
-  <canvas id="myChart"></canvas>
-</div>
-				<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
+	//この2つの値を設定するだけ!!
+	const percentageB = 50 //グラフのパーセンテージ(50%)
+	const backgroundColorB = 'rgb(255, 0, 0)' //グラフの色(赤)
+	const backgroundColorB2 = 'rgb(0, 0, 255)' //グラフの色(黒)
+	
+	new Chart(ctxB, {
+	  type: 'doughnut',
+	  data: {
+		  labels: ["仮","仮２"],
+	    datasets: [{
+	      data: [percentageB, 100 - percentageB],
+	      backgroundColor: [
+	        backgroundColorB, //赤色
+	        backgroundColorB2,//青色
+	        
+	      ],
+	      borderWidth: 0
+	    }]
+	  }
+	})
+</script>
+
+
+		
+	</section>	
+	
+	
+<!--	消さない-->
+
+		<!--　フッター -->
+		<footer class="infofooter">
+			<p>&copy; 2024 OmuLaisu</p>
+			<p><a href="mailto:info@yourwebsite.com">お問い合わせ</a></p>
+		</footer>
 
 
 <!--	<script th:src="@{/js/info.js}"></script>-->

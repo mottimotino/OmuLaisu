@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../../static/css/style.css" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 
-<body style="background-image: url(../../../static/会員登録使用画像.jpg); background-size:cover;">
+<body class="test">
 	<header>
 	<h1 class="header02-logo" >AI Community
 	</h1>
@@ -22,28 +22,30 @@
 	 </ul>
 	</nav>
 	
-	<div class="registback">
+	<div class="registcheck">
 	<h2>こちらで登録しますか？</h2>
 	
 	<address>
 	<p>メールアドレス</p><br>
-	<p th:text="${users.usersId}"></p>
+<!--	実行時に解除<p th:text="${users.mail}"></p>-->
 	
 	</address>
 	
 	<p>パスワード</p><br>
-	<p th:text="${users.password}"></p>
+<!--	実行時に解除<p th:text="${users.password}"></p>-->
 	
 	<p>ユーザー名</p><br>
-	<p th:text="${users.username}"></p>
+<!--	実行時に解除<p th:text="${users.name}"></p>-->
 	
-	<form action="complete.html">
-		<input type="submit" value="登録" style="margin-top: 30px;">
+	<div class="displayflex">
+	<form th:formaction="@{/complete}">
+		<input type="submit" th:value="登録" class="registbottun">
 	</form>
 	
-	<form action="input.html">
-		<input type="submit" value="戻る" style="margin-top: 30px;">
-	</form>
+	<form th:formaction="@{/input}">
+		<input type="submit" th:value="戻る" class="registbottun">
+	</form>	
+	</div>
 	</div>
 	
 	
