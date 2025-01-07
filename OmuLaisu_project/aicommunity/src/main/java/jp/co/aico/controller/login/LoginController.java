@@ -3,6 +3,7 @@ package jp.co.aico.controller.login;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,6 +17,7 @@ import jp.co.aico.repository.UsersRepository;
  * @author 水野
  *
  */
+@Controller
 public class LoginController {
 
 //	//会員テーブルのリポジトリ
@@ -35,7 +37,8 @@ public class LoginController {
 	 * @param form 入力されたメールアドレス,パスワード
 	 * @param session メールアドレス,パスワードを保存
 	 * @return top内のdotop.html/login内のlogin.html
-	 */	@RequestMapping(path = "/doLogin", method = RequestMethod.POST)
+	 */	
+	@RequestMapping(path = "/doLogin", method = RequestMethod.POST)
 	public String doLogin(UsersForm form, HttpSession session) {
 		//入力されたメールアドレスを受け取る
 		String mail = form.getMail();
@@ -56,7 +59,7 @@ public class LoginController {
 			//入力画面に遷移
 			return "login/login";
 		}	}
-	@RequestMapping(path = "/doLogin",method = RequestMethod.POST)
+	@RequestMapping(path = "/doLogin",method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "top:/";

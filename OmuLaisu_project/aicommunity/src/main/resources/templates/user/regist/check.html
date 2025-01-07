@@ -1,26 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/style.css}" />
+<title>AIcommunity 会員登録</title>
 </head>
 
 <body class="test">
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-
-	</header>
-			<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
-	 </ul>
-	</nav>
+	
+	<img th:src="@{/image/useLegist.jpg}" alt="登録画面背景" style="width:100%; height:100%; position: relative; z-index: 1;">
 	
 	<div class="registcheck">
 	<h2>こちらで登録しますか？</h2>
@@ -48,16 +36,5 @@
 	</div>
 	</div>
 	
-	
-	<!--　フッター -->
-		<footer>
-			<p>&copy; 2024 OmuLaisu</p>
-			<p><a href="mailto:info@yourwebsite.com">お問い合わせ</a></p>
-		</footer>
-	
-	
-	
-	
-
 </body>
 </html>

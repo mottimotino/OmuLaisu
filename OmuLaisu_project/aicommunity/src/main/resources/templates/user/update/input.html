@@ -6,16 +6,33 @@
 </head>
 <body>
 	<h2>情報変更</h2>
+	<div th:if="@{/update/input/mail}">メールアドレス変更
 	<form method="post" th:action="@{user/update/check}" >
 		<input type="text" name="input">
 		<input type="submit" name="update" value="変更">
 		<input type="submit" name="back" value="戻る">
 		
-	</form method="post">
+	</form>
 	
 	<form method="post" th:action="@{top/dotop}" >
 		<input type="submit" name="back" value="戻る">
 	</form>
+	
+	</div>
+	
+	<div th:if="@{/update/input/pass}">パスワード変更
+	<form method="post" th:action="@{user/update/check}" >
+		<input type="text" name="input">
+		<input type="submit" name="update" value="変更">
+		<input type="submit" name="back" value="戻る">
+		
+	</form>
+	
+	<form method="post" th:action="@{top/dotop}" >
+		<input type="submit" name="back" value="戻る">
+	</form>
+	
+	</div>
 
 </body>
 </html>

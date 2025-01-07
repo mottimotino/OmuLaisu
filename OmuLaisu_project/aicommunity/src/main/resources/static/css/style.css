@@ -1,46 +1,51 @@
 @charset "UTF-8";
 /*作成：鈴木*/
 
-header{
-  height: 100%;
-  padding: 5px;
-  background-image: url(../ヘッダーフッター使用画像.jpeg);
+
+/*▼▼layout.cssに移動▼▼*/
+/*header{*/
+/*  height: 100%;*/
+/*  padding: 5px;*/
+/*  background-image: url(../ヘッダーフッター使用画像.jpeg);*/
 /*  background:#00DAFC;*/
-  color:black;
-  width:100%;
-  font-size: 150%;
-}
-nav{
-  width: 100%;
-  height: 80%;
-  display:flex;
+/*  color:black;*/
+/*  width:100%;*/
+/*  font-size: 150%;*/
+/*}*/
+/*nav{*/
+/*  width: 100%;*/
+/*  height: 80%;*/
+/*  display:flex;*/
 /*  justify-content: left;*/
-  list-style:none;
+/*  list-style:none;*/
 /*  float:left;*/
-  background-color: #ffffff;
-  margin-bottom: 50px;
+/*  background-color: #ffffff;*/
   
-}
-nav li{
-	display:inline-block;
-	}
-nav ul li a{
-  display:flex;
-  padding:3px 15px;
-  color:inherit;
-  text-decoration:none;
-}
+/*}*/
+/*nav li{*/
+/*	display:inline-block;*/
+/*	}*/
+/*nav ul li a{*/
+/*  display:flex;*/
+/*  padding:3px 15px;*/
+/*  color:inherit;*/
+/*  text-decoration:none;*/
+/*}*/
 
-nav ul li a:hover {
+/*nav ul li a:hover {*/
 /*  下線を引く */
-  text-decoration: underline;
-  color: red;
-}
+/*  text-decoration: underline;*/
+/*  color: red;*/
+/*}*/
 
-body{
-	background-color: #f5f5f5;
-}
+/*body{*/
+/*	background-color: #f5f5f5;
+	margin:0;*/
+/*}*/
 
+/*▲▲layout.cssに移動▲▲*/
+
+/*▼サイドバー*/
 .sidebar{
 	background-color: lightcyan;
 
@@ -51,6 +56,8 @@ body{
 	margin: 30px auto;
 
 }
+
+/*サイドバー▲*/
 
 
 
@@ -127,10 +134,11 @@ body{
 	font-size: 40px;
 }
 
-section{
-	height: 500px;
-	text-align: center;
-}
+/*section{*/
+/*	height: 500px;*/
+/*	text-align: center;*/
+/*}*/
+
 
 button{
 	display: inline-block;
@@ -142,6 +150,8 @@ button.a{
 	background-color: #ffffff;
 	
 }
+
+/*▼クイズ*/
 
 .seitouritu{
 	background-color: darkorange;
@@ -220,19 +230,63 @@ button.a{
 	margin:auto 50px;
 }
 
-.login{
-	background-image: url(../ログイン画面.png);
-	background-size:cover;  
-	width: 100%;
-	height: 100%;
-/*	margin-top: 40px;*/
+/*クイズ▲*/
+
+/*▼▼ログイン画面(.login)*/
+.loginform{
+	width: 700px;
+	height: 20px;
+	font-size: 22px;
+	display: block;
+	text-align: left;
+	margin:auto;
 }
 
-.loginform{
-	width: 600px;
-	height: 20px;
-/*	margin:30px;*/
+.loginh1{
+	text-align: center;
+	font-size: 70px;
+	color: floralwhite;
+	margin-top: 0;	
 }
+
+.loginformback{
+	background-color: floralwhite;
+	height:50vh;
+	width: 130vh;
+	margin:auto;
+	padding-top: 50px;
+}
+
+.loginformsize{
+	width: 700px;
+	height: 30px;
+	margin-bottom: 30px;
+	font-size: 22px;
+}
+
+.loginbottun{
+	width: 700px;
+	height: 35px;
+	margin-top: 30px;
+	border-radius: 10px;
+	font-size: 22px;
+
+}
+
+.loginbottun:hover{
+	background: black;
+	color: whitesmoke;
+}
+
+.loginlink{
+	display: block;
+	margin-top: 20px;
+	margin-left: 260px;
+}
+
+
+
+/*▲▲ログイン機能*/
 
 
 /*登録機能▼▼▼*/
@@ -245,22 +299,23 @@ padding-top: 15px;
 display: flex;
     align-items: flex-end;
     justify-content: space-evenly;
+    
+    
 
 }
 
-.test{
-	background-image: url(../会員登録使用画像.jpg);
-}
+
 
 .registh2{
 	margin: 0;
+	margin-top: 30px;
 	background-color: lightgoldenrodyellow;
 	text-align: center;
 }
 
 .registcheck{
 	background-color: lightgoldenrodyellow;
-	width: 100%;
+	width: 70%;
 	height: 300%;
 	text-align: center;
 	font-size: 30px;
@@ -268,6 +323,9 @@ display: flex;
 /*	display: flex;*/
     align-items: flex-end;
     justify-content: space-evenly;
+    margin: auto;
+    position: relative;
+	z-index: 10;
 	
 }
 
@@ -290,6 +348,7 @@ display: flex;
 	width: 80px;
 	height: 40px;
 	margin: 40px auto;
+	font-size: 20px;
 }
 
 .back.registbottun{
@@ -314,7 +373,7 @@ display: flex;
 /*	height: 60%;*/
 /*}*/
 
-/*会員情報表示画面*/
+/*▼会員情報表示画面*/
 .userinfo{
 	display: flex;
 }
@@ -324,17 +383,23 @@ display: flex;
 	margin-top: 30px;
 }
 
-footer{
-	margin-top: 200px;
-	width: 100%;
-	height: 100%;
-	background-image: url(../ヘッダーフッター使用画像.jpeg);
-	text-align: center;
-	font-size: 20px;
-	font-weight: 800;
+/*footer{*/
+/*	margin-top: 200px;*/
+/*	width: 100%;*/
+/*	height: 100%;*/
+/*	background-image: url(../ヘッダーフッター使用画像.jpeg);*/
+/*	text-align: center;*/
+/*	font-size: 20px;*/
+/*	font-weight: 800;*/
 
+/*}*/
+
+/*フッターお問い合わせ*/
+.inquiries{
+	margin-bottom: 0;
 }
 
+/*詳細情報表示画面の際のフッター*/
 .infofooter{
 			margin-top: 1000px;
 			width: 100%;
@@ -344,15 +409,6 @@ footer{
 			font-size: 20px;
 			font-weight: 800;
 
-}
-
-body{
-	margin:0;
-}
-
-body.test{
-	background-image: url(../会員登録使用画像.jpg);
-	background-size: cover;
 }
 
 .s1{
@@ -366,4 +422,24 @@ body.test{
 	margin-left: 400px;
 }
 
+/*会員情報表示画面▲*/
 
+/*ログイン画面*/
+body .login{
+	background-image: url(../image/useLogin.png)!important;
+	background-size:cover;  
+	width: 100%;
+	height: 100%;
+/*	margin-top: 40px;*/
+}
+
+/*登録画面*/
+body .test{
+	background-image: url(../image/useLegist.jpg)!important;
+	background-size: cover;
+	}
+	
+	
+label{
+	text-align: left;
+}

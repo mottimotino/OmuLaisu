@@ -1,45 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout :: layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>AIcommunity ログイン</title>
-<link rel="stylesheet" href="../../static/css/style.css" /> 
+
 </head>
 <body>
+	<!--【ログイン☆☆】-->
 	<!--12/12 作成 鈴木-->
-	<header>
-		<h1 class="header02-logo" >AI Community
-		</h1>
-			<!--ナビ①-->
-		<nav class="nav">
-		 <ul class="menu">
-		<li><a href="#">Top</a></li>
-		<li><a href="#">Q&A</a></li>
-		<li><a href="#">クイズ</a></li>
-		<li><a href="#">チャット</a></li>
-		 </ul>
-		</nav>
-		</header>
+
 <section>
 
 <div class="login">
-	<h1 style="text-align: center; font-size: 60px; color: floralwhite;">Login</h1>
-	<form>
-		<label>メールアドレス<br><input type="email" name="mailAddress" class="loginform" style="margin-bottom: 30px;" placeholder="Mail-Address"></label><br>
-		<label>パスワード<br><input type="password" name="password" class="loginform" placeholder="Password"></label><br>
-		<input type="submit" value="ログイン" style="margin-top: 30px;">
+<!--	ここcssつける-->
+	<h1 class="loginh1">Login</h1>
+	<div class="loginformback">
+	<form method="post" th:action="@{/top/dotop}" class="loginform">
+		<label>メールアドレス<br><input type="email" name="mailAddress" placeholder="Mail-Address" class="loginformsize"></label><br>
+		<label>パスワード<br><input type="password" name="password" placeholder="Password" class="loginformsize"></label><br>
+		<input type="submit" value="ログイン" class="loginbottun"><br>
+		<a th:href="@{/stop/dotop}" class="loginlink">パスワードを忘れた場合</a>
 	</form>
-<div>	
+	
+	
+	</div>
+</div>	
 	
 	
 </section>
 
 
 			<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
+<!--	<footer>-->
+<!--	    <p>&copy; AI Community</p>-->
+<!--	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>-->
+<!--	</footer>-->
 
 
 </body>
