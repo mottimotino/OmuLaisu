@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
 import jp.co.aico.entity.CategoriesEntity;
 import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.Managementform;
@@ -43,12 +44,28 @@ public class ManagementController {
 	 * @return input
 	 * 
 	 */
-	@RequestMapping("user/update/input/{usersId}")
-	public String kousin(@PathVariable Integer usersId, Model model) {
+//	@RequestMapping("user/update/input/{usersId}")
+//	public String kousin(@PathVariable Integer usersId, Model model) {
+//		UsersEntity Entity = usersRepository.getReferenceById(usersId);
+//		model.addAttribute("oldPassword", Entity);
+//		return "user/update/input";
+//
+//	}
+	
+	/**
+	 * メールアドレス/パスワード変更
+	 * @param usersId ログイン中のユーザーID
+	 * @param select メールアドレス/パスワード
+	 * @param model ユーザー情報(主に変更内容)
+	 * @param session select
+	 * @return 更新情報入力画面
+	 */
+	@RequestMapping("user/update/input/{usersId}/{select}")
+	public String kousin(@PathVariable Integer usersId, @PathVariable String select,Model model,HttpSession session) {
 		UsersEntity Entity = usersRepository.getReferenceById(usersId);
 		model.addAttribute("oldPassword", Entity);
+		session.setAttribute("select", select);
 		return "user/update/input";
-
 	}
 
 	/**
@@ -83,6 +100,7 @@ public class ManagementController {
 
 	/**
 	 * マイページ
+	 * @author 水野
 	 * @param userId ユーザーのID
 	 * @param model ユーザー情報
 	 * @return user/info.html

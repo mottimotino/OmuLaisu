@@ -1,44 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" /> 
 	<link rel="stylesheet" th:href="@{/css/chat.css}"/>
-	
-	<script>
-		var form = document.getElementsByClassName("text_area");
-		var message = document.getElementsByName("message");
-		var submit = document.getElementsByClassName("submit");
-		
-	</script> 
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  	<script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
 </head>
 
 <body>
-	<dl class="faq_area">
+	<!--名前表示-->
+	<div class="user_name" id="user_name">
+		<span th:if="${user.authority} == 2">メンター</span>
+		<span th:if="${user.authority} == 3">一般会員の<span th:text="${receUser.name}"></span>さん</span>
+	</div>
+	
+	<!--チャット表示-->
+	<dl class="faq_area" id = "chat_area">
 	    <span th:each="message: ${messages}">
-			<span th:if="${message.receUsersEntity.usersId} == ${user.usersId}">
-				<div>
-					<dt th:text="${message.message}"></dt>
-					<span></span>
-				</div>
+			<!--一般ユーザー-->
+			<span th:if="${user.authority} == 2">
+				<span th:if="${message.receUsersEntity.usersId} == ${user.usersId}">
+					<span class="chat">
+						<img class="icon" th:src="@{/ヘッダーフッター使用画像.jpeg}" alt="アイコン"></img>
+					<div>
+						<dt th:text="${message.message}"></dt>
+						<span></span>
+					</div>
+					</span>
+				</span>
+				<span th:if="${message.sendUsersEntity.usersId} == ${user.usersId}">
+					<span class="chat">
+					<div>
+						<span></span>
+						<dd th:text="${message.message}"></dd>
+					</div>
+					</span>
+				</span>
 			</span>
-			<span th:if="${message.sendUsersEntity.usersId} == ${user.usersId}">
-				<div>
-					<span></span>
-					<dd th:text="${message.message}"></dd>
-				</div>
+			<!--メンター-->
+			<span th:if="${user.authority} == 3">
+				<span th:if="${message.receUsersEntity.usersId} == ${receUser.usersId}">
+					<span class="chat">
+					<div>
+						<span></span>
+						<dd th:text="${message.message}"></dd>
+					</div>
+					</span>
+				</span>
+				<span th:if="${message.sendUsersEntity.usersId} == ${receUser.usersId}">
+					<span class="chat">
+						<img class="icon" th:src="@{/ログイン画面.png}" alt="アイコン"></img>
+					<div>
+						<dt th:text="${message.message}"></dt>
+						<span></span>
+					</div>
+					</span>
+				</span>
+			
 			</span>
 		</span>
     </dl>
 
-
+	<!--メッセージ入力-->
     <form method="post" th:action="@{/chat/send}" class="text_area" >
-		<!--メッセージを入力-->
-        <textarea name="message" required></textarea>
-        <input type="submit" class="submit" value="送信" disabled>
+		<!--メッセージを入力するテキストエリア-->
+        <textarea name="message" id="message" required="" maxlength="284" wrap="hard" placeholder="メッセージを入力"></textarea>
+		<!--送信ボタン(文字を入力するまで無効)-->
+        <input type="submit" class="submit" value="送信" id="submit" disabled>
         
 		<!--一般ユーザーの場合の処理-->
         <div th:if="${user.authority} == 2">
@@ -50,18 +81,17 @@
 		</div>
 		
 		<!--メンターの場合の処理-->
-<!--		<div th:if="${user.authority} == 3">-->
+		<div th:if="${user.authority} == 3">
 			<!--送信するユーザー-->
-<!--        	<input type="hidden" name="sendUser" th:value="${user.usersId}"/>-->
+        	<input type="hidden" name="sendUser" th:value="${user.usersId}"/>
 			<!--受け取るユーザー-->
-			<!--valueは仮-->
-<!--        	<input type="hidden" name="receUser" value="1"/>-->
-<!--		</div>-->
+        	<input type="hidden" name="receUser" th:value="${receUser.usersId}"/>
+		</div>
 			
 		
     </form>
 
-
+	<script type="text/javascript" th:src="@{/js/chat.js}" charset="UTF-8"></script>
 
 </body>
 

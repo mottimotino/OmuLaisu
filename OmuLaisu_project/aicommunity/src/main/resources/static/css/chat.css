@@ -3,13 +3,12 @@
 /* FAQ like message */
 
 .faq_area {
-    margin: 0 auto;
     /* ここでチャットの高さを指定 */
     height: 500px;
     background-color: #efeeee;
     /* スクロール */
     overflow: auto;
-    /* ここまで追記 */
+    margin: 0 auto;
     
 }
 
@@ -28,7 +27,6 @@
     padding: 10px 15px;
     color: #fff;
     border-radius: 10px;
-    background: #0096e5;
     position: relative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     /* 追記 */
@@ -36,6 +34,8 @@
     margin: auto 50px;
     color: #000000;
     font-weight:bold;
+	/*改行を反映させて表示する*/
+    white-space: pre-wrap;
 }
 
 .faq_area dt {
@@ -77,13 +77,21 @@
     padding: 5px 20px;
     display: flex;
     justify-content: center;
+  	align-items: center;
 }
 
 .text_area textarea {
     height: 35px;
-    width: 90%;
-    font-size: 120%;
+    width: 65%;
+    font-size: 25px;
+    /*スクロールバーのサイズ変更を無効*/
     resize: none;
+    /*中央揃え*/
+    line-height: 35px;
+    border-radius: 10px;
+    /*スクロールバーを非表示にする*/
+  	scrollbar-width: none;
+    
 }
 
 .text_area input {
@@ -91,5 +99,40 @@
     width: 5%;
     font-size: 120%;
     margin-left: 10px;
+    color: #f5f5f5;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    
 }
+
+.text_area :disabled{
+	color: #c0c0c0;
+	background-color: #efeeee;
+}
+
+.icon{
+	margin-left: 40px;
+	/*ここの値は画像の比率によって変更*/
+	height: 50px;
+	width:50px;
+	border-radius: 50%;
+}
+
+.chat{
+	display: flex;
+	margin: 30px auto 0;
+}
+
+.user_name{
+	height: 70px;
+	width: 100%;
+	background-color: #e0dfdf;
+    margin: 0;
+    padding-left:30px;
+    box-sizing: border-box;
+	font-size: 40px;
+    display: flex;
+  	align-items: center;
+}
+
 /* ここまで追記 */
