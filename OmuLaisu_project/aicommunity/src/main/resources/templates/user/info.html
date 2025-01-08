@@ -39,14 +39,12 @@
 <!--		springと接続<p th:text="${users.name}" style="font-size: 40px;"></p>-->
 		<p style="font-size: 40px;" th:text="${user.name}">Username</p>
 		<div>
-		<p>メールアドレス：</p>
-		<p th:text="${user.mail}">Mail-Address </p><a th:href="@{/update/input}">変更する</a><br>
-<!--		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/update/input/mail}">変更する</a></p></p><br>-->
+	<p th:text="${users.mail}">Mail-Address <a th:href="@{/update/input}">変更する</a></p><br>-->
+		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/user/update/input/mail}">変更する</a></p></p><br>
 		</div>
 		<div>
-		<p>パスワード：</p>
-		<p th:text="${user.password}">password </p><a th:href="@{/update/input}">変更する</a>
-<!--		<p>password <br><p>パスワード仮置き     <a th:href="@{/update/input/pass}">変更する</a></p></p>-->
+<!--		<p th:text="${users.password}">password <a th:href="@{/update/input}">変更する</a></p>-->
+		<p>password <br><p>パスワード仮置き     <a th:href="@{/user/update/input/pass}">変更する</a></p></p>
 		</div>
 		</div>
 

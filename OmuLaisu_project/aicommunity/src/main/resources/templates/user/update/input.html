@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>会員登録情報変更</title>
+	<meta charset="UTF-8">
+	<title>会員登録情報変更</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+	<link rel="stylesheet" th:href="@{/css/update.css}"/>  
+	<script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
+
 </head>
 <body>
-	<h2>情報変更</h2>
-	<div th:if="@{/update/input/mail}">メールアドレス変更
-	<form method="post" th:action="@{user/update/check}" >
-		<input type="text" name="input">
-		<input type="submit" name="update" value="変更">
-		<input type="submit" name="back" value="戻る">
+	<div class="update"> 
+		<div th:if="${select} == 'mail'" class="mail_update">
+			<h2>メールアドレス変更</h2>
+			<form method="post" th:action="@{/user/update/check}">
+				<p>変更後メールアドレス</p>
+				<input type="email" name="input" placeholder="メールアドレスを入力" required>
+				<p>変更後メールアドレス(確認)</p>
+				<input type="email" name="check" placeholder="メールアドレスを入力" required><br>
+				<input type="submit" name="update" value="変更" disabled>
+			</form>
 		
-	</form>
-	
-	<form method="post" th:action="@{top/dotop}" >
-		<input type="submit" name="back" value="戻る">
-	</form>
-	
+		</div>
+		
+		<div th:if="${select} == 'pass'">
+			<h2>パスワード変更</h2>
+			<form method="post" th:action="@{/user/update/check}">
+				<p>変更後パスワード</p>
+				<input type="password" name="input" placeholder="パスワードを入力" maxlength="15" required>
+				<div>
+					<input type="checkbox" id="checkbox1">
+					<label>パスワードを表示</label>
+				</div>
+				<p>変更後パスワード(確認)</p>
+				<input type="password" name="check" placeholder="パスワードを入力" maxlength="15" required><br>
+				<div>
+					<input type="checkbox" id="checkbox2">
+					<label>パスワードを表示</label>
+				</div>
+				<input type="submit" name="update" value="変更" disabled>
+			</form>
+		</div>
+		
+		<form method="get" th:action="@{/user/info}" >
+			<input type="submit" name="back" class="back" value="戻る">
+		</form>
 	</div>
 	
-	<div th:if="@{/update/input/pass}">パスワード変更
-	<form method="post" th:action="@{user/update/check}" >
-		<input type="text" name="input">
-		<input type="submit" name="update" value="変更">
-		<input type="submit" name="back" value="戻る">
-		
-	</form>
 	
-	<form method="post" th:action="@{top/dotop}" >
-		<input type="submit" name="back" value="戻る">
-	</form>
-	
-	</div>
+<script type="text/javascript" th:src="@{/js/update.js}" charset="UTF-8"></script>
 
 </body>
 </html>
