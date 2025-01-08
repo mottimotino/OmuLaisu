@@ -201,7 +201,7 @@ button.a{
 }
 
 .quiz{
-	margin:100px 100px;
+	margin:100px auto;
 	text-align: center;
 }
 
@@ -293,9 +293,10 @@ button.a{
 .registback{
 
 background-color: lightgoldenrodyellow;
+width: 1000px;
 text-align: center;
 font-size: 30px;
-padding-top: 15px;
+padding-top: 20px;
 display: flex;
     align-items: flex-end;
     justify-content: space-evenly;
@@ -309,14 +310,16 @@ display: flex;
 .registh2{
 	margin: 0;
 	margin-top: 30px;
+	padding-top:15px;
 	background-color: lightgoldenrodyellow;
 	text-align: center;
+	font-size: 30px;
 }
 
 .registcheck{
 	background-color: lightgoldenrodyellow;
 	width: 70%;
-	height: 300%;
+	height: 100%;
 	text-align: center;
 	font-size: 30px;
 	padding-top: 30px;
@@ -328,6 +331,10 @@ display: flex;
 	z-index: 10;
 	
 }
+
+/*.position{*/
+/*	margin:-40px;*/
+/*}*/
 
 .displayflex{
 	display: flex;
@@ -349,6 +356,26 @@ display: flex;
 	height: 40px;
 	margin: 40px auto;
 	font-size: 20px;
+	border-radius: 3px;
+}
+
+.registbottun:hover{
+	background: black;
+	color: whitesmoke;
+}
+
+.registform{
+	position: absolute;
+	top: 300px;
+/*	bottom: ;*/
+	left: 250px;
+/*	right: ;*/
+	z-index: 2;;
+}
+
+.registp{
+	text-align: left;
+	margin-left: 100px;
 }
 
 .back.registbottun{
@@ -356,9 +383,11 @@ display: flex;
 }
 
 .form-control{
-	width: 400px;
-	height: 20px;
-	margin-bottom: 20px;
+	width: 700px;
+	height: 30px;
+	margin-bottom: 30px;
+	font-size: 22px;
+
 }
 
 .registcomp{
@@ -381,6 +410,7 @@ display: flex;
 .sectioninfo{
 	text-align: center;
 	margin-top: 30px;
+	height: 1700px;
 }
 
 /*footer{*/
@@ -413,6 +443,7 @@ display: flex;
 
 .s1{
 	width: 400px;
+	font-size: 40px;
 }
 
 .kanzigraph{
@@ -443,3 +474,73 @@ body .test{
 label{
 	text-align: left;
 }
+
+
+/*▼ヘルプ、使い方画面*/
+.carouselcontainer {
+  position: relative;
+  width: 1400px;
+  height: 600px;
+  border: 5px solid lightgray; /*画像の周りを枠線で囲む*/
+  margin:auto;
+  z-index: 1;
+}
+
+.carouselcontainer img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  /*コンテナと同じ幅*/
+  height: 100%; /*コンテナと同じ高さ*/
+  object-fit: cover; /*比率を維持したままコンテナを埋めるように拡大縮小*/
+}
+
+.previous-btn{
+	position: absolute;
+  bottom: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background: #0d7df5;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  left: 10px;
+}
+
+.next-btn{
+	position: absolute;
+  bottom: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background: #0d7df5;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  right: 10px;
+}
+
+.previous-btn:hover{
+	background: #f99f3e;
+}
+.next-btn:hover{
+	background: #f99f3e;
+}
+
+/*ヘルプ、使い方画面*/
+
+
+

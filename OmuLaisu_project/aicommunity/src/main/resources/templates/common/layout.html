@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(body)">
+<head>
+<meta charset="UTF-8">
+<!--レイアウト-->
+<!--<link th:href="@{/css/reset.css}" rel="stylesheet"/> -->
+<link th:href="@{/css/layout.css}" rel="stylesheet"/> 
+<link th:href="@{/css/style.css}" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+<!--<script th:src="@{/js/helpguide.js}"></script>-->
+<title>AICommunity</title>
+</head>
+<!--(ヘッダーフッターの共通部分除く)test,loginのみ画像使用のためbodyにclass属性を適用-->
+<body class="test,login">
+	<header th:replace="~{common/header :: layout-header}"></header>
+	<nav th:replace="~{common/nav :: layout-nav}"></nav>
+	<article th:replace="${body}"></article>
+	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+	
+<!--	headに戻す→本当にパスが正しいかをF12でパス確認→不備がなさそうなら一回プロジェクトを閉じるかMaven更新-->
+	<script th:src="@{/js/helpguide.js}"></script>
+
+</body>
+</html>

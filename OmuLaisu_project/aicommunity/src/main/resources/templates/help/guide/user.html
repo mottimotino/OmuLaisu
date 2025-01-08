@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<h2>AICommunity 使い方説明</h2>
+	<div class="carouselcontainer">
+	  <img th:src="@{/image/HowToUse/calender.png}" alt="カレンダー">
+	  <img th:src="@{/image/HowToUse/quiz.png}" alt="クイズ">
+	  <img th:src="@{/image/HowToUse/userinfo.png}" alt="ユーザー情報表示">
+	
+		<div class="caption">画像の説明文</div>
+		  <button class="previous-btn">←</button>
+		  <button class="next-btn">→</button>
+	  
+	</div> 
+	
+	
+
 
 </body>
 </html>

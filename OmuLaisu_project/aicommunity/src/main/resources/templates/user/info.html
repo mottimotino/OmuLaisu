@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 <title>マイページ</title>
 <!--<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.css}" /> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
-<link rel="stylesheet" th:href="@{/css/style.css}" /> 
 <!--会員情報表示機能-->
 <style>
 .chart-wrapper {
@@ -17,43 +17,46 @@
 
 </head>
 <body>
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
+<!--	<header>-->
+<!--	<h1 class="header02-logo" >AI Community-->
+<!--	</h1>-->
 
-	</header>
-			<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
-	 </ul>
-	</nav>
+<!--	</header>-->
+<!--			ナビ①-->
+<!--	<nav class="nav">-->
+<!--	 <ul class="menu">-->
+<!--	<li><a href="#">Top</a></li>-->
+<!--	<li><a href="#">Q&A</a></li>-->
+<!--	<li><a href="#">クイズ</a></li>-->
+<!--	<li><a href="#">チャット</a></li>-->
+<!--	 </ul>-->
+<!--	</nav>-->
 	
 
 
 	<section class="sectioninfo">
 		<div>
 <!--		springと接続<p th:text="${users.name}" style="font-size: 40px;"></p>-->
-		<p style="font-size: 40px;">Username</p>
+		<p style="font-size: 40px;" th:text="${user.name}">Username</p>
 		<div>
-<!--		<p th:text="${users.mail}">Mail-Address <a th:href="@{/update/input}">変更する</a></p><br>-->
-		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/update/input/mail}">変更する</a></p></p><br>
+		<p>メールアドレス：</p>
+		<p th:text="${user.mail}">Mail-Address </p><a th:href="@{/update/input}">変更する</a><br>
+<!--		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/update/input/mail}">変更する</a></p></p><br>-->
 		</div>
 		<div>
-<!--		<p th:text="${users.password}">password <a th:href="@{/update/input}">変更する</a></p>-->
-		<p>password <br><p>パスワード仮置き     <a th:href="@{/update/input/pass}">変更する</a></p></p>
+		<p>パスワード：</p>
+		<p th:text="${user.password}">password </p><a th:href="@{/update/input}">変更する</a>
+<!--		<p>password <br><p>パスワード仮置き     <a th:href="@{/update/input/pass}">変更する</a></p></p>-->
 		</div>
 		</div>
 
 		
-			<p>漢字クイズ正答率</p>
+			<p style="font-size: 40px; margin-right: 300px;">漢字クイズ正答率</p>
 			<!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
 			  <p class="s1">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
+<!--			  <p class="s1">正答率：<span style="background-color: yellow;" th:text=${collectAnswerRate}>%</span></p>-->
 <!--			  ↑<p th:text=${}></p>-->
 <!--困ったときはflexbox!!!-->
 			  
@@ -68,6 +71,7 @@
 	
 	//この2つの値を設定するだけ!!
 	const percentage = 50 //グラフのパーセンテージ(50%)
+	//const percentage = collectAnswerRate //グラフのパーセンテージ(50%)
 	const backgroundColor = 'rgb(255, 0, 0)' //グラフの色(赤)
 	const backgroundColor2 = 'rgb(0, 0, 255)' //グラフの色(黒)
 	
@@ -95,11 +99,11 @@
 
 		
 		<div>
-			<p style="margin-top: 50px;">ビジネスマナークイズ</p>
+			<p style="margin-top: 100px; font-size: 40px; margin-right: 300px;">ビジネスマナークイズ</p>
 <!--			ここに円グラフ--><!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart2" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
-			  <p style="width: 300px;">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
+			  <p class="s1">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
 			  <!--			  ↑<p th:text=${}></p>-->
 			</div>
 		</div>	
@@ -138,10 +142,10 @@
 <!--	消さない-->
 
 		<!--　フッター -->
-		<footer class="infofooter">
-			<p>&copy; 2024 OmuLaisu</p>
-			<p><a href="mailto:info@yourwebsite.com">お問い合わせ</a></p>
-		</footer>
+<!--		<footer class="infofooter">-->
+<!--			<p>&copy; 2024 OmuLaisu</p>-->
+<!--			<p><a href="mailto:info@yourwebsite.com">お問い合わせ</a></p>-->
+<!--		</footer>-->
 
 
 <!--	<script th:src="@{/js/info.js}"></script>-->

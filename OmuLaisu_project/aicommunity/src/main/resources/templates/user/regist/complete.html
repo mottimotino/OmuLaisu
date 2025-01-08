@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>AIcommunity 会員登録</title>
@@ -23,7 +24,8 @@
 	<div class="registcomp">
 	<p>会員登録が完了しました。<br>ログイン画面に戻ります。</p>
 	
-	<form action="../../login/login.html">
+	<form th:action="@{/login/login}">
+<!--	<form action="../../login/login.html">-->
 		<input type="submit" value="ログイン画面へ" style="margin-top: 30px;">
 	</form>
 	</div>
