@@ -3,24 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <title>会員情報変更確認</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+	<link rel="stylesheet" th:href="@{/css/update.css}"/>  
 </head>
 <body>
-	<h2>こちらで変更しますか？</h2>
-	
-	<p>変更後パスワード</p>
-	<!--ここに変更後のメルアド、パスワードを貼る-->
-	<!--htmlだけでできる？-->
-	<p th:action="${user.password}">
+	<div class="update">
+		<h2>こちらで変更しますか？</h2>
 		
+		<p>変更後
+			<span th:if="${session.select} == 'mail'">メールアドレス</span>
+			<span th:if="${session.select} == 'pass'">パスワード</span>
+		</p>
+			
+		<p th:text="${save}" class="update_input"></p>	
+		<form method="post" th:action="@{/user/update/complete/1/}+${session.select}">
+			<input type="hidden" name="input" th:value="${save}">
+			<input type="submit" name="update" class="check_submit" value="変更">		
+		</form>
 		
-	<form method="post" th:action="@{user/update/complete}" >
-		<input type="text" name="input">
-		<input type="submit" name="update" value="変更">
-	</form method="post">
-	
-	<form method="post" th:action="@{user/update/input}" >
-		<input type="submit" name="back" value="戻る">
-	</form>
+		<form method="post" th:action="@{/user/update/input/}+${session.select}" >
+			<input type="submit" name="back" value="戻る">
+		</form>
+	</div>
 
 </body>
 </html>

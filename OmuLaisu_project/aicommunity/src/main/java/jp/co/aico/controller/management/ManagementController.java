@@ -52,32 +52,22 @@ public class ManagementController {
 //
 //	}
 	
-	/**
-	 * メールアドレス/パスワード変更
-	 * @param usersId ログイン中のユーザーID
-	 * @param select メールアドレス/パスワード
-	 * @param model ユーザー情報(主に変更内容)
-	 * @param session select
-	 * @return 更新情報入力画面
-	 */
-	@RequestMapping("user/update/input/{usersId}/{select}")
-	public String kousin(@PathVariable Integer usersId, @PathVariable String select,Model model,HttpSession session) {
-		UsersEntity Entity = usersRepository.getReferenceById(usersId);
-		model.addAttribute("oldPassword", Entity);
+	@RequestMapping("/user/update/input/{select}")
+	public String kousin(@PathVariable String select,HttpSession session) {
 		session.setAttribute("select", select);
 		return "user/update/input";
 	}
 
 	/**
-	 * パスワード変更
+	 * メールアドレス/パスワード変更
 	 * 確認form
 	 * @param form
 	 * @param model
 	 * @return check
 	 */
-	@RequestMapping("user/update/check")
+	@RequestMapping(path="/user/update/check",method=RequestMethod.POST)
 	public String check(Managementform form, Model model) {
-		model.addAttribute("passwordSave", form);
+		model.addAttribute("save", form.getInput());
 		return "user/update/check";
 
 	}
@@ -89,11 +79,15 @@ public class ManagementController {
 	 * @param Managementform
 	 * @return complete
 	 */
-	@RequestMapping("user/update/complete/{usersId}")
-	public String update(@PathVariable Integer usersId, Managementform form) {
+	@RequestMapping("user/update/complete/{usersId}/{select}")
+	public String update(@PathVariable Integer usersId,@PathVariable String select ,Managementform form) {
 		UsersEntity Entity = usersRepository.getReferenceById(usersId);
 		//BeanUtils.copyProperties(form, Entity, "usersId");
-		Entity.setPassword(form.getPassword());
+		if(select.equals("pass")) {
+			Entity.setPassword(form.getInput());
+		} else if(select.equals("mail")) {
+			Entity.setMail(form.getInput());
+		}
 		Entity = usersRepository.save(Entity);
 		return "user/update/complete";
 	}

@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>会員情報変更完了</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+	<link rel="stylesheet" th:href="@{/css/update.css}"/>  
 </head>
 <body>
-	<p>変更が完了しました。</p>
-	
-	<form method="post" th:action="@{top/dotop}">
-		<input type="button" name="dotop" value="トップへ">
-	</form >
+	<div class="update_complete">
+		<p>変更が完了しました。</p>
+		
+		<form method="get" th:action="@{/top/dotop}">
+			<input type="submit" name="dotop" value="トップへ">
+		</form>
+	</div>
 
 </body>
 </html>

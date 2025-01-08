@@ -4,6 +4,9 @@ private Integer manaId;
 	private Integer prizeId;
 	private Integer usersId;
 	private String password;
+	private String mail;
+	private String input;
+	private String check;
 	public Integer getManaId() {
 		return manaId;
 	}
@@ -28,5 +31,26 @@ private Integer manaId;
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getInput() {
+		return input;
+	}
+	public void setInput(String input) {
+		this.input = input;
+	}
+	public String getCheck() {
+		return check;
+	}
+	public void setCheck(String check) {
+		this.check = check;
+	}
+	
+	
+	
 
 }

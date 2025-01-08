@@ -24,7 +24,7 @@
 			<span th:if="${user.authority} == 2">
 				<span th:if="${message.receUsersEntity.usersId} == ${user.usersId}">
 					<span class="chat">
-						<img class="icon" th:src="@{/ヘッダーフッター使用画像.jpeg}" alt="アイコン"></img>
+						<img class="icon" th:src="@{/image/ヘッダーフッター使用画像.jpeg}" alt="アイコン"></img>
 					<div>
 						<dt th:text="${message.message}"></dt>
 						<span></span>
@@ -52,7 +52,7 @@
 				</span>
 				<span th:if="${message.sendUsersEntity.usersId} == ${receUser.usersId}">
 					<span class="chat">
-						<img class="icon" th:src="@{/ログイン画面.png}" alt="アイコン"></img>
+						<img class="icon" th:src="@{/image/useLogin.png}" alt="アイコン"></img>
 					<div>
 						<dt th:text="${message.message}"></dt>
 						<span></span>
