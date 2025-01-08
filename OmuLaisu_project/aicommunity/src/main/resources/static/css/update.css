@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+body{
+	background-color: #efeeee;
+}
+
+/*input.html*/
+
+/*情報変更全体*/
+.update{
+	height: 550px;
+	width: 900px;
+	background-color: #ffffff;
+	margin: 0 auto;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+}
+
+/*見出し*/
+.update h2{
+	text-align: center;
+}
+/*フォーム*/
+.update form{
+	text-align: center;
+}
+/*入力内容*/
+.update p{
+	text-align: left;
+	margin-left: 20px;
+	font-size: 22px;
+}
+/*入力全般*/
+.update input{
+	width:95%;
+	margin: 0 auto;
+	font-size: 22px;
+	border-radius: 10px;
+}
+/*ボタン*/
+.update input[type="submit"]{
+	margin-top: 20px;
+}
+/*テキスト入力箇所*/
+.update input[type="email"],.update input[type="text"],.update input[type="password"]{
+	padding: 5px;
+}
+/*ボタン(無効)*/
+.update div form input[type="submit"]:disabled{
+	color: #c0c0c0;
+	background-color: #efeeee;
+}
+/*ボタン(有効)*/
+.update div form input[type="submit"]{
+	background-color: #2c2c2c;
+	color: #f5f5f5;
+}
+/*戻るボタン*/
+.back{
+	background-color: #f5f5f5;
+	color: #2c2c2c;
+}
+
+/*パスワードを表示*/
+.update div form div input{
+	height: 20px;
+	width: 20px;
+	margin: 10px 0 0 20px;
+}
+
+.update div form div label{
+	margin: 10px 0 0 10px;
+}
+
+.update div form div{
+	display: flex;
+	justify-content: start;
+}
+
+/*check.html*/
+
+/*変更後内容表示*/
+.update .update_input{
+	margin: 0 0 0 20px;
+	font-size: 40px;
+}
+
+/*変更ボタン*/
+.check_submit{
+	background-color: #2c2c2c;
+	color: #f5f5f5;
+}
+/*complete.html*/
+
+.update_complete{
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+}
+
+.update_complete p{
+	text-align: center;
+	font-size: 40px;
+}
+
+.update_complete form{
+	margin: 0 auto;
+}
+
+.update_complete form input{
+	font-size: 22px;
+	background-color: #2c2c2c;
+	color: #f5f5f5;
+	border-radius: 10px;
+	padding: 5px;
+}
+
