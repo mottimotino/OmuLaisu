@@ -48,6 +48,9 @@
 /*▼サイドバー*/
 .sidebar{
 	background-color: lightcyan;
+	width: 100%;
+	height: 300%;
+	text-align: center;
 
 }
 

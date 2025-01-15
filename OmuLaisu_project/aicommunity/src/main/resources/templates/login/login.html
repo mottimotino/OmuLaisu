@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{common/layout :: layout(~{::body/content()})}">
+<!--	↑ログイン後のレイアウト機能のため使えない。別のものを用意する-->
 <head>
 <meta charset="UTF-8">
 <title>AIcommunity ログイン</title>
@@ -17,8 +18,12 @@
 	<h1 class="loginh1">Login</h1>
 	<div class="loginformback">
 	<form method="post" th:action="@{/top/dotop}" class="loginform">
-		<label>メールアドレス<br><input type="email" name="mailAddress" placeholder="Mail-Address" class="loginformsize"></label><br>
-		<label>パスワード<br><input type="password" name="password" placeholder="Password" class="loginformsize"></label><br>
+		<label>メールアドレス<br><input type="email" name="mailAddress" placeholder="Mail-Address" class="loginformsize" required></label><br>
+		<label>パスワード<br>
+		<input type="password" name="input" placeholder="Password" class="loginformsize" required></label><br>
+		
+		<input type="checkbox" id="checkbox1">
+		<label>パスワードを表示</label>
 		<input type="submit" value="ログイン" class="loginbottun"><br>
 		<a th:href="@{/stop/dotop}" class="loginlink">パスワードを忘れた場合</a>
 	</form>

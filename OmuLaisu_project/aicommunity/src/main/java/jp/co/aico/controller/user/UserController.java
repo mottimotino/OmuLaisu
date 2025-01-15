@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
 	
 	//ログイン中サイドバー内画面遷移(一旦基本機能のみ)
+	@RequestMapping("/top/sidebar")
+	public String sidebar() {
+		return "top/sidebar";
+	}
 	
 	//日程予約
 	@RequestMapping("/calender/view")

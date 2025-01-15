@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,21 @@
 </head>
 <body>
 	
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a th:href="@{/top/dotop}">Top</a></li>
-	<li><a th:href="@{/help/question}">Q&A</a></li>
-	<li><a th:href="@{/quiz/list}">クイズ</a></li>
-	<li><a th:href="@{/chat/view}">チャット</a></li>
-	 </ul>
+<!--	<header>-->
+<!--	<h1 class="header02-logo" >AI Community-->
+<!--	</h1>-->
+<!--		ナビ①-->
+<!--	<nav class="nav">-->
+<!--	 <ul class="menu">-->
+<!--	<li><a th:href="@{/top/dotop}">Top</a></li>-->
+<!--	<li><a th:href="@{/help/question}">Q&A</a></li>-->
+<!--	<li><a th:href="@{/quiz/list}">クイズ</a></li>-->
+<!--	<li><a th:href="@{/chat/view}">チャット</a></li>-->
+<!--	 </ul>-->
 <!--	 <a th:href="@{/top/sidebar}">=</a>-->
-	<a th:href="@{/top/sidebar}">=</a>
-	</nav>
-	</header>
+<!--	<a th:href="@{/top/sidebar}">=</a>-->
+<!--	</nav>-->
+<!--	</header>-->
 	
 		<h2>日程予約</h2>
  	<form th:action="@{/timesCheck}" method="get">		
@@ -112,9 +113,9 @@
   </form>
   
   	<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
+<!--	<footer>-->
+<!--	    <p>&copy; AI Community</p>-->
+<!--	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>-->
+<!--	</footer>-->
 	</body>
 </html>

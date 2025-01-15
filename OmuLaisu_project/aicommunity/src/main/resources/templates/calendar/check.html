@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/style.css}" /> 
+<!--<link rel="stylesheet" th:href="@{/css/style.css}" /> -->
 <!--会話日程予約機能-->
 </head>
 <body>
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
-	 </ul>
-	</nav>
-	</header>
+<!--	<header>-->
+<!--	<h1 class="header02-logo" >AI Community-->
+<!--	</h1>-->
+<!--		ナビ①-->
+<!--	<nav class="nav">-->
+<!--	 <ul class="menu">-->
+<!--	<li><a href="#">Top</a></li>-->
+<!--	<li><a href="#">Q&A</a></li>-->
+<!--	<li><a href="#">クイズ</a></li>-->
+<!--	<li><a href="#">チャット</a></li>-->
+<!--	 </ul>-->
+<!--	</nav>-->
+<!--	</header>-->
 
 	<section>
 	<p>この日程で予約しますか？</p>
@@ -45,10 +46,10 @@
 	</section>
 	
 	<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
+<!--	<footer>-->
+<!--	    <p>&copy; AI Community</p>-->
+<!--	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>-->
+<!--	</footer>-->
 	
 
 </body>

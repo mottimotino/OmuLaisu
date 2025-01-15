@@ -3,53 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン前トップ</title>
-<link rel="stylesheet" href="../../static/css/style.css" /> 
+<link rel="stylesheet" th:href="@{/css/style.css}" /> 
 <!--会話日程予約機能-->
 </head>
-<body>
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
-	 </ul>
-<!--	 <a th:href="@{/sidebar}">=</a>-->
-	</nav>
-	</header>
+<body class="sidebar">
 	
-	<section class="sidebar">
+	<a th:href="@{/top/dotop}">→</a>
+	<section>
 	<!--	サイドバー-->
 	<h2 style="font-size: 50px;">Menu</h2>
 	
 <!--	displayブロックをつけても余白をつけることができない-->
 	<div class="sidebarmenu">
 <!--	<a th:href="../calendar/view.html">メンター予約</a>-->
-	<a href="../calendar/view.html">メンター予約</a><br>
+	<a th:href="@{/calendar/view}">メンター予約</a><br>
 	
 <!--	<a th:href="../quiz/list.html">クイズ</a>-->
-	<a href="../quiz/list.html">クイズ</a><br>
-	
+	<a th:href="@{/quiz/list}">クイズ</a><br>
 	
 <!--	<a th:href="@{/user/info}">マイページ</a>-->
-	<a href="../user/info.html">マイページ</a><br>
+	<a th:href="@{/user/info}">マイページ</a><br>
 
 	</div>
 
 	
 	</section>
-
-	
-	
-			<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
 	
 
 </body>
