@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+
+body {
+  
+    
+    margin: 0;
+}
+
+
+header {
+  position: fixed; /*← fixedで固定 */
+  width: 100%; 
+  height: 60px; 
+  background: #CCC; 
+  padding: 20px 60px; 
+  box-sizing: border-box;
+  top: 0; 
+  left: 0; 
+  display: flex; 
+  align-items: center; 
+
+ /* ロゴとメニューを横並びにする */
+  justify-content:space-between;
+
+}
+
+
+/* 
+header .nav .menu {
+  display: flex; 
+} */
+
+header .nav .menu li {
+  list-style: none; 
+  margin-left: 40px;
+}
+
+header .nav .menu li a{
+ color: #000000;
+ font-weight:bold;
+ text-decoration: none;
+}
+.nav{
+  list-style:none;
+  float:left;
+}
+.nav li{display:inline-block;}
+.nav li a{
+  display:inline-block;
+   padding:3px 15px;
+  color:inherit;
+  text-decoration:none;
+}
+
+main {
+  text-align:center;
+}
+
+h2 {
+ color: #000000;
+ text-decoration: none;
+ padding-top: 100px;
+}
+
+
+
+
+/* フッター */
+footer {
+  background: #000000; 
+  padding:1em;
+  
+   width: 100%;
+  height: 50px;
+
+    
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* トップ画面 */
+
+
+.container {
+  position: relative;
+  width: 1170px;
+  margin: 0 auto;
+  color: #444;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Roboto, 'Open Sans', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.section .container {
+  padding: 30px 0 50px 0;
+}
+
+.section.bg {
+  background: #f7f7f7;
+}
+/*
+  Header
+*/
+
+.hold {
+  height: 80px;
+}
+
+
+
+
+
+.call span {
+  display: inline;
+  border: 1px solid white;
+  padding: 8px 13px;
+  font-size: 20px;
+  transition:  0.15s linear;
+}
+
+.call span:hover {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+/* 
+  Columns 
+*/
+
+.col {
+  float: left;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.col.four {
+  width: 23%;
+  margin: 0 1%;
+}
+
+.col.three {
+  width: 31.3%;
+  margin: 0 1%;
+}
+
+.col.two {
+  width: 40%;
+  margin: 0 2.5%;
+  padding: 0 2.5%;
+}
+
+.col.extrapad {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.col .service,
+.col .feature {
+  font-size: 21px;
+  font-weight: 300;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.col .service:after {
+  content: "";
+  width: 50px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.col .feature {
+  font-size: 19px;
+}
+
+.col h1.side,
+.col p.side,
+.col span.side:first-of-type {
+  margin-left: 50px;
+  text-align: left;
+}
+
+.col .icon {
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  line-height: 85px;
+  text-align: center;
+  margin: 0 auto;
+  transition:  0.25s linear, color 0.25s linear;
+}
+
+.col .icon.side {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: -15px;
+  height: 50px;
+  width: 50px;
+}
+
+.col:hover > .icon {
+  background: #F44336;
+  color: white;
+}
+
+.col:hover > .icon.side {
+  background: initial;
+  color: initial;
+}
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* クイズ */
+
+
+
