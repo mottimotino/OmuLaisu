@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.aico.entity.CaZoomEntity;
 import jp.co.aico.entity.ChatEntity;
 import jp.co.aico.entity.ReservationDateEntity;
 import jp.co.aico.entity.TimesEntity;
 import jp.co.aico.entity.UsersEntity;
 import jp.co.aico.form.ChatForm;
 import jp.co.aico.form.ComForm;
+import jp.co.aico.repository.CaZoomRepository;
 import jp.co.aico.repository.ChatRepository;
 import jp.co.aico.repository.ReservationDateRepository;
 import jp.co.aico.repository.TimesRepository;
@@ -43,6 +45,8 @@ public class ComController {
 	ChatRepository chatRepository;
 	@Autowired
 	UsersRepository usersRepository;
+	@Autowired
+	CaZoomRepository caZoomRepository;
 
 	/**
 	 * @author 村越
@@ -100,9 +104,23 @@ public class ComController {
 		//BeanUtils.copyProperties(Comform, ReservationDateEntity, "dateId");
 		//もし、上がダメだった場合以下のコメントアウトしたコードを実装する
 
-		//Date型に変換
+		//日付をDate型に変換
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date day = dateFormat.parse(Comform.getDay());
+		
+		//zoomURL
+		//削除されていない,一番古いレコードを取得
+		List<CaZoomEntity> caZoomEntity = caZoomRepository.findByDeleteFlag(0);
+		if(caZoomEntity.size() == 0) {
+			//URLがありません
+			return "redirect:/allViews";
+		} else {
+			CaZoomEntity czEntity = caZoomEntity.get(0);
+			ReservationDateEntity.setCaZoomEntity(czEntity);
+			//削除フラグを変更
+			czEntity.setDeleteFlag(1);
+			caZoomRepository.save(czEntity);
+		}
 
 		ReservationDateEntity.setDay(day);
 		ReservationDateEntity.setWeekday(Comform.getWeekday());
@@ -112,7 +130,6 @@ public class ComController {
 		return "calendar/input";
 	}
 
-	//メンターのusersIdを受け取る処理を追加予定(追加機能)
 	/**
 	 * チャット画面
 	 * @author 水野
@@ -135,7 +152,6 @@ public class ComController {
 				users.setUsersId(0);
 				chat.setReceUsersEntity(users);
 				chatEntity.set(i, chat);
-				//				chatEntity.add(chat);
 			}
 		}
 
