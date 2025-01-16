@@ -27,11 +27,13 @@
 	<h2>問題</h2>
 	<!--ここに問題文-->	
 	<main class="quiz">
-	<span class="seitouritu">	
-	<span th:text="${total}"></span>問中
-	<span th:text="${collect}"></span>問正解 正答率
-	<span th:text="${collectAnswerRate}"></span>%
-	</span>
+		<span th:if="${session.usersId}!=null">
+			<span class="seitouritu">	
+				<span th:text="${total}"></span>問中
+				<span th:text="${collect}"></span>問正解 正答率
+				<span th:text="${collectAnswerRate}"></span>%
+			</span>
+		</span>
 	
 	<h2>問題文</h2>
 	<span th:text="${question.question}"></span><br>
@@ -42,7 +44,13 @@
 		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 class="btn four"/>
 		
 		<input type="hidden" name="queId" th:value="${question.queId}">
-		<input type="hidden" name="usersId" th:value=1>
+		<span th:if="${session.usersId}!=null">
+			<input type="hidden" name="usersId" th:value=${session.usersId}>
+		</span>
+<!--		後で削除する-->
+		<span th:if="${session.usersId}==null">
+			<input type="hidden" name="usersId" 1value=1>
+		</span>
 	</form>	
 	</main>
 	

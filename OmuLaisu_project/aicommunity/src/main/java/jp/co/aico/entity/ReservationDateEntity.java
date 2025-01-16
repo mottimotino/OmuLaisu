@@ -29,6 +29,10 @@ public class ReservationDateEntity {
 	@ManyToOne
 	@JoinColumn(name = "times_id", referencedColumnName = "timesId")
 	private TimesEntity timesEntity;
+	@ManyToOne
+	@JoinColumn(name = "zoom_id", referencedColumnName = "zoomId")
+	private CaZoomEntity caZoomEntity;
+	
 	public Integer getDateId() {
 		return dateId;
 	}
@@ -59,6 +63,14 @@ public class ReservationDateEntity {
 	public void setTimesEntity(TimesEntity timesEntity) {
 		this.timesEntity = timesEntity;
 	}
+	public CaZoomEntity getCaZoomEntity() {
+		return caZoomEntity;
+	}
+	public void setCaZoomEntity(CaZoomEntity caZoomEntity) {
+		this.caZoomEntity = caZoomEntity;
+	}
+	
+	
 	
 	
 

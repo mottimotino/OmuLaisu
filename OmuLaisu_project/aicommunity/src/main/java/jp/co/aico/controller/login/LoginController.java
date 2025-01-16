@@ -50,6 +50,7 @@ public class LoginController {
 	//ログインに成功
 		if(users != null) {
 			//入力内容をsessionで保存
+			session.setAttribute("usersId", users.getUsersId());
 			session.setAttribute("mail", mail);
 			session.setAttribute("password", password);
 			//ログイン後トップ画面に遷移
