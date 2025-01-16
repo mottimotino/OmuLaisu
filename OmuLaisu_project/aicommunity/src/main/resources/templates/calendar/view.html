@@ -5,27 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>日程選択</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}" /> 
 </head>
 <body>
 	
-<!--	<header>-->
-<!--	<h1 class="header02-logo" >AI Community-->
-<!--	</h1>-->
-<!--		ナビ①-->
-<!--	<nav class="nav">-->
-<!--	 <ul class="menu">-->
-<!--	<li><a th:href="@{/top/dotop}">Top</a></li>-->
-<!--	<li><a th:href="@{/help/question}">Q&A</a></li>-->
-<!--	<li><a th:href="@{/quiz/list}">クイズ</a></li>-->
-<!--	<li><a th:href="@{/chat/view}">チャット</a></li>-->
-<!--	 </ul>-->
-<!--	 <a th:href="@{/top/sidebar}">=</a>-->
-<!--	<a th:href="@{/top/sidebar}">=</a>-->
-<!--	</nav>-->
-<!--	</header>-->
-	
-		<h2>日程予約</h2>
+	<h2>日程予約</h2>
  	<form th:action="@{/timesCheck}" method="get">		
 	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>
 		<div class="calendar-wrap">
@@ -112,10 +95,5 @@
 
   </form>
   
-  	<!--フッター -->
-<!--	<footer>-->
-<!--	    <p>&copy; AI Community</p>-->
-<!--	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>-->
-<!--	</footer>-->
 	</body>
 </html>

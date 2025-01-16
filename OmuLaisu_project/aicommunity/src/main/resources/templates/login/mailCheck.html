@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>会員確認</title>
+</head>
+<body>
+	<p>アカウントに関連づけられているEメールアドレスを入力してください。</p>
+	<form method="post" th:action="@{/login/passwordForget}" class="loginform">
+		<label>メールアドレス<br><input type="email" name="mailAddress" placeholder="Mail-Address" class="loginformsize" required></label><br>
+		<input type="submit" name="mailAddress" value="送信" class="loginformsize" required>
+	</form>
+
+</body>
+</html>
