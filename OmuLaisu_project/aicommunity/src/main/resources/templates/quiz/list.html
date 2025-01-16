@@ -26,6 +26,9 @@
 	
 	<form th:action="@{/quiz/question}" method="post" class="main">
 		
+		<p th:if="${session.userId}==null">
+			<span>ログイン前のため、問題数は最大10問です。</span>
+		</p>
 		
 		<div class="quiz">
 		<h2 style="text-align: center; font-size: 40px;">漢字クイズ</h2>
@@ -44,8 +47,11 @@
 		<input type="submit" name="categoryName" value="公の場編" class="business">
 		</div>
 		<!--valueはログインしたusersIdに変更する-->
-		<input type="hidden" name="usersId" value=1>
+		<span th:if="${session.usersId}!=null">
+			<input type="hidden" name="usersId" th:value=${session.usersId}>
+		</span>
 		<!--クイズの1問目から表示する-->
+		
 		<input type="hidden" name="queId" value="0">
 		</span>
 		</form>
