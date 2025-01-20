@@ -20,6 +20,12 @@ public class UsersForm {
 	private Integer possessionPoint;
 	
 	private Date insertDate;
+	
+//	▼パスワード再設定用変数
+	private String input;
+	
+	private String check;
+//	▲パスワード再設定用変数
 
 	public Integer getUsersId() {
 		return usersId;
@@ -68,6 +74,24 @@ public class UsersForm {
 	public void setInsertDate(Date insertDate) {
 		this.insertDate = insertDate;
 	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
+	}
+
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
+	
+	
 	
 	
 
