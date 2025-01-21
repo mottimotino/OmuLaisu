@@ -1,0 +1,270 @@
+--ユーザー定義(xe_systemで実行)
+ALTER SESSION SET CONTAINER = xepdb1;
+CREATE USER aico_user IDENTIFIED BY kikakuaiit;
+GRANT ALL PRIVILEGES TO aico_user;
+
+--テーブル作成
+--b:会員テーブル
+CREATE TABLE users(
+users_id NUMBER(8,0) PRIMARY KEY,
+password VARCHAR2(15 CHAR) NOT NULL,
+name VARCHAR2(30 CHAR) NOT NULL,
+mail VARCHAR2(319 CHAR) NOT NULL,
+authority NUMBER(1,0) NOT NULL,
+possession_point NUMBER(4,0),
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL,
+insert_date DATE  DEFAULT sysdate NOT NULL
+);
+
+--c:Q&Aテーブル
+CREATE TABLE QA(
+qa_id NUMBER(4,0) PRIMARY KEY,
+contents VARCHAR2(500 CHAR) NOT NULL
+);
+
+--d:カテゴリーテーブル
+CREATE TABLE categories(
+category_id NUMBER(2,0) PRIMARY KEY,
+category_name VARCHAR2(20 CHAR) NOT NULL
+);
+
+--a,f:問題テーブル
+CREATE TABLE quiz(
+que_id NUMBER(4,0) PRIMARY KEY, 
+question VARCHAR2(100 CHAR) NOT NULL,
+answer NUMBER(4,0) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id),
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL ,
+insert_date DATE DEFAULT sysdate NOT NULL,
+mean VARCHAR2(60 CHAR),
+read VARCHAR2(20 CHAR),
+explanation VARCHAR2(300 CHAR),
+choise1 VARCHAR2(15 CHAR),
+choise2 VARCHAR2(15 CHAR),
+choise3 VARCHAR2(15 CHAR),
+choise4 VARCHAR2(15 CHAR)
+);
+
+--e:進捗度テーブル
+CREATE TABLE progress(
+pro_id NUMBER(8,0) PRIMARY KEY,
+users_id NUMBER(8,0) REFERENCES users(users_id),
+que_id NUMBER(4,0) REFERENCES quiz(que_id),
+miss_flag NUMBER(1,0) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id)
+);
+
+--g:チャットテーブル
+CREATE TABLE chat(
+chat_id NUMBER(8,0) PRIMARY KEY,
+send_user NUMBER(8,0) REFERENCES users(users_id),
+rece_user NUMBER(8,0) REFERENCES users(users_id),
+message VARCHAR2(300 CHAR) NOT NULL
+);
+
+--h:景品テーブル
+CREATE TABLE prize(
+prize_id NUMBER(8,0) PRIMARY KEY,
+prize_name VARCHAR2(30 CHAR) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id),
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL
+);
+
+--i:管理テーブル
+CREATE TABLE management(
+mana_id NUMBER(4,0) PRIMARY KEY,
+prize_id NUMBER(8,0) REFERENCES prize(prize_id),
+users_id NUMBER(8,0) REFERENCES users(users_id)
+);
+
+--時間テーブル
+CREATE TABLE times(
+times_id Number(4,0) PRIMARY KEY, 
+start_times VARCHAR2(10 CHAR) NOT NULL,
+end_times VARCHAR2(10 CHAR) NOT NULL
+);
+
+--予約テーブル(未使用)
+CREATE TABLE reservation(
+reservation_id NUMBER(7,0) PRIMARY KEY, 
+users_id NUMBER(8,0)REFERENCES users(users_id),
+Monday VARCHAR2(5 CHAR)NOT NULL,
+Tuesday VARCHAR2(5 CHAR)NOT NULL,
+Wednesday VARCHAR2(5 CHAR)NOT NULL,
+Thursday VARCHAR2(5 CHAR)NOT NULL,
+Friday VARCHAR2(5 CHAR)NOT NULL,
+Saturday VARCHAR2(5 CHAR)NOT NULL,
+Sunday VARCHAR2(5 CHAR)NOT NULL,
+times_id Number(4,0) REFERENCES times(times_id)
+);
+
+--予約日テーブル(未使用)
+CREATE TABLE all_reservation(
+all_id NUMBER(7,0) PRIMARY KEY, 
+days VARCHAR2(5 CHAR)Not Null,
+start_times VARCHAR2(10 CHAR) NOT NULL,
+end_times VARCHAR2(10 CHAR) NOT NULL
+);
+
+--正答率テーブル
+CREATE TABLE accuracy(
+accuracy_id NUMBER(4,0) PRIMARY KEY,
+progress NUMBER(4,1) NOT NULL,
+category_id NUMBER(2,0) REFERENCES categories(category_id),
+users_id NUMBER(8,0) REFERENCES users(users_id)
+);
+
+--カレンダーzoomテーブル
+CREATE TABLE ca_zoom(
+zoom_id NUMBER(8,0) PRIMARY KEY,
+url VARCHAR2(500 CHAR) NOT NULL,
+insert_date DATE DEFAULT sysdate NOT NULL,
+delete_flag NUMBER(1,0) DEFAULT 0 NOT NULL
+);
+
+--予約テーブル
+CREATE TABLE reservation_date(
+date_id NUMBER(7,0) PRIMARY KEY, 
+day DATE Not Null,
+weekday VARCHAR2(10 CHAR) NOT NULL,
+times_id NUMBER(4,0) REFERENCES times(times_id),
+users_id NUMBER(8,0) REFERENCES users(users_id),
+zoom_id NUMBER(8,0) REFERENCES ca_zoom(zoom_id)
+);
+
+--シーケンス
+CREATE SEQUENCE seq_quiz NOCACHE;
+CREATE SEQUENCE seq_users NOCACHE; 
+CREATE SEQUENCE seq_qa NOCACHE;
+CREATE SEQUENCE seq_categories NOCACHE; 
+CREATE SEQUENCE seq_progress NOCACHE; 
+CREATE SEQUENCE seq_chat NOCACHE;
+CREATE SEQUENCE seq_prize NOCACHE;
+CREATE SEQUENCE seq_mana NOCACHE;
+CREATE SEQUENCE seq_reservation NOCACHE;
+CREATE SEQUENCE seq_times NOCACHE;
+CREATE SEQUENCE seq_allreservation NOCACHE;
+CREATE SEQUENCE seq_acc NOCACHE;
+CREATE SEQUENCE seq_reservation_date NOCACHE;
+CREATE SEQUENCE seq_ca_zoom NOCACHE;
+
+
+COMMIT;
+
+--以下INSERT文--
+
+--usersテーブルINSERT文(仮ユーザー作成)
+INSERT INTO users(users_id,password,name,mail,authority) 
+VALUES (seq_users.NEXTVAL,'test','テストユーザー',
+'test@mail.ac.jp',2);
+
+--メンター作成(仮)
+INSERT INTO users(users_id,password,name,mail,authority) 
+VALUES (seq_users.NEXTVAL,'test','メンター',
+'test@mail.ac.jp',3);
+
+--timesテーブルINSERT文
+INSERT INTO times VALUES (seq_times.NEXTVAL,'12:00','12:30');
+INSERT INTO times VALUES (seq_times.NEXTVAL,'18:00','18:30');
+INSERT INTO times VALUES (seq_times.NEXTVAL,'19:00','19:30');
+
+--categoriesのINSERT文
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'初級読み');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'初級書き');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'中級読み');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'中級書き');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'上級読み');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'上級書き');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'挨拶編');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'メール編');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'公の場編');
+
+--クイズ問題INSERT文(N3読み,N2書き)
+
+--N3読み--
+
+--1問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'注意を<欠>いて、大きなミスをした。',3,3,0,'2024/11/26','そろっているはずのものが足りない。',NULL,'この漢字を使った単語：欠席（けっせき）、欠点(けってん)など','し','け','か','さ');
+
+
+--2問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'鳥の声で<覚>ます',4,3,0,'2024/11/26',' 眠っているじょうたいからはっきりしたじょうたいにもどす。',NULL,'この漢字を使った単語：覚醒（かくせい）、覚える(おぼえる)など','か','い','めざ','さ');
+
+
+--3問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'カスピ海は世界<最大>のみずうみだ。',3,3,0,'2024/11/26',' いちばん大きいこと',NULL,'この漢字を使った単語：最後(サイゴ）、最善(サイゼン)など','さいこう','さいかい','さいだい','さいおおき');
+
+
+--4問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'まちで<記者>のインタビューを受けた。',1,3,0,'2024/11/26','行動の主体。人。もの。',NULL,'この漢字を使った単語：医者(イシャ)、学者(ガクシャ)など','きしゃ','かいしゃ','きもの','さもの');
+
+
+--5問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'この薬は１時間でこうかを<現>す',2,3,0,'2024/11/26','今まで無かったもの、隠れているものを、はっきり見えるようにする。',NULL,'この漢字を使った単語：表現(ひょうげん)、現し（あらわし）など','あら','あらわ','あられ','あわら');
+
+
+--6問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'しんじんが<出現>',2,3,0,'2024/11/26','あらわれ出ること。',NULL,'この漢字を使った単語：表現(ひょうげん)、現し（あらわし）など','しゅつけん','しゅつげん','しゅうげん','しゅっげん');
+
+
+--7問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'<次回>のテスト',1,3,0,'2024/11/26','二番目。つぎの位。つぎ。つぐ。',NULL,'この漢字を使った単語：次元(ジゲン)、次善(ジゼン)など','じかい','じかん','じげん','じっか');
+
+
+
+--8問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'どうぶつが<産>まれる',4,3,0,'2024/11/26','生まれた時（のまま）の/子をうむ',NULL,'この漢字を使った単語：産声(うぶごえ)、名産(メイサン)など','さん','うぶ','うむ','う');
+
+
+--9問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'ぱんだはぜつめつの<危機>にある',1,3,0,'2024/11/26','危険で不安な時や状態。',NULL,'この漢字を使った単語：危険(きけん)、など','きき','きぎ','きけん','きっき');
+
+
+--10問目
+
+INSERT INTO quiz VALUES
+(seq_quiz.NEXTVAL,'じぶんの<技術>がこうじょうした',2,3,0,'2024/11/26','。手なみ。うでまえ。わざ。げい。',NULL,'この漢字を使った単語：演技(エンギ)・球技(キュウギ)、','ぎずゅつ','ぎじゅつ','ぎちゅつ','わざじゅつ');
+
+--N2書き--
+
+INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
+'健康のために体をノばす。',1,4,0,'2024/11/27','空間的に広げる。また、長くする。',
+NULL,'この漢字を使った単語:伸縮(伸縮),伸張(しんちょう)など','伸','似','延','促');
+
+INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
+'ブッキョウが伝わる。',3,4,0,'2024/11/27',
+'釈迦 (しゃか) の説いた、仏となるための教え',
+NULL,NULL,'仏式','仏壇','仏教','主教');
+
+INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
+'耳をカタムける。',1,4,0,'2024/11/27',
+'注意して聞く。 熱心にじっと聞く。',
+NULL,'この漢字を使った単語:傾向(けいこう),傾斜(けいしゃ)など','傾ける','頃ける','像ける','象ける');
+
+INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
+'カイトウ機能がついてる電子レンジ',1,4,0,'2024/11/27',
+'凍結しているものが解けること。',
+NULL,'この漢字を使った単語:凍結(とうけつ),冷凍(れいとう)','解凍','解冷','解滴','解浴');
+
+--zoomURL仮作成
+INSERT INTO ca_zoom(zoom_id,url) VALUES(seq_ca_zoom.NEXTVAL,'https://sankogakuen-jp.zoom.us/j/86456067413?pwd=QOSu35bGwPgKUqWnhUsjqGHUb543Wf.1#success');
+
+
