@@ -50,6 +50,10 @@
 		<span th:if="${session.usersId}!=null">
 			<input type="hidden" name="usersId" th:value=${session.usersId}>
 		</span>
+		<!--テスト用-->
+		<span th:if="${session.usersId}==null">
+			<input type="hidden" name="usersId" value=1>
+		</span>
 		<!--クイズの1問目から表示する-->
 		
 		<input type="hidden" name="queId" value="0">

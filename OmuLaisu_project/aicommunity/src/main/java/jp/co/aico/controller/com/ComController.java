@@ -95,7 +95,7 @@ public class ComController {
 	 * 登録処理
 	 */
 	@RequestMapping("/complete")
-	public String complete(ComForm Comform) throws ParseException {
+	public String complete(ComForm Comform,Model model) throws ParseException {
 		ReservationDateEntity ReservationDateEntity = new ReservationDateEntity();
 		TimesEntity timesEntity = new TimesEntity();
 		timesEntity.setTimesId(Comform.getTimesId());
@@ -127,6 +127,8 @@ public class ComController {
 		ReservationDateEntity.setTimesEntity(timesEntity);
 		ReservationDateEntity.setUsersEntity(usersEntity);
 		ReservationDateEntity = rdRepository.save(ReservationDateEntity);
+		//zoomのURLを格納
+		model.addAttribute(caZoomEntity);
 		return "calendar/input";
 	}
 
