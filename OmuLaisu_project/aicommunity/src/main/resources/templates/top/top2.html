@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,8 +11,9 @@
 
 <head>
 	<meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/reset.css">
-	<link rel="stylesheet" href="../../static/css/企画1.css">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+	<link rel="stylesheet" th:href="@{/css/企画1.css}">
 
     <!-- <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css"> -->
@@ -33,10 +34,10 @@
 		<!--ナビ①-->
         <nav class="nav">
 		 <ul class="menu">
-		<li><a href="#">予約</a></li>				
-    <li><a href="#">Q&A</a></li>
-		<li><a href="#">クイズ</a></li>
-		<li><a href="#">チャット</a></li>
+		<li><a th:href="@{calender/view}">予約</a></li>				
+    <li><a th:href="@{help/guide/user}">Q&A</a></li>
+		<li><a th:href="@{quiz/list}">クイズ</a></li>
+		<li><a th:href="@{chat/view}">チャット</a></li>
 		</ul>
     </nav>	
 </header>
@@ -46,7 +47,7 @@
 
 <main>
 <!-- 画像 -->
-    <img src ="top,画像.png">
+    <img th:src ="@{/top画像.png}">
 
 
 
@@ -117,41 +118,41 @@
             <div class=><span>※ログインをしてからご利用可能です</span></div>
 
 
-            <div class="section">
-              <div class="container">
+<!--            <div class="section">-->
+<!--              <div class="container">-->
       
       
-                <div class="col four">
-                  <h1 class="icon">[]</h1>
-                  <h1 class="service">漢字クイズ（初級）</h1>
-                  <p>N4～の難易度でお試しできます</p>
-                </div>
+<!--                <div class="col four">-->
+<!--                  <h1 class="icon">[]</h1>-->
+<!--                  <h1 class="service">漢字クイズ（初級）</h1>-->
+<!--                  <p>N4～の難易度でお試しできます</p>-->
+<!--                </div>-->
       
       
-                <div class="col four">
-                  <h1 class="icon">[]</h1>
-                  <h1 class="service">漢字クイズ（中級）</h1>
-                  <p>N3～の難易度でお試しできます</p>
-                </div>
+<!--                <div class="col four">-->
+<!--                  <h1 class="icon">[]</h1>-->
+<!--                  <h1 class="service">漢字クイズ（中級）</h1>-->
+<!--                  <p>N3～の難易度でお試しできます</p>-->
+<!--                </div>-->
               
       
       
-                <div class="col four">
-                  <h1 class="icon">[]</h1>
-                  <h1 class="service">漢字クイズ（上級）</h1>
-                  <p>N2～の難易度でお試しできます</p>
-                </div>
+<!--                <div class="col four">-->
+<!--                  <h1 class="icon">[]</h1>-->
+<!--                  <h1 class="service">漢字クイズ（上級）</h1>-->
+<!--                  <p>N2～の難易度でお試しできます</p>-->
+<!--                </div>-->
       
                 
-                <div class="col four">
-                  <h1 class="icon">[]</h1>
-                  <h1 class="service">ビジネスマナークイズ</h1>
-                  <p>日常的な会話やコミュニケーションをお試しできます</p>
-                </div>
+<!--                <div class="col four">-->
+<!--                  <h1 class="icon">[]</h1>-->
+<!--                  <h1 class="service">ビジネスマナークイズ</h1>-->
+<!--                  <p>日常的な会話やコミュニケーションをお試しできます</p>-->
+<!--                </div>-->
                 
-                <div class="group"></div>
-              </div>
-            </div>
+<!--                <div class="group"></div>-->
+<!--              </div>-->
+<!--            </div>-->
   
 
 

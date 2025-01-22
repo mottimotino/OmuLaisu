@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--レイアウト機能-->
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
@@ -8,6 +9,7 @@
 </head>
 <body>
 	
+<!--	カレンダーの表部分-->
 	<h2>日程予約</h2>
  	<form th:action="@{/timesCheck}" method="get">		
 	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>

@@ -2,7 +2,6 @@ package jp.co.aico.controller.login;
 
 
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +25,11 @@ public class LoginController {
 //	//会員テーブルのリポジトリ
 	@Autowired
 	UsersRepository usersRepository;	
+	
+	@RequestMapping(path = "/top2", method = RequestMethod.GET)
+	public String top2() {
+		return "top/top2";
+	}
 	/**
 	 * ログイン画面を表示
 	 * @return login内のlogin.html
@@ -114,6 +118,9 @@ public class LoginController {
 		UsersEntity usersEntity = usersRepository.findByMail(form.getMail());
 		
 	if(form.getMail().equals(usersEntity.getMail())){
+		model.addAttribute("mail", form.getMail());
+		model.addAttribute("user",usersEntity);
+		
 		return "login/passwordForget";
 	} else{
 		return "user/mailCheck";
@@ -128,13 +135,18 @@ public class LoginController {
 	 * @param Managementform
 	 * @return complete
 	 * パスワードが正しく変わっているかを確かめる
+	 * パスワードとメルアドを同時に照合
+	 * メアドで検索→パスワードを上書き
 	 */
-	@RequestMapping("/login/passwordCommit")
-	public String PassChange(UsersForm form) {
+	@RequestMapping(path = "/login/passwordCommit", method = RequestMethod.POST)
+	public String PassChange(String password,UsersEntity user) {
 //		public String PassChange(UsersForm form, Model model) {
-		UsersEntity usersEntity = usersRepository.findByMail(form.getMail());
-		BeanUtils.copyProperties(form, usersEntity, "usersId");
-		usersEntity = usersRepository.save(usersEntity);
+//		これで実行できるか確認→実行できないとパスワード以外はnullで更新するといった行動になってしまっている。
+//		UsersEntity usersEntity = usersRepository.findByMailAndPassword(form.getMail(),form.getPassword());
+//		BeanUtils.copyProperties(form, user, "usersId");
+		System.out.println(user.getName());
+		user.setPassword(password);
+		usersRepository.save(user);
 //		UsersBean usersBean = new UsersBean();
 //		BeanUtils.copyProperties(usersEntity, usersBean);
 //		model.addAttribute("users", usersBean);
