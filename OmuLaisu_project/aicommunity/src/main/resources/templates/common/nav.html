@@ -5,14 +5,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav class="nav" th:fragment="layout-nav">
-		 <ul class="menu">
+	<nav class="nav doHanbarger" th:fragment="layout-nav">
+<!--		<div class="doHanbarger">-->
+		<ul class="menu">
 		<li><a th:href="@{/top/dotop}">Top</a></li>
 		<li><a th:href="@{/help/question/answer/view}">Q&A</a></li>
 		<li><a th:href="@{/quiz/list}">Quiz</a></li>
 		<li><a th:href="@{/chat/view}">Chat</a></li>
-		<li><a th:href="@{/top/sidebar}">＝</a></li>
+
 		 </ul>
+		 
+		<a th:href="@{/top/sidebar}" class="hanbargermenu">＝</a>
+<!--		</div>-->
 	</nav>
 
 </body>

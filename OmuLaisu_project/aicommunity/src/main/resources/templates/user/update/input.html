@@ -39,12 +39,20 @@
 					<label>パスワードを表示</label>
 				</div>
 				<input type="submit" name="update" value="変更" disabled>
+
+
 			</form>
-		</div>
 		
-		<form method="get" th:action="@{/user/info}" >
-			<input type="submit" name="back" class="back" value="戻る">
-		</form>
+
+		</div>
+				<form method="get" th:action="@{/user/info/} + ${session.usersId}" >
+					<input type="submit" name = "back" value="戻る" class="back">
+				</form>
+				
+
+
+
+		
 	</div>
 	
 	

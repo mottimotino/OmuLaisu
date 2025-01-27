@@ -6,11 +6,11 @@
 <title>会員確認</title>
 </head>
 <body>
-	<div style="background-color: white;">
+	<div class="passforgetform">
 	<p>アカウントに関連づけられているEメールアドレスを入力してください。</p>
 	<form method="post" th:action="@{/login/passwordForget}" class="loginform">
-		<label>メールアドレス<br><input type="email" name="mail" placeholder="Mail-Address" class="loginformsize" required></label><br>
-		<input type="submit" name="mailAddress" value="送信" class="loginformsize" required>
+		<label>メールアドレス<br><input type="email" name="mail" placeholder="Mail-Address" class="mailforgetsize" required></label><br>
+		<input type="submit" name="mailAddress" value="送信" class="btn btn--orange btn--cubic btn--shadow" required>
 	</form>
 	</div>
 

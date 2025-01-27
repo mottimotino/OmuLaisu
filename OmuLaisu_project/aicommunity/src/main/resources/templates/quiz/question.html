@@ -38,10 +38,10 @@
 	<h2>問題文</h2>
 	<span th:text="${question.question}"></span><br>
 	<form th:action="@{/quiz/explain}" method="post" class="mondai">
-		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 class="btn one"/>
-		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 class="btn two"/>
-		<button type="submit" name = "answer" th:text="${question.choise3}" value=3 class="btn three"/>
-		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 class="btn four"/>
+		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 class="quizbtn one"/>
+		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 class="quizbtn two"/>
+		<button type="submit" name = "answer" th:text="${question.choise3}" value=3 class="quizbtn three"/>
+		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 class="quizbtn four"/>
 		
 		<input type="hidden" name="queId" th:value="${question.queId}">
 		<span th:if="${session.usersId}!=null">

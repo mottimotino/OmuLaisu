@@ -7,6 +7,11 @@
 <body>
 	<header th:fragment="layout-header">
 		<h1 class="header02-logo" >AI Community</h1>
+		<div th:if="${session.usersId != null}">
+		<form method="get" style="padding-right: 50px;" th:action="@{/top2}">
+			<input type="submit" value="ログアウト" class="LogoutBottun">
+		</form>
+		</div>
 	</header>
 </body>
 </html>

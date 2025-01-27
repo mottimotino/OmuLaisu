@@ -35,16 +35,18 @@
 
 
 	<section class="sectioninfo">
+		<div class="clear">
+		<p th:text="${user.name}" style="font-size: 40px;">Username</p>
+<!--		<p style="font-size: 40px;" th:text="${user.name}">Username</p>-->
 		<div>
-<!--		springと接続<p th:text="${users.name}" style="font-size: 40px;"></p>-->
-		<p style="font-size: 40px;" th:text="${user.name}">Username</p>
-		<div>
-	<p th:text="${user.mail}">Mail-Address <a th:href="@{/update/input}">変更する</a></p><br>-->
-		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/user/update/input/mail}">変更する</a></p></p><br>
+		<p th:text="${user.mail}">Mail-Address </p>
+		<a th:href="@{/user/update/input/mail}">変更する</a>
+<!--		<p>Mail-Address <br><p>メールアドレス仮置き     <a th:href="@{/user/update/input/mail}">変更する</a></p></p><br>-->
 		</div>
 		<div>
-<!--		<p th:text="${users.password}">password <a th:href="@{/update/input}">変更する</a></p>-->
-		<p>password <br><p>パスワード仮置き     <a th:href="@{/user/update/input/pass}">変更する</a></p></p>
+		<p th:text="${user.password}">password </p>
+		<a th:href="@{/user/update/input/pass}">変更する</a>
+<!--		<p>password <br><p>パスワード仮置き     <a th:href="@{/user/update/input/pass}">変更する</a></p></p>-->
 		</div>
 		</div>
 
@@ -67,16 +69,15 @@
 		<script>
 		const ctx = document.getElementById('myChart')
 	
-	//この2つの値を設定するだけ!!
+	//パーセンテージと色の値を設定
 	const percentage = 50 //グラフのパーセンテージ(50%)
-	//const percentage = collectAnswerRate //グラフのパーセンテージ(50%)
 	const backgroundColor = 'rgb(255, 0, 0)' //グラフの色(赤)
-	const backgroundColor2 = 'rgb(0, 0, 255)' //グラフの色(黒)
+	const backgroundColor2 = 'rgb(0, 0, 255)' //グラフの色(青)
 	
 	new Chart(ctx, {
 	  type: 'doughnut',
 	  data: {
-		  labels: ["仮","仮２"],
+		  labels: ["正解","不正解"],
 	    datasets: [{
 	      data: [percentage, 100 - percentage],
 	      backgroundColor: [
@@ -98,7 +99,7 @@
 		
 		<div>
 			<p style="margin-top: 100px; font-size: 40px; margin-right: 300px;">ビジネスマナークイズ</p>
-<!--			ここに円グラフ--><!--			ここに円グラフ-->
+<!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart2" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
 			  <p class="s1">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
@@ -118,7 +119,7 @@
 	new Chart(ctxB, {
 	  type: 'doughnut',
 	  data: {
-		  labels: ["仮","仮２"],
+		  labels: ["正解","不正解"],
 	    datasets: [{
 	      data: [percentageB, 100 - percentageB],
 	      backgroundColor: [

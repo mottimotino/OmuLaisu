@@ -176,7 +176,7 @@ button.a{
 /*    margin-left: 440px;*/
 }
 
-.btn{
+.quizbtn{
     width: 300px;
     height: 100px;
     margin-right: 80px;
@@ -287,6 +287,35 @@ button.a{
 	margin-left: 260px;
 }
 
+
+
+/*パスワードを忘れた場合のフォーム*/
+.passforgetform{
+	height: 500px;
+	font-size: 30px;
+	display: block;
+	text-align: center;
+	margin:30px auto;
+	background-color: aliceblue;
+	padding-top: 50px;
+}
+
+.mailforgetsize{
+	width: 700px;
+	height: 30px;
+	margin-bottom: 30px;
+	font-size: 22px;
+	padding: 10px;
+}
+
+.mailforgetform{
+	width: 700px;
+	height: 20px;
+	font-size: 22px;
+	display: block;
+	text-align: left;
+	margin:auto;
+}
 
 
 /*▲▲ログイン機能*/
@@ -456,6 +485,10 @@ display: flex;
 	margin-left: 400px;
 }
 
+.clear{
+	clear: both;
+}
+
 /*会員情報表示画面▲*/
 
 /*ログイン画面*/
@@ -466,6 +499,8 @@ body .login{
 	height: 100%;
 /*	margin-top: 40px;*/
 }
+
+
 
 /*登録画面*/
 body .test{
@@ -543,7 +578,27 @@ label{
 	background: #f99f3e;
 }
 
-/*ヘルプ、使い方画面*/
+/*▲▲ヘルプ、使い方画面*/
+
+input.btn--orange{
+	color: #fff;
+	background-color: #eb6100;
+	border-bottom: 5px solid #b84c00;
+	width: 150px;
+	height: 40px;
+	font-size: 25px;
+}
+
+input.btn--orange:hover{
+	margin-top: 3px;
+	color: #fff;
+	background: #f56500;
+	border-bottom: 2px solid #b84c00;
+}
+input.btn--shadow{
+	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+	box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
 
 
 
