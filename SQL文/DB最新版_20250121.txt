@@ -98,14 +98,6 @@ Sunday VARCHAR2(5 CHAR)NOT NULL,
 times_id Number(4,0) REFERENCES times(times_id)
 );
 
---予約日テーブル(未使用)
-CREATE TABLE all_reservation(
-all_id NUMBER(7,0) PRIMARY KEY, 
-days VARCHAR2(5 CHAR)Not Null,
-start_times VARCHAR2(10 CHAR) NOT NULL,
-end_times VARCHAR2(10 CHAR) NOT NULL
-);
-
 --正答率テーブル
 CREATE TABLE accuracy(
 accuracy_id NUMBER(4,0) PRIMARY KEY,
@@ -143,7 +135,6 @@ CREATE SEQUENCE seq_prize NOCACHE;
 CREATE SEQUENCE seq_mana NOCACHE;
 CREATE SEQUENCE seq_reservation NOCACHE;
 CREATE SEQUENCE seq_times NOCACHE;
-CREATE SEQUENCE seq_allreservation NOCACHE;
 CREATE SEQUENCE seq_acc NOCACHE;
 CREATE SEQUENCE seq_reservation_date NOCACHE;
 CREATE SEQUENCE seq_ca_zoom NOCACHE;
