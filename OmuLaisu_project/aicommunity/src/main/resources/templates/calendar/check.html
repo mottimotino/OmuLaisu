@@ -35,12 +35,12 @@
 		<input type="hidden" name="timesId" th:value="${timesId.timesId}">
 		<input type="hidden" name="day" th:value="${day}">
 		<input type="hidden" name="weekday" th:value="${weekDay}">
-		<!--ユーザーIDを仮で1とする-->
+<!--		<input type="hidden" name="usersId" th:value="${session.usersId}">-->
 		<input type="hidden" name="usersId" value="1">
 
 	</form>
-	<form method="post" th:action="@{calender/view}">
-		<input type="button" name="no" value="戻る">
+	<form method="post" th:action="@{/allViews}">
+		<input type="submit" name="no" value="戻る">
 	</form>
 	
 	</section>

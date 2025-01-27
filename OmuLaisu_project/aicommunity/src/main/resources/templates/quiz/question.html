@@ -47,9 +47,9 @@
 		<span th:if="${session.usersId}!=null">
 			<input type="hidden" name="usersId" th:value=${session.usersId}>
 		</span>
-<!--		後で削除する-->
+		<!--テスト用-->
 		<span th:if="${session.usersId}==null">
-			<input type="hidden" name="usersId" 1value=1>
+			<input type="hidden" name="usersId" value=1>
 		</span>
 	</form>	
 	</main>

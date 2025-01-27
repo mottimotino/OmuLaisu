@@ -14,8 +14,6 @@ public interface CaZoomRepository extends JpaRepository<CaZoomEntity,Integer>{
 	@Query("SELECT cz FROM CaZoomEntity cz WHERE cz.deleteFlag = :deleteFlag ORDER BY cz.zoomId ASC")
 	List<CaZoomEntity> findByDeleteFlag(@Param("deleteFlag") Integer deleteFlag);
 	
-	//登録(発行)日で検索
-	
 	
 	
 

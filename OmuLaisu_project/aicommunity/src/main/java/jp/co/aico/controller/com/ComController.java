@@ -95,7 +95,7 @@ public class ComController {
 	 * 登録処理
 	 */
 	@RequestMapping("/complete")
-	public String complete(ComForm Comform) throws ParseException {
+	public String complete(ComForm Comform,Model model) throws ParseException {
 		ReservationDateEntity ReservationDateEntity = new ReservationDateEntity();
 		TimesEntity timesEntity = new TimesEntity();
 		timesEntity.setTimesId(Comform.getTimesId());
@@ -118,15 +118,24 @@ public class ComController {
 			CaZoomEntity czEntity = caZoomEntity.get(0);
 			ReservationDateEntity.setCaZoomEntity(czEntity);
 			//削除フラグを変更
-			czEntity.setDeleteFlag(1);
-			caZoomRepository.save(czEntity);
+//			czEntity.setDeleteFlag(1);
+//			caZoomRepository.save(czEntity);
+			//zoomのURLを格納
+			model.addAttribute("zoom",czEntity);
 		}
-
+		
 		ReservationDateEntity.setDay(day);
-		ReservationDateEntity.setWeekday(Comform.getWeekday());
+		String weekday = Comform.getWeekday();
+		ReservationDateEntity.setWeekday(weekday);
 		ReservationDateEntity.setTimesEntity(timesEntity);
 		ReservationDateEntity.setUsersEntity(usersEntity);
+		//予約日時をDBに保存
 		ReservationDateEntity = rdRepository.save(ReservationDateEntity);
+		//予約情報を格納
+		dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		String showDay = dateFormat.format(day);
+		model.addAttribute("day",showDay);
+		model.addAttribute("weekday",weekday);
 		return "calendar/input";
 	}
 
