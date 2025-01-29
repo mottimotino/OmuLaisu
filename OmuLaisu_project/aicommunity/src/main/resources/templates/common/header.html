@@ -11,6 +11,15 @@
 		<form method="get" style="padding-right: 50px;" th:action="@{/top2}">
 			<input type="submit" value="ログアウト" class="LogoutBottun">
 		</form>
+	
+		</div>
+		<div th:if="${session.usersId == null}">
+		<form method="get" style="padding-right: 50px;" th:action="@{/regist/input}">
+			<input type="submit" value="新規会員登録" class="LogoutBottun">
+		</form>
+		<form method="get" style="padding-right: 50px;" th:action="@{/login/login}">
+			<input type="submit" value="ログイン" class="LogoutBottun">
+		</form>
 		</div>
 	</header>
 </body>

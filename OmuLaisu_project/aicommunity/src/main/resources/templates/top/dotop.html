@@ -1,26 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>ログイン後トップ</title>
-<link rel="stylesheet" th:href="@{/css/style.css}"> 
 <!--会話日程予約機能-->
 </head>
 <body>
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a th:href="@{/top/dotop}">Top</a></li>
-	<li><a th:href="@{/help/question}">Q&A</a></li>
-	<li><a th:href="@{/quiz/list}">クイズ</a></li>
-	<li><a th:href="@{/chat/view}">チャット</a></li>
 
-	 </ul>
-	</nav>
-	</header>
 
 	<!--ログイン後画面-->
 	<form method="post" th:action="@{user/calender/view}" >
@@ -39,14 +26,7 @@
 		<input type="submit" name="back" value="クイズに進む">
 	</form>
 	
-	<a th:href="@{/user/info}">マイページ</a>
 <!--	コントローラーも作成-->
-	
-			<!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
 	
 	
 

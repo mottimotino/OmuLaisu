@@ -587,6 +587,7 @@ input.btn--orange{
 	width: 150px;
 	height: 40px;
 	font-size: 25px;
+	border: none;
 }
 
 input.btn--orange:hover{
@@ -598,6 +599,19 @@ input.btn--orange:hover{
 input.btn--shadow{
 	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
 	box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+.passforgetinputform{
+	height: 100%;
+	font-size: 30px;
+	display: block;
+	text-align: left;
+	margin:30px auto;
+	background-color: aliceblue;
+	padding-left: 200px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	
 }
 
 

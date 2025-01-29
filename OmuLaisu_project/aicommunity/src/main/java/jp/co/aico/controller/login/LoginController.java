@@ -68,7 +68,7 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(path = "/doLogin", method = RequestMethod.GET)
+	@RequestMapping(path = "top/top2", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
