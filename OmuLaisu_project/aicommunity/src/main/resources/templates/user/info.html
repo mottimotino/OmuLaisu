@@ -55,7 +55,7 @@
 			<!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
-			  <p class="s1">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
+			  <p class="s1">正答率：<span style="background-color: yellow;"><span th:text="${kanjiCorrect}">nn.nn%</span>%</span></p>
 <!--			  <p class="s1">正答率：<span style="background-color: yellow;" th:text=${collectAnswerRate}>%</span></p>-->
 <!--			  ↑<p th:text=${}></p>-->
 <!--困ったときはflexbox!!!-->
@@ -102,7 +102,7 @@
 <!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart2" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
-			  <p class="s1">正答率：<span style="background-color: yellow;">nn.nn%</span></p>
+			  <p class="s1">正答率：<span style="background-color: yellow;"><span th:text="${businessCorrect}">nn.nn</span>%</span></span></p>
 			  <!--			  ↑<p th:text=${}></p>-->
 			</div>
 		</div>	

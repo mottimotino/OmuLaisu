@@ -26,7 +26,7 @@
 	
 	<form th:action="@{/quiz/question}" method="post" class="main">
 		
-		<p th:if="${session.userId}==null">
+		<p th:if="${session.usersId}==null">
 			<span>ログイン前のため、問題数は最大10問です。</span>
 		</p>
 		
