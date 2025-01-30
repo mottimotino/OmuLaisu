@@ -11,7 +11,12 @@
 		<li><a th:href="@{/top/dotop}">Top</a></li>
 		<li><a th:href="@{/help/question/answer/view}">Q&A</a></li>
 		<li><a th:href="@{/quiz/list}">Quiz</a></li>
-		<li><a th:href="@{/chat/view}">Chat</a></li>
+		<span th:if="${session.authority == 2}">
+			<li><a th:href="@{/chat/view}+'/'+${session.usersId}">Chat</a></li>
+		</span>
+		<span th:if="${session.authority == 3}">
+			<li><a th:href="@{/chat/view}+'/'+${session.usersId}+'/'+1">Chat</a></li>
+		</span>
 
 		 </ul>
 		 

@@ -59,6 +59,7 @@ public class LoginController {
 			session.setAttribute("usersId", users.getUsersId());
 			session.setAttribute("mail", mail);
 			session.setAttribute("password", password);
+			session.setAttribute("authority", users.getAuthority());
 			//ログイン後トップ画面に遷移
 			return "top/dotop";
 			//ログインに失敗
