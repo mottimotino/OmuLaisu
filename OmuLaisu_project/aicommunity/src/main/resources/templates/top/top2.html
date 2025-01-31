@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/BeforeLoginLayout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,39 +12,9 @@
 
 <head>
 	<meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/reset.css}">
-<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
-	<link rel="stylesheet" th:href="@{/css/企画1.css}">
-
-    <!-- <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css"> -->
 
 	<title>AICommunity</title>
 </head>
-
-
-
-<body>
-   
-    <!--ヘッダー -->
-	<header>
-	<h1 class="header02-logo" style="text-align:center">
-    AI Community
-	</h1>
-
-		<!--ナビ①-->
-        <nav class="nav">
-		 <ul class="menu">
-		<li><a th:href="@{calender/view}">予約</a></li>				
-    	<li><a th:href="@{help/guide/user}">Q&A</a></li>
-		<li><a th:href="@{quiz/list}">クイズ</a></li>
-		<li><a th:href="@{chat/view}">チャット</a></li>
-		</ul>
-    </nav>	
-</header>
-
-    
-
 
 <main>
 <!-- 画像 -->
@@ -153,17 +124,7 @@
 <!--                <div class="group"></div>-->
 <!--              </div>-->
 <!--            </div>-->
-  
-
-
-   
-
- <!--　フッター -->
- <footer>
-  <p>&copy; AI Community</p>
-  <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-
-</footer>
+ 
     
 
 </body>

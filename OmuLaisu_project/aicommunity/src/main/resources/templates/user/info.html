@@ -52,6 +52,10 @@
 
 		
 			<p style="font-size: 40px; margin-right: 300px;">漢字クイズ正答率</p>
+<!--			解きなおしボタン-->
+			<form th:action="@{/quiz/question}" method="post">
+				<input type="submit" value="Quiz revise">
+			</form>
 			<!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
@@ -99,6 +103,10 @@
 		
 		<div>
 			<p style="margin-top: 100px; font-size: 40px; margin-right: 300px;">ビジネスマナークイズ</p>
+			<!--解きなおしボタン-->
+			<form th:action="@{/quiz/question}" method="post">
+				<input type="submit" value="Quiz revise">
+			</form>
 <!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart2" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>

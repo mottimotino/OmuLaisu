@@ -21,6 +21,13 @@ header{
 	height: 40px;
 	width: 200px;
 	font-size: 20px;
+/*	text-align: center;*/
+	display: inline-flex;
+	margin-right: 20px;
+}
+
+headerkey{
+	display: flex;
 }
 
 nav{
