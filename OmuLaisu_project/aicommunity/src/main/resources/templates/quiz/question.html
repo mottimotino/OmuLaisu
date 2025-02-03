@@ -8,28 +8,18 @@
 </head>
 <body>
 
-<!--<header>-->
-<!--	<h1 class="header02-logo" >AI Community-->
-<!--	</h1>-->
-<!--		ナビ①-->
-<!--	<nav class="nav">-->
-<!--	 <ul class="menu">-->
-<!--	<li><a href="#">Top</a></li>-->
-<!--	<li><a href="#">Q&A</a></li>-->
-<!--	<li><a href="#">クイズ</a></li>-->
-<!--	<li><a href="#">チャット</a></li>-->
-<!--	 </ul>-->
-<!--	</nav>-->
-<!--	</header>-->
+
 	
 	<h2>問題</h2>
 	<!--ここに問題文-->	
 	<main class="quiz">
 		<span th:if="${session.usersId}!=null">
-			<span class="seitouritu">	
-				<span th:text="${total}"></span>問中
-				<span th:text="${collect}"></span>問正解 正答率
-				<span th:text="${collectAnswerRate}"></span>%
+			<span th:if="${session.review} == 0">
+				<span class="seitouritu">	
+					<span th:text="${total}"></span>問中
+					<span th:text="${collect}"></span>問正解 正答率
+					<span th:text="${collectAnswerRate}"></span>%
+				</span>
 			</span>
 		</span>
 	
@@ -45,18 +35,11 @@
 		<span th:if="${session.usersId}!=null">
 			<input type="hidden" name="usersId" th:value=${session.usersId}>
 		</span>
-		<!--テスト用-->
-		<span th:if="${session.usersId}==null">
-			<input type="hidden" name="usersId" value=1>
-		</span>
 	</form>	
 	</main>
 	
 <!--フッター -->
-<!--	<footer>-->
-<!--	    <p>&copy; AI Community</p>-->
-<!--	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>-->
-<!--	</footer>-->
+
 		
 <!--	<form method="post" th:action="@{quiz/explain}">-->
 <!--		<input type="button" name="one" value="選択肢1">-->
