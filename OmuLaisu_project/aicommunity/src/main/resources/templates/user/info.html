@@ -54,6 +54,7 @@
 			<p style="font-size: 40px; margin-right: 300px;">漢字クイズ正答率</p>
 <!--			解きなおしボタン-->
 			<form th:action="@{/quiz/review}" method="post">
+				<input type="hidden" name="categoryName" value="級">
 				<input type="submit" value="Quiz revise">
 				<span th:if="${session.usersId}!=null">
 					<input type="hidden" name="usersId" th:value=${session.usersId}>
