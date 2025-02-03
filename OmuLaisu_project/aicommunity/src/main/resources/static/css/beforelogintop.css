@@ -171,5 +171,23 @@ h2 {
 	width: 85%;
 }
 
+/*ログイン前トップ▼*/
+.toptitle{
+	font-size: 64px;
+	font-weight: 50px;
+	color: white;
+	text-align: left;
+	background-image: url(../topphoto.png);
+}
+
+.toptitle2{
+	font-size: 64px;
+	font-weight: 50px;
+	text-align: right;
+	background-image: url(../topphoto.png);
+}
+
+/*ログイン前トップ▲*/
+
 
 

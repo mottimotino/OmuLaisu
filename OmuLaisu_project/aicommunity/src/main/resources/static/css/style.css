@@ -656,6 +656,24 @@ input.btn--shadow{
 
 /*登録ボタン*/
 
+
+/*ログイン前トップ▼*/
+.toptitle{
+	font-size: 48px;
+	font-weight: 30px;
+	text-align: left;
+	background-image: url(../topphoto.png);
+}
+
+.toptitle2{
+	font-size: 48px;
+	font-weight: 30px;
+	text-align: right;
+	background-image: url(../topphoto.png);
+}
+
+/*ログイン前トップ▲*/
+
 /*ログイン後トップ▼*/
 .dotopbot{
 	background-color: black;
