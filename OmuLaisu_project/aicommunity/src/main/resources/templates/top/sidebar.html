@@ -16,13 +16,13 @@
 <!--	displayブロックをつけても余白をつけることができない-->
 	<div class="sidebarmenu">
 <!--	<a th:href="../calendar/view.html">メンター予約</a>-->
-	<a th:href="@{/calendar/view}">メンター予約</a><br>
+	<a th:href="@{/allViews}">メンター予約</a><br>
 	
 <!--	<a th:href="../quiz/list.html">クイズ</a>-->
 	<a th:href="@{/quiz/list}">クイズ</a><br>
 	
 <!--	<a th:href="@{/user/info}">マイページあとで変える</a>-->
-	<a th:href="@{/user/info}">マイページ</a><br>
+	<a th:href="@{/user/info}+'/'+${session.usersId}">マイページ</a><br>
 
 	</div>
 

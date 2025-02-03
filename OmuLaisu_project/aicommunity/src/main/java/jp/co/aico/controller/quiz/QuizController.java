@@ -1,12 +1,14 @@
 package jp.co.aico.controller.quiz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.aico.entity.AccuracyEntity;
+import jakarta.servlet.http.HttpSession;
 import jp.co.aico.entity.CategoriesEntity;
 import jp.co.aico.entity.ProgressEntity;
 import jp.co.aico.entity.QuizEntity;
@@ -35,7 +37,9 @@ public class QuizController {
 	 * @return quiz/list.html
 	 */
 	@RequestMapping(path = "/quiz/list", method = RequestMethod.GET)
-	public String quiz_list() {
+	public String quiz_list(HttpSession session) {
+		//解きなおし判定
+		session.setAttribute("review", 0);
 		return "quiz/list";
 	}
 
@@ -48,16 +52,8 @@ public class QuizController {
 	@RequestMapping(path = "/quiz/explain", method = RequestMethod.POST)
 	public String quiz_explain(Model model, QuizForm quizForm, UsersForm usersForm) {
 
-		//現在の問題のカテゴリーを取得
+		//現在の問題のIDをセット
 		QuizEntity quizEntity = quizRepository.getReferenceById(quizForm.getQueId());
-		int categoryId = quizEntity.getCategoriesEntity().getCategoryId();
-		CategoriesEntity categoriesEntity = new CategoriesEntity();
-		categoriesEntity.setCategoryId(categoryId);
-
-		//正答率を保存するEntity
-		ProgressEntity progressEntity = new ProgressEntity();
-
-		progressEntity.setCategoriesEntity(categoriesEntity);
 
 		/* 正解判定 */
 		int queId = quizForm.getQueId();
@@ -65,16 +61,22 @@ public class QuizController {
 		int answer = quizRepository.getReferenceById(queId).getAnswer();
 
 		//ユーザーIDを保存
-		if(usersForm.getUsersId() != null) {
+		if (usersForm.getUsersId() != null) {
 			UsersEntity usersEntity = new UsersEntity();
 			usersEntity.setUsersId(usersForm.getUsersId());
+			//クイズの進捗を保存するEntity
+			ProgressEntity progressEntity = new ProgressEntity();
+			//カテゴリーを検索
+			int categoryId = quizEntity.getCategoriesEntity().getCategoryId();
+			CategoriesEntity categoriesEntity = new CategoriesEntity();
+			categoriesEntity.setCategoryId(categoryId);
+			//カテゴリーをセット
+			progressEntity.setCategoriesEntity(categoriesEntity);
 			progressEntity.setUsersEntity(usersEntity);
 			//問題IDを保存
-	//		quizEntity = new QuizEntity();
-	//		quizEntity.setQueId(quizForm.getQueId());
 			progressEntity.setQuizEntity(quizEntity);
-			
-			//正解or不正解を保存(書き換え予定)
+
+			//正解or不正解を保存
 			if (quizForm.getAnswer() == answer) {
 				//間違いフラグに正解(0)を入れる
 				progressEntity.setMissFlag(0);
@@ -84,50 +86,50 @@ public class QuizController {
 			}
 			//問題の情報をテーブルに保存
 			progressRepository.save(progressEntity);
-	
+
 			/** 正解率を更新 */
 			//カテゴリーとユーザーで正答率を取得
-			AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
-					usersEntity);
-			//正答率が存在しない(初回の)場合ユーザーIDとカテゴリーで登録する
-			if (accuracyEntity == null) {
-				accuracyEntity = new AccuracyEntity();
-				accuracyEntity.setCategoriesEntity(categoriesEntity);
-				accuracyEntity.setUsersEntity(usersEntity);
-			}
-			//正答率をエンティティに保存
-			//ユーザーの問題を解いた数を数える
-			int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity);
-			//正解数を数える
-			int collect = progressRepository
-					.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
-			//正答率をスコープに格納,正答率テーブルに保存
-			double collectAnswerRate = 0;
-			if (total != 0) {
-				collectAnswerRate = (double) collect / total * 100;
-			}
-			accuracyEntity.setProgress(collectAnswerRate);
-			accuracyRepository.save(accuracyEntity);
+			//			AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
+			//					usersEntity);
+			//			//正答率が存在しない(初回の)場合ユーザーIDとカテゴリーで登録する
+			//			if (accuracyEntity == null) {
+			//				accuracyEntity = new AccuracyEntity();
+			//				accuracyEntity.setCategoriesEntity(categoriesEntity);
+			//				accuracyEntity.setUsersEntity(usersEntity);
+			//			}
+			//			//正答率をエンティティに保存
+			//			//ユーザーの問題を解いた数を数える
+			//			int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity);
+			//			//正解数を数える
+			//			int collect = progressRepository
+			//					.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
+			//			//正答率をスコープに格納,正答率テーブルに保存
+			//			double collectAnswerRate = 0;
+			//			if (total != 0) {
+			//				collectAnswerRate = (double) collect / total * 100;
+			//			}
+			//			accuracyEntity.setProgress(collectAnswerRate);
+			//			accuracyRepository.save(accuracyEntity);
 		}
 		//quiz/questionと同じ処理、htmlで解説を表示する
-		
+
 		model.addAttribute("question", quizEntity);
-		//正答率に応じて解答を表示する
-		switch(answer) {
+		//正答に応じて解答を表示する
+		switch (answer) {
 		case 1:
-			model.addAttribute("answer",quizEntity.getChoise1());
+			model.addAttribute("answer", quizEntity.getChoise1());
 			break;
 		case 2:
-			model.addAttribute("answer",quizEntity.getChoise2());
+			model.addAttribute("answer", quizEntity.getChoise2());
 			break;
 		case 3:
-			model.addAttribute("answer",quizEntity.getChoise3());
+			model.addAttribute("answer", quizEntity.getChoise3());
 			break;
 		case 4:
-			model.addAttribute("answer",quizEntity.getChoise4());
+			model.addAttribute("answer", quizEntity.getChoise4());
 			break;
 		}
-		
+
 		return "quiz/explain";
 	}
 
@@ -174,12 +176,12 @@ public class QuizController {
 					.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
 			model.addAttribute("collect", collect);
 			//現在の正答率情報(カテゴリー検索)を変数に入れる
-			AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
-					usersEntity);
-			if (accuracyEntity == null) {
+			Double collectAnswerRate = (double) collect / total * 100;
+			collectAnswerRate = (double) Math.round(collectAnswerRate * 10) / 10;
+			if (total == 0) {
 				model.addAttribute("collectAnswerRate", 0);
 			} else {
-				model.addAttribute("collectAnswerRate", accuracyEntity.getProgress());
+				model.addAttribute("collectAnswerRate", collectAnswerRate);
 			}
 		}
 		//オブジェクト生成 
@@ -199,11 +201,69 @@ public class QuizController {
 			//問題があるとき問題をスコープに格納
 			if (quizEntity != null) {
 				model.addAttribute("question", quizEntity);
+				//出題画面に遷移
 				return "quiz/question";
 			}
 		}
 		//問題がないときカテゴリー選択画面に遷移する
 		return "redirect:/quiz/list";
+
+	}
+
+	@RequestMapping(path = "/quiz/review", method = RequestMethod.POST)
+	public String quiz_review(Model model, QuizForm quizForm, HttpSession session) {
+		//解きなおし判定
+		session.setAttribute("review", 1);
+
+		//オブジェクト生成
+		CategoriesEntity categoriesEntity = new CategoriesEntity();
+		//categoryName(漢字[級]またはビジネスマナー
+		categoriesEntity.setCategoryName(quizForm.getCategoryName());
+		//ユーザー毎の進捗を検索する為のエンティティ
+		UsersEntity usersEntity = new UsersEntity();
+		//セッションに保存されているユーザーIDをセット
+		Integer usersId = (Integer) session.getAttribute("usersId");
+		usersEntity.setUsersId(usersId);
+
+		//オブジェクト生成 
+		QuizEntity quizEntity = new QuizEntity();
+		//IDを取得
+		int queId = quizForm.getQueId();
+		//問題数をsizeに入れる
+		int size = quizRepository.findAllCount();
+		//問題が入る/問題がなくなるまで処理を続ける
+		//問題をquizEntityに入れる
+		while (queId < size) {
+			//次の問題
+			queId += 1;
+			quizEntity.setQueId(queId);
+			List<ProgressEntity> progressList = progressRepository
+					.findByQuizEntityAndUsersEntityAndCategoriesEntityContaining(quizEntity, usersEntity,
+							quizForm.getCategoryName());
+
+			//不正解の割合が多い問題を出す
+			int collect = 0;
+			int inCollect = 0;
+			//正解、不正解の数を数える
+			for (int i = 0; i < progressList.size(); i++) {
+				//正解フラグを取得
+				int missFlag = progressList.get(i).getMissFlag();
+				if (missFlag == 0) {
+					collect += 1;
+				} else if (missFlag == 1) {
+					inCollect += 1;
+				}
+			}
+			//不正解が多い、かつ問題があるとき問題をスコープに格納
+			if (collect <= inCollect && progressList.size() != 0) {
+				model.addAttribute("question", quizRepository.getReferenceById(queId));
+				//出題画面に遷移
+				return "quiz/question";
+			}
+
+		}
+		//問題がないとき会員詳細表示画面(マイページ)に遷移する
+		return "redirect:/user/info/" + usersId;
 
 	}
 

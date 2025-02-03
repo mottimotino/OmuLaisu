@@ -31,36 +31,30 @@
 		</p>
 		
 		<div class="quiz">
-		<h2 style="text-align: center; font-size: 40px;">漢字クイズ</h2>
-		<form th:action="@{/quiz/question}" method="post" class="main">
-		<label><input type="radio" name="categoryType" value="読み"/>読み</label>
-		<label><input type="radio" name="categoryType" value="書き"/>書き</label><br>
-		
-		<input type="submit" name="categoryName" value="初級" class="kanzi">
-		<input type="submit" name="categoryName" value="中級" class="kanzi">
-		<input type="submit" name="categoryName" value="上級" class="kanzi">
-		
-		<div class="quiz">
-		<h2 style="text-align: center; font-size: 40px;">ビジネスマナークイズ</h2>
-		<input type="submit" name="categoryName" value="挨拶編" class="business">
-		<input type="submit" name="categoryName" value="メール編" class="business">
-		<input type="submit" name="categoryName" value="公の場編" class="business">
+			<h2 style="text-align: center; font-size: 40px;">漢字クイズ</h2>
+			<label><input type="radio" name="categoryType" value="読み"/>読み</label>
+			<label><input type="radio" name="categoryType" value="書き"/>書き</label><br>
+			
+			<input type="submit" name="categoryName" value="初級" class="kanzi">
+			<input type="submit" name="categoryName" value="中級" class="kanzi">
+			<input type="submit" name="categoryName" value="上級" class="kanzi">
+			
+			<div class="quiz">
+			<h2 style="text-align: center; font-size: 40px;">ビジネスマナークイズ</h2>
+			<input type="submit" name="categoryName" value="挨拶編" class="business">
+			<input type="submit" name="categoryName" value="メール編" class="business">
+			<input type="submit" name="categoryName" value="公の場編" class="business">
+			</div>
+			<!--valueはログインしたusersIdに変更する-->
+			<span th:if="${session.usersId}!=null">
+				<input type="hidden" name="usersId" th:value=${session.usersId}>
+			</span>
+			<!--クイズの1問目から表示する-->
+			<input type="hidden" name="queId" value="0">
 		</div>
-		<!--valueはログインしたusersIdに変更する-->
-		<span th:if="${session.usersId}!=null">
-			<input type="hidden" name="usersId" th:value=${session.usersId}>
-		</span>
-		<!--テスト用-->
-		<span th:if="${session.usersId}==null">
-			<input type="hidden" name="usersId" value=1>
-		</span>
-		<!--クイズの1問目から表示する-->
-		
-		<input type="hidden" name="queId" value="0">
-		</span>
-		</form>
+	</form>
 	
-	</section>
+<!--	</section>-->
 	
 			<!--フッター -->
 <!--	<footer>-->
