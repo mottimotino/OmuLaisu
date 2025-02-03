@@ -4,44 +4,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/style.css}"/> 
 <!--会話日程予約機能-->
 </head>
 <body>
-<!--	<header>-->
-<!--	<h1 class="header02-logo" >AI Community-->
-<!--	</h1>-->
-<!--		ナビ①-->
-<!--	<nav class="nav">-->
-<!--	 <ul class="menu">-->
-<!--	<li><a href="#">Top</a></li>-->
-<!--	<li><a href="#">Q&A</a></li>-->
-<!--	<li><a href="#">クイズ</a></li>-->
-<!--	<li><a href="#">チャット</a></li>-->
-<!--	 </ul>-->
-<!--	</nav>-->
-<!--	</header>-->
 
-
-	
+	<div class = "quizlistform">
 	<form th:action="@{/quiz/question}" method="post" class="main">
 		
+<!--		設計書だと三問まで-->
 		<p th:if="${session.usersId}==null">
 			<span>ログイン前のため、問題数は最大10問です。</span>
 		</p>
 		
 		<div class="quiz">
-		<h2 style="text-align: center; font-size: 40px;">漢字クイズ</h2>
+		<h2 class="quizjunre">漢字クイズ</h2>
 		<form th:action="@{/quiz/question}" method="post" class="main">
-		<label><input type="radio" name="categoryType" value="読み"/>読み</label>
-		<label><input type="radio" name="categoryType" value="書き"/>書き</label><br>
+		<div class="yomikaki">
+		<label><input type="radio" name="categoryType" value="読み" class="yomikaki"/>読み</label>
+		<label><input type="radio" name="categoryType" value="書き" class="yomikaki"/>書き</label><br>
+		</div>
 		
 		<input type="submit" name="categoryName" value="初級" class="kanzi">
 		<input type="submit" name="categoryName" value="中級" class="kanzi">
 		<input type="submit" name="categoryName" value="上級" class="kanzi">
 		
 		<div class="quiz">
-		<h2 style="text-align: center; font-size: 40px;">ビジネスマナークイズ</h2>
+		<h2 class="quizjunre">ビジネスマナークイズ</h2>
 		<input type="submit" name="categoryName" value="挨拶編" class="business">
 		<input type="submit" name="categoryName" value="メール編" class="business">
 		<input type="submit" name="categoryName" value="公の場編" class="business">
@@ -58,7 +46,9 @@
 		
 		<input type="hidden" name="queId" value="0">
 		</span>
-		</form>
+	</form>
+		
+	</div>	
 	
 	</section>
 	

@@ -44,7 +44,7 @@ public class LoginController {
 		 * @param session メールアドレス,パスワードを保存
 		 * @return top内のdotop.html/login内のlogin.html
 		 */
-	@RequestMapping(path = "top/dotop", method = RequestMethod.POST)
+	@RequestMapping(path = "/top/dotop", method = RequestMethod.POST)
 	public String doLogin(UsersForm form, HttpSession session) {
 		//入力されたメールアドレスを受け取る
 		String mail = form.getMail();
@@ -69,10 +69,10 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(path = "top/top2", method = RequestMethod.GET)
+	@RequestMapping(path = "/top/top2", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "top/top2";
 	}
 	//マネジメントコントローラーに記載
 	//	//パスワード再設定画面への遷移

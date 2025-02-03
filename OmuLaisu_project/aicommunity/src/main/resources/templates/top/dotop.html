@@ -9,22 +9,107 @@
 <body>
 
 
+<!--<h1>ようこそ、</h1><h1 th:text="${user.name}">Username</h1><h1>さん</h1>-->
+
 	<!--ログイン後画面-->
-	<form method="post" th:action="@{user/calender/view}" >
-		<input type="submit" name="back" value="日程選択">
-	</form>
+<!--	日程表示-->
+<div class="calendar-wrap">
+		  <table class="calendar">
+		    <thead>
+		      <tr>
+		        <th class="sun">Sun</th>
+		        <th>Mon</th>
+		        <th>Tue</th>
+		        <th>Wed</th>
+		        <th>Thu</th>
+		        <th>Fri</th>
+		        <th class="sat">Sat</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+				
+		        <td class="mute sun">29</td>
+		        <td class="mute">30</td>
+		        <td><a th:href="@{/check/2024-12-1/月}" class="a">1</a></td>
+		        <td><a th:href="@{/check/2024-12-2/火}" class="a">2</a></td>
+		        <td><a th:href="@{/check/2024-12-3/水}" class="a">3</a></td>
+		        <td><a th:href="@{/check/2024-12-4/木}" class="a">4</a></td>
+		        <td class="sat">5</td>
+<!--		        <td>2</td>-->
+<!--		        <td>3</td>-->
+<!--		        <td>4</td>-->
+<!--		        <td>5</td>-->
+		        
+		      </tr>
+		      <tr>
+		        <td class="sun">6</td>
+		        <td class="off"><a th:href="@{/check/2024-12-7/月}" class="a">7</a></td>
+		        <td><a th:href="@{/check/2024-12-8/火}" class="a">8</a></td>
+		        <td><a th:href="@{/check/2024-12-9/水}" class="a">9</a></td>
+		        <td><a th:href="@{/check/2024-12-10/木}" class="a">10</a></td>
+		        <td><a th:href="@{/check/2024-12-11/金}" class="a">11</a></td>
+		        <td class="sat">12</td>
+<!--		        <td><a href="/calendar/check" class="a">8</a></td>-->
+<!--		        <td>9</td>-->
+<!--		        <td>10</td>-->
+<!--		        <td>11</td>-->
+<!--		        <td>12</td>-->
+		      </tr>
+		      <tr>
+		        <td class="sun today">13</td>
+		        <td class="off"><a th:href="@{/check/2024-12-14/月}" class="a">14</a></td>
+		        <td><a th:href="@{/check/2024-12-15/火}" class="a">15</a></td>
+		        <td><a th:href="@{/check/2024-12-16/水}" class="a">16</a></td>
+		        <td><a th:href="@{/check/2024-12-17/木}" class="a">17</a></td>
+		        <td><a th:href="@{/check/2024-12-18/金}" class="a">18</a></td>
+<!--		        <td>16</td>-->
+<!--		        <td>17</td>-->
+<!--		        <td>18</td>-->
+		        <td class="sat">19</td>
+		      </tr>
+		      <tr>
+		        <td class="sun">20</td>
+		        <td class="off"><a th:href="@{/check/2024-12-21/月}" class="a">21</a></td>
+		        <td><a th:href="@{/check/2024-12-22/火}" class="a">22</a></td>
+		        <td><a th:href="@{/check/2024-12-23/水}" class="a">23</a></td>
+		        <td><a th:href="@{/check/2024-12-24/木}" class="a">24</a></td>
+		        <td><a th:href="@{/check/2024-12-25/金}" class="a">25</a></td>
+<!--		        <td>23</td>-->
+<!--		        <td>24</td>-->
+<!--		        <td>25</td>-->
+		        <td class="sat">26</td>
+		      </tr>
+		      <tr>
+		        <td class="sun">27</td>
+		        <td class="off"><a th:href="@{/check/2024-12-28/月}" class="a">28</a></td>
+		        <td><a th:href="@{/check/2024-12-29/火}" class="a">29</a></td>
+		        <td><a th:href="@{/check/2024-12-30/水}" class="a">30</a></td>
+		        <td><a th:href="@{/check/2024-12-31/木}" class="a">31</a></td>
+		        <td class="mute">1</td>
+		        <td class="mute sat">2</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+
+
 	
-	<form method="post" th:action="@{user/chat/view}" >
-		<input type="submit" name="back" value="チャット">
-	</form>
 	
-	<form method="post" th:action="@{user/calender/view}" >
-		<input type="submit" name="back" value="日程選択">
-	</form>
-	
-	<form method="post" th:action="@{user/quiz/list}" >
-		<input type="submit" name="back" value="クイズに進む">
-	</form>
+<!--	ボタン-->
+	<div class="dotopform">
+		<form method="post" th:action="@{/allViews}">
+			<input type="submit" name="back" value="日程選択" class="dotopbot">
+		</form>
+		
+		<form method="post" th:action="@{/chat/view/{user.usersId}}">
+			<input type="submit" name="back" value="チャット" class="dotopbot">
+		</form>
+		
+		<form method="get" th:action="@{/quiz/list}" >
+			<input type="submit" name="back" value="クイズ" class="dotopbot">
+		</form>
+	</div>
 	
 <!--	コントローラーも作成-->
 	

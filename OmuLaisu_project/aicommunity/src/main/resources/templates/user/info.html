@@ -35,7 +35,7 @@
 
 
 	<section class="sectioninfo">
-		<div class="clear">
+		<div class="clear infofont">
 		<p th:text="${user.name}" style="font-size: 40px;">Username</p>
 <!--		<p style="font-size: 40px;" th:text="${user.name}">Username</p>-->
 		<div>
@@ -74,6 +74,7 @@
 		const ctx = document.getElementById('myChart')
 	
 	//パーセンテージと色の値を設定
+	//const percentage =  document.getElementById('myChart')//グラフのパーセンテージ(50%)
 	const percentage = 50 //グラフのパーセンテージ(50%)
 	const backgroundColor = 'rgb(255, 0, 0)' //グラフの色(赤)
 	const backgroundColor2 = 'rgb(0, 0, 255)' //グラフの色(青)
@@ -120,7 +121,9 @@
 		const ctxB = document.getElementById('myChart2')
 	
 	//この2つの値を設定するだけ!!
-	const percentageB = 50 //グラフのパーセンテージ(50%)
+	//↓の文章にして%通りに動くかを検証-->
+	//const percentageB = document.getElementById('myChart2') //グラフのパーセンテージ
+	const percentageB = 50 //グラフのパーセンテージ
 	const backgroundColorB = 'rgb(255, 0, 0)' //グラフの色(赤)
 	const backgroundColorB2 = 'rgb(0, 0, 255)' //グラフの色(黒)
 	

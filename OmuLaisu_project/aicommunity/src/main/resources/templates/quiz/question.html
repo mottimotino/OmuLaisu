@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/style.css}"/> 
 <!--クイズ出題画面-->
 </head>
 <body>
 
-<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
-	 </ul>
-	</nav>
-	</header>
-
-	<br>
+<!--<header>-->
+<!--	<h1 class="header02-logo" >AI Community-->
+<!--	</h1>-->
+<!--		ナビ①-->
+<!--	<nav class="nav">-->
+<!--	 <ul class="menu">-->
+<!--	<li><a href="#">Top</a></li>-->
+<!--	<li><a href="#">Q&A</a></li>-->
+<!--	<li><a href="#">クイズ</a></li>-->
+<!--	<li><a href="#">チャット</a></li>-->
+<!--	 </ul>-->
+<!--	</nav>-->
+<!--	</header>-->
 	
 	<h2>問題</h2>
 	<!--ここに問題文-->	
@@ -55,15 +53,16 @@
 	</main>
 	
 <!--フッター -->
-	<footer>
-	    <p>&copy; AI Community</p>
-	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>
-	</footer>
+<!--	<footer>-->
+<!--	    <p>&copy; AI Community</p>-->
+<!--	    <p><a href="mailto:info@yourwebsite.com" style="color: #fff;">お問い合わせ</a></p>-->
+<!--	</footer>-->
 		
 <!--	<form method="post" th:action="@{quiz/explain}">-->
 <!--		<input type="button" name="one" value="選択肢1">-->
 <!--		<input type="button" name="two" value="選択肢2">-->
 <!--		<input type="button" name="three" value="選択肢3">-->
 <!--		<input type="button" name="four" value="選択肢4">-->
-<!--	</form>--></body>
+<!--	</form>-->
+</body>
 </html>
