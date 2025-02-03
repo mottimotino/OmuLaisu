@@ -7,19 +7,21 @@
 <body>
 	<header th:fragment="layout-header">
 		<h1 class="header02-logo" >AI Community</h1>
+		<div>
 		<div th:if="${session.usersId != null}">
 		<form method="get" style="padding-right: 50px;" th:action="@{/top2}">
 			<input type="submit" value="ログアウト" class="LogoutBottun">
 		</form>
 	
 		</div>
-		<div th:if="${session.usersId == null}">
-		<form method="get" style="padding-right: 50px;" th:action="@{/regist/input}">
-			<input type="submit" value="新規会員登録" class="LogoutBottun">
+		<div th:if="${session.usersId == null}" class="headerkey">
+		<form method="get" th:action="@{/regist/input}" class="LogoutBottun">
+			<input type="submit" value="新規会員登録"class="LogoutBottun">
 		</form>
-		<form method="get" style="padding-right: 50px;" th:action="@{/login/login}">
+		<form method="get" th:action="@{/login/login}" class="LogoutBottun">
 			<input type="submit" value="ログイン" class="LogoutBottun">
 		</form>
+		</div>
 		</div>
 	</header>
 </body>
