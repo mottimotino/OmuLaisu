@@ -53,8 +53,13 @@
 		
 			<p style="font-size: 40px; margin-right: 300px;">漢字クイズ正答率</p>
 <!--			解きなおしボタン-->
-			<form th:action="@{/quiz/question}" method="post">
+			<form th:action="@{/quiz/review}" method="post">
 				<input type="submit" value="Quiz revise">
+				<span th:if="${session.usersId}!=null">
+					<input type="hidden" name="usersId" th:value=${session.usersId}>
+				</span>
+				<!--クイズの1問目から表示する-->
+				<input type="hidden" name="queId" value="0">
 			</form>
 			<!--			ここに円グラフ-->
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
@@ -104,7 +109,12 @@
 		<div>
 			<p style="margin-top: 100px; font-size: 40px; margin-right: 300px;">ビジネスマナークイズ</p>
 			<!--解きなおしボタン-->
-			<form th:action="@{/quiz/question}" method="post">
+			<form th:action="@{/quiz/review}" method="post">
+				<span th:if="${session.usersId}!=null">
+					<input type="hidden" name="usersId" th:value=${session.usersId}>
+				</span>
+				<!--クイズの1問目から表示する-->
+				<input type="hidden" name="queId" value="0">
 				<input type="submit" value="Quiz revise">
 			</form>
 <!--			ここに円グラフ-->
