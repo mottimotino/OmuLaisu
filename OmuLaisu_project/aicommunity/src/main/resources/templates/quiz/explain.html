@@ -8,23 +8,11 @@
 <!--会話日程予約機能-->
 </head>
 <body>
-<!--	<header>-->
-<!--	<h1 class="header02-logo" >AI Community-->
-<!--	</h1>-->
-<!--		ナビ①-->
-<!--	<nav class="nav">-->
-<!--	 <ul class="menu">-->
-<!--	<li><a href="#">Top</a></li>-->
-<!--	<li><a href="#">Q&A</a></li>-->
-<!--	<li><a href="#">クイズ</a></li>-->
-<!--	<li><a href="#">チャット</a></li>-->
-<!--	 </ul>-->
-<!--	</nav>-->
-<!--	</header>-->
 
-	<br>
+	<h2 class="answer">解答:<span th:text="${answer}"></span></h2>
 	
-	<h2>解答:<span th:text="${answer}"></span></h2>
+	<form method="get" th:action="@{/quiz/list}">
+	<input type="submit" value="×">
 	<!--ここに解答を入力-->
 	<span>意味:</span><span th:text="${question.mean}"></span><br>
 	<span th:text="${question.explanation}"></span><br>
@@ -36,8 +24,7 @@
 			<input type="hidden" name="usersId" value=1>
 		</form>
 		
-		<form method="get" th:action="@{/quiz/list}">
-		<input type="submit" value="選択画面へ戻る">
+
 	</form>
 	</span>
 	<span th:if="${session.review}==1">

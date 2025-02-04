@@ -173,6 +173,8 @@ h2 {
 
 /*ログイン前トップ▼*/
 .toptitle{
+	width: 40%;
+	height: 100%;
 	font-size: 64px;
 	font-weight: 50px;
 	color: white;
@@ -181,6 +183,8 @@ h2 {
 }
 
 .toptitle2{
+	width: 40%;
+	height: 100%;
 	font-size: 64px;
 	font-weight: 50px;
 	text-align: right;
