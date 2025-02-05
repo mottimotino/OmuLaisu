@@ -9,26 +9,30 @@
 </head>
 <body>
 
-	<section>
-	<p>この日程で予約しますか？</p>
-	
-	<!--ここに入力した日程を表示-->
-	<form method="post" th:action="@{/complete}">
+	<section class="ReserveLastCheck">
+
 		<span th:text="${day}"></span><br>
 		<span th:text="${timesId.startTimes}"></span>
 	    -<span th:text="${timesId.endTimes}"></span><br>
+	    
+	    <p>この日程で予約しますか？</p><br>
+	
+	<!--ここに入力した日程を表示-->
+	<div class=" displayflexRes">
+	<form method="post" th:action="@{/complete}">
 
-		<input type="submit" name="yes" value="予約する">
 		<input type="hidden" name="timesId" th:value="${timesId.timesId}">
 		<input type="hidden" name="day" th:value="${day}">
 		<input type="hidden" name="weekday" th:value="${weekDay}">
 <!--		<input type="hidden" name="usersId" th:value="${session.usersId}">-->
 		<input type="hidden" name="usersId" value="1">
+		<input type="submit" name="yes" value="予約する" class="registbottun">
 
 	</form>
 	<form method="post" th:action="@{/allViews}">
-		<input type="submit" name="no" value="戻る">
+		<input type="submit" name="no" value="戻る" class="registbottun">
 	</form>
+	</div>
 	
 	</section>
 	

@@ -6,29 +6,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>予約可能な時間帯を選択してください:</p>
-	<form method="get" th:action="@{/timesCheck}">
+
+	<form method="get" th:action="@{/timesCheck}" class="TimeReserve">
+		<p>予約時間を選択してください。</p>
 		<div th:each="time:${times}">
-        	<input type="radio" name="timesId" th:value="${time.timesId}"><span th:text="${time.startTimes}+'-'+${time.endTimes}"></span>
+        	<input type="radio" name="timesId"><span th:text="${time.startTimes}+'-'+${time.endTimes}"></span>
 		</div>
         
-		
-<!--    <ul>-->
-<!--      <li>-->
-<!--        <label><input type="radio" name="timesId" value="1" required> 10:00 - 11:00</label>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <label><input type="radio" name="timesId" value="2"> 11:00 - 12:00</label>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <label><input type="radio" name="timesId" value="3"> 13:00 - 14:00</label>-->
-<!--      </li>-->
-<!--    </ul>-->
-    <input type="hidden" name="day" th:value="${day}">
-    <input type="hidden" name="weekday" th:value="${weekDay}">
-    <input type="submit" name="next" value="確認">
 
-</form>
+		<div class="TimeCheckBottun">
+	    <input type="hidden" name="day" th:value="${day}">
+	    <input type="hidden" name="weekday" th:value="${weekDay}">
+	    <input type="submit" name="next" th:value="次へ" class="TimeReserveBottun">
+		</div>
+
+	</form>
 
 </body>
 </html>

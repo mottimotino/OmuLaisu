@@ -10,15 +10,13 @@
 	
 	
 <!--	th:ifつけてログイン前とログイン後で遷移先を変える-->
-<div>
-	<div th:if="${session.userId != null}">
+	<div th:if="${session.usersId != null}">
 	<a th:href="@{/top/dotop}">→</a>
 	</div>
 	
-	<div th:if="${session.userId == null}">
+	<div th:if="${session.usersId == null}">
 	<a th:href="@{/top2}">→</a>
-	</div>
-</div>	
+	</div>	
 	<section>
 	<!--	サイドバー-->
 	<h2 style="font-size: 50px;">Menu</h2>
