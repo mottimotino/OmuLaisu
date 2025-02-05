@@ -22,7 +22,7 @@
 		<!--画像の中の文-->
 		<!--	formタグにする？-->
 
-		<form th:action="@{regist/check}">
+		<form th:action="@{/user/regist/check}">
 <!--		ユーザー名-->			
 			<label for="floatingInput">ユーザー名</label><br>
 			<input type="text" class="form-control" id="floatingInput" placeholder="Username"><br>
@@ -35,9 +35,13 @@
 			<label for="floatingPassword">パスワード</label><br>
 			<input type="password" class="form-control" id="floatingPassword" placeholder="Password"><br>
 
-			<button type="submit" th:formaction="@{regist/check}" class="registbottun">登録</button>
+			<button type="submit" th:formaction="@{/user/regist/check}" class="registbottun">登録</button>
 
-			<button type="submit" th:formaction="@{/top/top}" class="registbottun">戻る</button>
+
+		</form>
+		
+		<form  th:formaction="@{/top2}">
+		<input type="submit" class="registbottun">戻る</input>		
 		</form>
 
 		</div>
