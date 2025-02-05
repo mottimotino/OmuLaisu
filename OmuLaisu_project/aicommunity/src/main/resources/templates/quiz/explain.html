@@ -14,14 +14,23 @@
 		<div class="answer">
 		<p>解答:<span th:text="${answer}"></span></p>
 
+		<span th:if="${session.review}==0">
+			<form method="get" th:action="@{/quiz/list}" class="quizquit">
+			<input type="submit" value="×" class="quitbottun">
+			</form>
+		</span>
+		<span th:if="${session.review}==1">
+			<form method="get" th:action="@{/user/info}+'/'+${session.usersId}" class="quizquit">
+			<input type="submit" value="×" class="quitbottun">
+			</form>
+		</span>
 		
-		<form method="get" th:action="@{/quiz/list}" class="quizquit">
-		<input type="submit" value="×" class="quitbottun">
-		</form>
+		
 		</div>
 		
 		
 		<!--ここに解答を入力-->
+		<span th:if="${session.review}==0">
 			<form method="post" th:action="@{/quiz/question}">
 				<div class="quizanswer">
 				<span>意味:</span><span th:text="${question.mean}"></span><br>
@@ -37,21 +46,27 @@
 				<input type="hidden" name="usersId" value=1>
 				</div>
 			</form>
-			
-	
-
 		</span>
+		
 		<span th:if="${session.review}==1">
 			<form method="post" th:action="@{/quiz/review}">
-				<input type="submit" name="next" value="次の問題へ">
+				<div class="quizanswer">
+				<span>意味:</span><span th:text="${question.mean}"></span><br>
+				<span th:text="${question.explanation}"></span><br>
+				<span th:if="${session.review}==0">
+				</span>
+				</div>
+
+				<div class="quiznext">
+				<input type="submit" name="next" value="次へ→" class="quiznext">
 				<input type="hidden" name="queId" th:value="${question.queId}">
 				<input type="hidden" name="categoryName" th:value="${question.categoriesEntity.categoryName}" />
 				<input type="hidden" name="usersId" value=1>
-			</form>
-			<form method="get" th:action="@{/user/info}+'/'+${session.usersId}">
-				<input type="submit" value="マイページへ戻る">
+				</div>
 			</form>
 		</span>
+			
+		
 	</div>
 
 </body>
