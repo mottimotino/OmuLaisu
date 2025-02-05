@@ -1,5 +1,7 @@
 package jp.co.aico.controller.registration;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +46,11 @@ public class RegistationController {
 		UsersEntity Entity = new UsersEntity();
 		Entity.setName(form.getName());
 		Entity.setPassword(form.getPassword());
+		Entity.setMail(form.getMail());
+		Entity.setAuthority(2);
+		Entity.setDeleteFlag(0);
+		Date date = new Date();
+		Entity.setInsertDate(date);
 		Entity = repository.save(Entity);
 		session.setAttribute("userId", Entity.getUsersId());
 		return "/user/regist/complete";
