@@ -26,11 +26,11 @@
 <!--	実行時に解除<p th:text="${users.name}"></p>-->
 	
 	<div class="displayflex">
-	<form th:formaction="@{/complete}">
+	<form th:formaction="@{/user/regist/complete}">
 		<input type="submit" th:value="登録" class="registbottun">
 	</form>
 	
-	<form th:formaction="@{/input}">
+	<form th:formaction="@{/user/regist/input}">
 		<input type="submit" th:value="戻る" class="registbottun">
 	</form>	
 	</div>
