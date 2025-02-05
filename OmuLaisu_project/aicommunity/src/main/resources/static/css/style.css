@@ -460,6 +460,7 @@ button.a{
 background-color: lightgoldenrodyellow;
 width: 1000px;
 text-align: center;
+margin: auto;
 font-size: 30px;
 padding-top: 20px;
 display: flex;
