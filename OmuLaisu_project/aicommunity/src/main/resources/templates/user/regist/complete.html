@@ -4,28 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <title>AIcommunity 会員登録</title>
-<link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body class="test">
-	<header>
-	<h1 class="header02-logo" >AI Community
-	</h1>
-		<!--ナビ①-->
-	<nav class="nav">
-	 <ul class="menu">
-	<li><a href="#">Top</a></li>
-	<li><a href="#">Q&A</a></li>
-	<li><a href="#">クイズ</a></li>
-	<li><a href="#">チャット</a></li>
-	 </ul>
-	</nav>
-	</header>
 	
 	<div class="registcomp">
 	<p>会員登録が完了しました。<br>ログイン画面に戻ります。</p>
 	
 	<form th:action="@{/login}">
-<!--	<form action="../../login/login.html">-->
 		<input type="submit" value="ログイン画面へ" style="margin-top: 30px;">
 	</form>
 	</div>
