@@ -15,22 +15,25 @@
 	
 	<address>
 	<p class="registp">メールアドレス</p><br>
-<!--	実行時に解除<p th:text="${users.mail}"></p>-->
+	<p th:text="${Users.mail}">username</p>
 	
 	</address>
 	
 	<p class="registp">パスワード</p><br>
-<!--	実行時に解除<p th:text="${users.password}"></p>-->
+	<p th:text="${Users.password}">username</p>
 	
 	<p class="registp">ユーザー名</p><br>
-<!--	実行時に解除<p th:text="${users.name}"></p>-->
+	<p th:text="${Users.name}">username</p>
 	
 	<div class="displayflex">
-	<form th:formaction="@{/user/regist/complete}">
+	<form method="post" th:action="@{/user/regist/complete}">
+		<input type="hidden"  name="name" value="登録">
+		<input type="hidden"  name="mail" value="登録">
+		<input type="hidden"  name="password" value="登録">
 		<input type="submit" th:value="登録" class="registbottun">
 	</form>
 	
-	<form th:formaction="@{/user/regist/input}">
+	<form th:action="@{/user/regist/input}">
 		<input type="submit" th:value="戻る" class="registbottun">
 	</form>	
 	</div>
