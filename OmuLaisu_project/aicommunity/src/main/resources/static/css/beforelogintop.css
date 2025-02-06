@@ -26,6 +26,7 @@ h2 {
   position: relative;
   width: 1170px;
   margin: 0 auto;
+  text-align: center;
   color: #444;
   font-size: 14px;
   font-weight: 300;
@@ -46,6 +47,10 @@ h2 {
 
 .hold {
   height: 80px;
+}
+
+.slider{
+	text-align: center;
 }
 
 
@@ -179,8 +184,9 @@ h2 {
 	width: 900px;
 	height: 250px;
 	padding: 0;
-	margin: 160px;
-	margin-right: 5px;
+	margin: 100px auto;
+/*	margin-right: 5px;*/
+margin-left: 70px;
 	background-color: lightskyblue;
 	border-radius: 30%;
 	
