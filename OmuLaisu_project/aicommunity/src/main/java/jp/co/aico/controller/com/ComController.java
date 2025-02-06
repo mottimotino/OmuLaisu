@@ -147,9 +147,9 @@ public class ComController {
 	 * @return チャット画面
 	 */
 	@RequestMapping("/chat/view/{usersId}")
-	public String chat(@PathVariable Integer usersId, Model model) {
+	public String chat(@PathVariable String usersId, Model model) {
 		UsersEntity usersEntity = new UsersEntity();
-		usersEntity.setUsersId(usersId);
+		usersEntity.setUsersId(Integer.parseInt(usersId));
 		//メッセージを格納
 		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
 		//一般ユーザーが送ったメッセージの処理
@@ -166,7 +166,7 @@ public class ComController {
 
 		model.addAttribute("messages", chatEntity);
 		//ユーザーの情報をmodelに格納
-		model.addAttribute("user", usersRepository.getReferenceById(usersId));
+		model.addAttribute("user", usersRepository.getReferenceById(Integer.parseInt(usersId)));
 
 		return "chat/view";
 	}
