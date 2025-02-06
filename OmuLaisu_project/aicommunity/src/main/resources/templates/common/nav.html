@@ -5,29 +5,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav class="doHanbarger" th:fragment="layout-nav">
+	<nav class="DoHanbarger" th:fragment="layout-nav">
 <!--		<div class="doHanbarger">-->
-		<ul class="menu">
-		<li><a th:href="@{/top/dotop}">Top</a></li>
-		<li><p>Q&A</p></li>
-<!--		<li><a th:href="@{/help/question/answer/view}">Q&A</a></li>-->
-<!--ログインをしている場合、表示→Quiz Chat-->
-		<div th:if="${session.usersId != null}">
-		<li><a th:href="@{/quiz/list}">Quiz</a></li>
-		
-		<span th:if="${session.authority == 2}">
-			<li><a th:href="@{/chat/view}+'/'+${session.usersId}">Chat</a></li>
-		</span>
-		<span th:if="${session.authority == 3}">
-			<li><a th:href="@{/chat/view}+'/'+${session.usersId}+'/'+1">Chat</a></li>
-		</span>
-		</div>
-		
-		<li><a th:href="@{/help/guide/user}">How to use</a></li>
-		
-		<li><p>language</p></li>
+		<ul class="NavMenu">
+			<span th:if="${session.usersId != null}">
+			<li><a th:href="@{/top/dotop}">Top</a></li>
+			</span>
+			
+			<span th:if="${session.usersId == null}">
+			<li><a th:href="@{/top}">Top</a></li>
+			</span>
+			
+			<li><p>Q&A</p></li>
+	<!--		<li><a th:href="@{/help/question/answer/view}">Q&A</a></li>-->
+	<!--ログインをしている場合、Quiz Chatを表示-->
+			<div th:if="${session.usersId != null}">
+			<li><a th:href="@{/quiz/list}">Quiz</a></li>
+			
+			<span th:if="${session.authority == 2}">
+				<li><a th:href="@{/chat/view}+'/'+${session.usersId}">Chat</a></li>
+			</span>
+			<span th:if="${session.authority == 3}">
+				<li><a th:href="@{/chat/view}+'/'+${session.usersId}+'/'+1">Chat</a></li>
+			</span>
+			</div>
+			
+			<li><a th:href="@{/help/guide/user}">How to use</a></li>
+			
+			<li><p>language</p></li>
 
-		 </ul>
+		</ul>
 		 
 		<a th:href="@{/top/sidebar}" class="hanbargermenu">＝</a>
 <!--		</div>-->

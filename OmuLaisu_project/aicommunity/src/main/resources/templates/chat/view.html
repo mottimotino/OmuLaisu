@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
-	<link rel="stylesheet" th:href="@{/css/chat.css}"/>
+    <title>Insert title here</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  	<script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
+
 </head>
 
 <body>

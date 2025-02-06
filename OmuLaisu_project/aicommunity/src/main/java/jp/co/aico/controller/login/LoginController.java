@@ -24,7 +24,7 @@ public class LoginController {
 	@Autowired
 	UsersRepository usersRepository;
 
-	@RequestMapping(path = "/top2", method = RequestMethod.GET)
+	@RequestMapping(path = "/top", method = RequestMethod.GET)
 	public String top2() {
 		return "top/top2";
 	}
@@ -69,7 +69,7 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(path = "/top/top2", method = RequestMethod.GET)
+	@RequestMapping(path = "/top/top", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "top/top2";
