@@ -10,7 +10,7 @@
 	<form method="get" th:action="@{/timesCheck}" class="TimeReserve">
 		<p>予約時間を選択してください。</p>
 		<div th:each="time:${times}">
-        	<input type="radio" name="timesId" th:value="${time.timesId}"><span th:text="${time.startTimes}+'-'+${time.endTimes}"></span>
+        	<input type="radio" name="timesId" th:value="${time.timesId}" class="RadioReserve"><span th:text="${time.startTimes}+'-'+${time.endTimes}"></span>
 		</div>
         
 

@@ -12,15 +12,15 @@
 	<section class="complete">
 	<p>予約が完了しました。</p>
 	
-	<p target="_blank" style="font-size: 20px;" >予約日時:</p>
-	<p target="_blank" style="font-size: 20px;" ><span th:text="${day}"></span>(<span th:text="${weekday}"></span>)</p>
+	<p target="_blank" >予約日時:</p>
+	<p target="_blank" ><span th:text="${day}"></span>(<span th:text="${weekday}"></span>)</p>
 
-	<!--ここにリンクを貼る(今仮で牧瀬Tのリンク貼ってます)-->
-	<p target="_blank" style="font-size: 20px;" >発行リンク:</p>
-	<p target="_blank" style="font-size: 20px;" th:text="${zoom.url}"></p>
+	<!--ここにリンクを貼る-->
+	<p target="_blank">発行リンク:</p>
+	<p target="_blank" th:text="${zoom.url}"></p>
 	
-	<form method="post" th:action="@{top/dotop}" style="margin-top: 50px;">
-		<input type="button" name="top" value="トップ画面に戻る">
+	<form method="post" th:action="@{/top/dotop}" style="margin-top: 50px;">
+		<input type="submit" name="top" value="トップ画面に戻る" class="TimeReserveBottun">
 	</form>
 	</section>
 

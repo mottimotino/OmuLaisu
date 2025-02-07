@@ -9,6 +9,7 @@
 <body class="sidebar">
 	
 	
+	<div class="sidebarfont">
 <!--	th:ifつけてログイン前とログイン後で遷移先を変える-->
 	<div th:if="${session.usersId != null}">
 	<a th:href="@{/top/dotop}">→</a>
@@ -23,15 +24,23 @@
 	
 <!--	displayブロックをつけても余白をつけることができない-->
 	<div class="sidebarmenu">
-<!--	<a th:href="../calendar/view.html">メンター予約</a>-->
+		
+	<div th:if="${session.usersId == null}">		
+	<a th:href="@{/user/regist/input}">会員登録</a><br>
+	</div>		
+		
+
+	<div th:if="${session.usersId != null}">	
+	<span th:if="${session.authority == 2}">
+	<a th:href="@{/chat/view}+'/'+${session.usersId}">チャット</a><br>
+				
 	<a th:href="@{/allViews}">メンター予約</a><br>
 	
-<!--	<a th:href="../quiz/list.html">クイズ</a>-->
 	<a th:href="@{/quiz/list}">クイズ</a><br>
 	
-<!--	<a th:href="@{/user/info}">マイページあとで変える</a>-->
 	<a th:href="@{/user/info}+'/'+${session.usersId}">マイページ</a><br>
 
+	</div>
 	</div>
 
 	

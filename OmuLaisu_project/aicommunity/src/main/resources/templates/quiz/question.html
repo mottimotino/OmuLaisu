@@ -11,7 +11,7 @@
 
 	
 	<h2>問題</h2>
-	<!--ここに問題文-->	
+	<!--ここに正答率-->	
 	<main class="quiz">
 		<span th:if="${session.usersId}!=null">
 			<span th:if="${session.review} == 0">
@@ -23,8 +23,10 @@
 			</span>
 		</span>
 	
-	<h2>問題文</h2>
-	<span th:text="${question.question}"></span><br>
+	<!--ここに問題文-->	
+<!--	<p>問題文</p>-->
+<div>
+	<span th:text="${question.question}" class="questionline"></span><br>
 	<form th:action="@{/quiz/explain}" method="post" class="mondai">
 		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 class="quizbtn one"/>
 		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 class="quizbtn two"/>
@@ -33,9 +35,13 @@
 		
 		<input type="hidden" name="queId" th:value="${question.queId}">
 		<span th:if="${session.usersId}!=null">
+			
 			<input type="hidden" name="usersId" th:value=${session.usersId}>
-		</span>
-	</form>	
+	</span>
+	</form>
+	
+</div>
+			
 	</main>
 	
 <!--フッター -->

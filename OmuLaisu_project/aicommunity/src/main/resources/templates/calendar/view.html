@@ -12,7 +12,9 @@
 <!--	カレンダーの表部分-->
 	<h2>日程予約</h2>
  	<form th:action="@{/timesCheck}" method="get">		
-	<p>予約したい日程を選択してください。(黄色：今日の日付　灰色：予約できない日時)</p>
+	<p class="TimeReserve">予約したい日程を選択してください。<br>(黄色：今日の日付　灰色：予約できない日時)</p>
+		
+		<div class="MarginCalender">
 		<div class="calendar-wrap">
 		  <table class="calendar">
 		    <thead>
@@ -91,6 +93,7 @@
 		      </tr>
 		    </tbody>
 		  </table>
+		</div>
 		</div>
 
     
