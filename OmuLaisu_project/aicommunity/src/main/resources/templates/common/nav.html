@@ -9,7 +9,7 @@
 <!--		<div class="doHanbarger">-->
 		<ul class="NavMenu">
 			<span th:if="${session.usersId != null}">
-			<li><a th:href="@{/top/dotop}">Top</a></li>
+			<li><a th:href="@{/top/dotop/back}">Top</a></li>
 			</span>
 			
 			<span th:if="${session.usersId == null}">
@@ -22,12 +22,9 @@
 			<div th:if="${session.usersId != null}">
 			<li><a th:href="@{/quiz/list}">Quiz</a></li>
 			
-			<span th:if="${session.authority == 2}">
-				<li><a th:href="@{/chat/view}+'/'+${session.usersId}">Chat</a></li>
-			</span>
-			<span th:if="${session.authority == 3}">
-				<li><a th:href="@{/chat/view}+'/'+${session.usersId}+'/'+1">Chat</a></li>
-			</span>
+			
+			<li><a th:href="@{/chat/select}">Chat</a></li>
+			
 			</div>
 			
 			<li><a th:href="@{/help/guide/user}">How to use</a></li>

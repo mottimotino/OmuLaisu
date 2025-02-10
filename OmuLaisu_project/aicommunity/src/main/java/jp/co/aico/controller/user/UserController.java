@@ -32,7 +32,7 @@ public class UserController {
 	}
 	
 	//Topに戻る(命名どうする？)
-	@RequestMapping(path = "/top/dotop", method = RequestMethod.GET)
+	@RequestMapping(path = "/top/dotop/back", method = RequestMethod.GET)
 	public String loginAfter() {
 		return "top/dotop";
 		

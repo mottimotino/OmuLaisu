@@ -102,20 +102,10 @@
 			<input type="submit" name="back" value="日程選択" class="dotopbot">
 		</form>
 		
-<!--		ユーザーログイン-->
-		<div th:if="${session.authority == 2}">
-		<form method="post" th:action="@{/chat/view}+'/'+${session.usersId}">
+
+		<form method="get" th:action="@{/chat/select}">
 			<input type="submit" name="back" value="チャット" class="dotopbot">
 		</form>
-		</div>
-		
-<!--		メンターログイン-->
-		<div th:if="${session.authority == 3}">
-<!--		<form method="post" th:action="@{/chat/view}+'/'+${session.usersId}+'/'+${}">-->
-		<form method="post" th:action="@{/chat/view/{loginUsersId}/{usersId}}">
-			<input type="submit" name="back" value="チャット" class="dotopbot">
-		</form>
-		</div>
 		
 		<form method="get" th:action="@{/quiz/list}" >
 			<input type="submit" name="back" value="クイズ" class="dotopbot">

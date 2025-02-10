@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
 import jp.co.aico.entity.CaZoomEntity;
 import jp.co.aico.entity.ChatEntity;
 import jp.co.aico.entity.ReservationDateEntity;
@@ -95,7 +96,7 @@ public class ComController {
 	 * 登録処理
 	 */
 	@RequestMapping("/complete")
-	public String complete(ComForm Comform,Model model) throws ParseException {
+	public String complete(ComForm Comform, Model model) throws ParseException {
 		ReservationDateEntity ReservationDateEntity = new ReservationDateEntity();
 		TimesEntity timesEntity = new TimesEntity();
 		timesEntity.setTimesId(Comform.getTimesId());
@@ -107,23 +108,23 @@ public class ComController {
 		//日付をDate型に変換
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date day = dateFormat.parse(Comform.getDay());
-		
+
 		//zoomURL
 		//削除されていない,一番古いレコードを取得
 		List<CaZoomEntity> caZoomEntity = caZoomRepository.findByDeleteFlag(0);
-		if(caZoomEntity.size() == 0) {
+		if (caZoomEntity.size() == 0) {
 			//URLがありません
 			return "redirect:/allViews";
 		} else {
 			CaZoomEntity czEntity = caZoomEntity.get(0);
 			ReservationDateEntity.setCaZoomEntity(czEntity);
 			//削除フラグを変更
-//			czEntity.setDeleteFlag(1);
-//			caZoomRepository.save(czEntity);
+			//			czEntity.setDeleteFlag(1);
+			//			caZoomRepository.save(czEntity);
 			//zoomのURLを格納
-			model.addAttribute("zoom",czEntity);
+			model.addAttribute("zoom", czEntity);
 		}
-		
+
 		ReservationDateEntity.setDay(day);
 		String weekday = Comform.getWeekday();
 		ReservationDateEntity.setWeekday(weekday);
@@ -134,8 +135,8 @@ public class ComController {
 		//予約情報を格納
 		dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		String showDay = dateFormat.format(day);
-		model.addAttribute("day",showDay);
-		model.addAttribute("weekday",weekday);
+		model.addAttribute("day", showDay);
+		model.addAttribute("weekday", weekday);
 		return "calendar/input";
 	}
 
@@ -146,29 +147,49 @@ public class ComController {
 	 * @param model メッセージ,ログイン中のユーザー
 	 * @return チャット画面
 	 */
-	@RequestMapping("/chat/view/{usersId}")
-	public String chat(@PathVariable String usersId, Model model) {
-		UsersEntity usersEntity = new UsersEntity();
-		usersEntity.setUsersId(Integer.parseInt(usersId));
-		//メッセージを格納
-		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
-		//一般ユーザーが送ったメッセージの処理
-		//送られたユーザーIDをnullにしない為に仮で0を入れる
-		for (int i = 0; i < chatEntity.size(); i++) {
-			ChatEntity chat = chatEntity.get(i);
-			if (chat.getReceUsersEntity() == null) {
-				UsersEntity users = new UsersEntity();
-				users.setUsersId(0);
-				chat.setReceUsersEntity(users);
-				chatEntity.set(i, chat);
-			}
+	//	@RequestMapping("/chat/view/{usersId}")
+	//	public String chat(@PathVariable String usersId, Model model) {
+	//		UsersEntity usersEntity = new UsersEntity();
+	//		usersEntity.setUsersId(Integer.parseInt(usersId));
+	//		//メッセージを格納
+	//		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
+	//		//一般ユーザーが送ったメッセージの処理
+	//		//送られたユーザーIDをnullにしない為に仮で0を入れる
+	//		for (int i = 0; i < chatEntity.size(); i++) {
+	//			ChatEntity chat = chatEntity.get(i);
+	//			if (chat.getReceUsersEntity() == null) {
+	//				UsersEntity users = new UsersEntity();
+	//				users.setUsersId(0);
+	//				chat.setReceUsersEntity(users);
+	//				chatEntity.set(i, chat);
+	//			}
+	//		}
+	//
+	//		model.addAttribute("messages", chatEntity);
+	//		//ユーザーの情報をmodelに格納
+	//		model.addAttribute("user", usersRepository.getReferenceById(Integer.parseInt(usersId)));
+	//
+	//		return "chat/view";
+	//	}
+
+	@RequestMapping(path = "/chat/select", method = RequestMethod.GET)
+	public String chat(Model model, HttpSession session) {
+		//自身のユーザー情報を取得
+		int usersId = (int) session.getAttribute("usersId");
+		UsersEntity user = usersRepository.getReferenceById(usersId);
+		//権限を変数に代入
+		int authority = user.getAuthority();
+		//自身の権限が一般ユーザーの場合メンター、メンターなら一般ユーザーを検索する
+		if (authority == 2) {
+			authority = 3;
+		} else if (authority == 3) {
+			authority = 2;
 		}
-
-		model.addAttribute("messages", chatEntity);
-		//ユーザーの情報をmodelに格納
-		model.addAttribute("user", usersRepository.getReferenceById(Integer.parseInt(usersId)));
-
-		return "chat/view";
+		//権限で検索し、modelに格納
+		model.addAttribute("users", usersRepository.findByAuthority(authority));
+		//自身の権限をmodelに格納
+		model.addAttribute("loginAuthority", user.getAuthority());
+		return "chat/select";
 	}
 
 	/**
@@ -177,8 +198,7 @@ public class ComController {
 	 * @return chat/view.html
 	 */
 	@RequestMapping(path = "/chat/send", method = RequestMethod.POST)
-	public String chat_send(ChatForm form) {
-
+	public String chat_send(ChatForm form, Model model) {
 		ChatEntity chatEntity = new ChatEntity();
 		//送るユーザーのid
 		UsersEntity sendUser = new UsersEntity();
@@ -186,27 +206,17 @@ public class ComController {
 		chatEntity.setSendUsersEntity(sendUser);
 		//受け取るユーザーのid
 		UsersEntity raceUser = new UsersEntity();
-		if (form.getReceUser() != null) {
-			raceUser.setUsersId(form.getReceUser());
-			chatEntity.setReceUsersEntity(raceUser);
-		}
+
+		raceUser.setUsersId(form.getReceUser());
+		chatEntity.setReceUsersEntity(raceUser);
 
 		//メッセージの内容
 		chatEntity.setMessage(form.getMessage());
 		//chatテーブルにデータ登録
 		chatRepository.save(chatEntity);
-		
-		//ユーザーの権限によってreturnを変更
-		sendUser = usersRepository.getReferenceById(form.getSendUser());
-		//メンター
-		if(sendUser.getAuthority() == 3) {
-			return "redirect:/chat/view/" + form.getSendUser() + "/" + form.getReceUser();
-		//一般ユーザー
-		} else if(sendUser.getAuthority() == 2) {
-			return "redirect:/chat/view/" + form.getSendUser();
-		} else {
-			return "";
-		}
+
+		return "redirect:/chat/view";
+
 	}
 
 	/**
@@ -217,14 +227,22 @@ public class ComController {
 	 * @param model メッセージ,ログイン中のユーザー
 	 * @return チャット画面
 	 */
-	@RequestMapping("/chat/view/{loginUsersId}/{usersId}")
-	public String chat(@PathVariable String loginUsersId,@PathVariable String usersId, Model model) {
+	@RequestMapping("/chat/view")
+	public String chatView(ComForm comForm, Model model, HttpSession session) {
+		//ログイン中のusersIdを取得
+		int loginUsersId = (int) session.getAttribute("usersId");
+		//選択したusersIdを取得
+		Integer usersId = comForm.getUsersId();
+		if(usersId == null) {
+			UsersEntity usersEntity = (UsersEntity)session.getAttribute("receUser");
+			usersId = usersEntity.getUsersId();
+		}
 		//ログイン中のusersIdをエンティティに保存
 		UsersEntity loginUsersEntity = new UsersEntity();
-		loginUsersEntity.setUsersId(Integer.parseInt(loginUsersId));
+		loginUsersEntity.setUsersId(loginUsersId);
 		//チャット相手のusersIdをエンティティに保存
 		UsersEntity usersEntity = new UsersEntity();
-		usersEntity.setUsersId(Integer.parseInt(usersId));
+		usersEntity.setUsersId(usersId);
 		//メッセージを格納
 		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
 		//受け取ったユーザーIDをnullにしない為に仮で0を入れる
@@ -237,12 +255,12 @@ public class ComController {
 				chatEntity.set(i, chat);
 			}
 		}
-		model.addAttribute("messages",chatEntity);
+		model.addAttribute("messages", chatEntity);
 		//ユーザーの情報をmodelに格納
-		model.addAttribute("user",usersRepository.getReferenceById(Integer.parseInt(loginUsersId)));
+		model.addAttribute("loginUser", usersRepository.getReferenceById(loginUsersId));
 		//相手のユーザー情報をmodelに格納
-		model.addAttribute("receUser",usersRepository.getReferenceById(Integer.parseInt(usersId)));
-		
+		session.setAttribute("receUser", usersRepository.getReferenceById(usersId));
+
 		return "chat/view";
 	}
 
