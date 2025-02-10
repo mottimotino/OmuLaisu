@@ -17,21 +17,112 @@ h2 {
  padding-top: 100px;
 }
 
+/*ログイン前トップ見出し▼*/
+.TopTitleBack{
+	background-color: lightcyan;
+	height: 700px;
+	width: auto;
+	
+    display: flex;
+    flex-direction: column;
+}
 
+/*.title{*/
+
+    
+/*}*/
+
+
+
+.TopTitle{
+	width: 60%;
+	height: 150px;
+	font-size: 120px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	background-image: url(../topphoto.png);
+	margin: 80px 0 170px 20px;
+	
+	animation: slideIn 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.TopTitle2{
+	width: 60%;
+	height: 150px;
+	font-size: 120px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	background-image: url(../topphoto.png);
+	margin-left: 600px;
+	
+	animation: slideIn 2s cubic-bezier(0.1, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(180px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+  }
+  40%,100% {
+    opacity: 1;
+  }
+}
+
+/*ログイン前トップ見出し▲*/
 
 /* トップ画面 */
 
+.QuizSection{
+	
+	background-image: url(../image/HeaderFooter.jpeg);
+	height: 1300px;
+	position: relative;
+
+}
+
+.HeadingQuiz{
+	font-size: 70px;
+	background-color: lightcyan;
+	padding: 10px 50px;
+	position: relative;
+	right: 450px;
+/*    bottom: 10px;*/
+
+/*	top: 50px;*/
+}
+
+.QuizDescription{
+	background-color: white;
+	border: 8px solid lightcyan;
+	font-size: 40px;
+	padding: 5px;
+}
 
 .container {
-  position: relative;
-  width: 1170px;
+  width: auto;
   margin: 0 auto;
   text-align: center;
-  color: #444;
+/*  color: #444;*/
   font-size: 14px;
   font-weight: 300;
   font-family: Roboto, 'Open Sans', Arial, sans-serif;
   overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container .slidercontent{	
+  	position: relative;
+	display: block;
+	margin: 20px auto;
+	
+	
 }
 
 .section .container {
@@ -59,9 +150,9 @@ h2 {
 
 .call span {
   display: inline;
-  border: 1px solid white;
+/*  border: 1px solid white;*/
   padding: 8px 13px;
-  font-size: 20px;
+  font-size: 40px;
   transition:  0.15s linear;
 }
 
@@ -78,28 +169,29 @@ h2 {
   padding: 0;
   margin: 0;
   position: relative;
+  font-size: 25px;
 }
 
 .col.jlptn3 {
-  width: 23%;
+  width: 280px;
   height: 300px;
-  margin: 0 1%;
+  margin: 0 10px;
   background-color: lightpink;
   border-radius: 20%;
 }
 
 .col.jlptn2 {
-  width: 23%;
+  width: 280px;
   height: 300px;
-  margin: 0 1%;
+  margin: 0 10px;
   background-color: lightsalmon;
   border-radius: 20%;
 }
 
 .col.jlptn1 {
-  width: 23%;
+  width: 280px;
   height: 300px;
-  margin: 0 1%;
+  margin: 0 10px;
   background-color: lightcoral;
   border-radius: 20%;
 }
@@ -186,18 +278,14 @@ h2 {
 	padding: 0;
 	margin: 100px auto;
 /*	margin-right: 5px;*/
-margin-left: 70px;
+/*margin-left: 70px;*/
 	background-color: lightskyblue;
 	border-radius: 30%;
 	
 }
 
-.QuizSection{
-/*	margin: 30px;*/
 
-	margin-left:300px;
-	
-}
+
 
 
 /*top画像↓*/
@@ -206,35 +294,7 @@ margin-left: 70px;
 	width: 85%;
 }
 
-/*ログイン前トップタイトル▼*/
-.title{
-	display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-}
 
-.toptitle{
-	width: 80%;
-	height: 100%;
-	font-size: 64px;
-	font-weight: 50px;
-	color: white;
-	text-align: left;
-	background-image: url(../topphoto.png);
-}
-
-.toptitle2{
-	width: 80%;
-	height: 100%;
-	font-size: 64px;
-	font-weight: 50px;
-	color: white;
-	text-align: right;
-	background-image: url(../topphoto.png);
-}
-
-/*ログイン前トップタイトル▲*/
 
 /*ログイン前サイドバー▼*/
 nav{

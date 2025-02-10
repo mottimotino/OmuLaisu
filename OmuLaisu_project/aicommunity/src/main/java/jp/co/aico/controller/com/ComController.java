@@ -218,13 +218,13 @@ public class ComController {
 	 * @return チャット画面
 	 */
 	@RequestMapping("/chat/view/{loginUsersId}/{usersId}")
-	public String chat(@PathVariable Integer loginUsersId,@PathVariable Integer usersId, Model model) {
+	public String chat(@PathVariable String loginUsersId,@PathVariable String usersId, Model model) {
 		//ログイン中のusersIdをエンティティに保存
 		UsersEntity loginUsersEntity = new UsersEntity();
-		loginUsersEntity.setUsersId(loginUsersId);
+		loginUsersEntity.setUsersId(Integer.parseInt(loginUsersId));
 		//チャット相手のusersIdをエンティティに保存
 		UsersEntity usersEntity = new UsersEntity();
-		usersEntity.setUsersId(usersId);
+		usersEntity.setUsersId(Integer.parseInt(usersId));
 		//メッセージを格納
 		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
 		//受け取ったユーザーIDをnullにしない為に仮で0を入れる
@@ -239,9 +239,9 @@ public class ComController {
 		}
 		model.addAttribute("messages",chatEntity);
 		//ユーザーの情報をmodelに格納
-		model.addAttribute("user",usersRepository.getReferenceById(loginUsersId));
+		model.addAttribute("user",usersRepository.getReferenceById(Integer.parseInt(loginUsersId)));
 		//相手のユーザー情報をmodelに格納
-		model.addAttribute("receUser",usersRepository.getReferenceById(usersId));
+		model.addAttribute("receUser",usersRepository.getReferenceById(Integer.parseInt(usersId)));
 		
 		return "chat/view";
 	}
