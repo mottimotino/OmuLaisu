@@ -27,6 +27,7 @@
 	
 	<div class="displayflex">
 	<form method="post" th:action="@{/user/regist/complete}">
+		<input type="hidden" name="authority" th:value="${Users.authority}" />
 		<input type="hidden" name="name" th:value="${Users.name}" />
 		<input type="hidden" name="mail" th:value="${Users.mail}" />
 		<input type="hidden" name="password" th:value="${Users.password}" />

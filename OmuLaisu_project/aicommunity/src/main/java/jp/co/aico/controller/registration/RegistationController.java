@@ -47,7 +47,7 @@ public class RegistationController {
 		Entity.setName(form.getName());
 		Entity.setPassword(form.getPassword());
 		Entity.setMail(form.getMail());
-		Entity.setAuthority(2);
+		Entity.setAuthority(form.getAuthority());
 		Entity.setDeleteFlag(0);
 		Date date = new Date();
 		Entity.setInsertDate(date);
