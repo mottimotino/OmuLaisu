@@ -21,6 +21,8 @@ public class UsersForm {
 	
 	private Date insertDate;
 	
+	private Integer authority;
+	
 //	▼パスワード再設定用変数
 	private String input;
 	
@@ -73,6 +75,16 @@ public class UsersForm {
 
 	public void setInsertDate(Date insertDate) {
 		this.insertDate = insertDate;
+	}
+	
+	
+
+	public Integer getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(Integer authority) {
+		this.authority = authority;
 	}
 
 	public String getInput() {
