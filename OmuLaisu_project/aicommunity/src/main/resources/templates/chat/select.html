@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-	<p>チャットする
+	<p class="ChatUserChoice">チャットする
 		<span th:if="${loginAuthority} == 2">
 			メンター
 		</span>
@@ -16,9 +16,9 @@
 		</span>
 		を選んでください</p>
 	
-	<form th:action="@{/chat/view}">
+	<form th:action="@{/chat/view}" class="ChatUserChoiceForm">
 		<div th:each="user:${users}">
-			<button type="submit" name="usersId" th:value="${user.usersId}">
+			<button type="submit" name="usersId" th:value="${user.usersId}" class="ChatUserChoiceBottun">
 				<span th:if="${loginAuthority} == 2">メンターの</span>
 				<span th:if="${loginAuthority} == 3">ユーザーの</span>
 				<span th:text="${user.name}"></span>

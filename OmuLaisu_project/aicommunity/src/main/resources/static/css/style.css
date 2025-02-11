@@ -3,7 +3,7 @@
 
 
 
-/*▼サイドバー*/
+/*▼サイドバー ナビゲーションバー右の＝をクリック*/
 .sidebar{
 	background-color: lightcyan;
 	width: 100%;
@@ -502,9 +502,11 @@ display: flex;
 	position: absolute;
 	top: 300px;
 /*	bottom: ;*/
-	left: 325px;
+	left: 250px;
 /*	right: ;*/
-	z-index: 2;;
+	z-index: 2;
+	padding: 10px 0;
+	
 }
 
 .registp{

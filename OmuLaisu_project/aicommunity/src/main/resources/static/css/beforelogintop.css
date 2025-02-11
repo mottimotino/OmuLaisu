@@ -41,7 +41,7 @@ h2 {
 	font-weight: bold;
 	color: white;
 	text-align: center;
-	background-image: url(../topphoto.png);
+	background-image: url(../image/BeforeLoginTopPhoto.png);
 	margin: 80px 0 170px 20px;
 	
 	animation: slideIn 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -54,7 +54,7 @@ h2 {
 	font-weight: bold;
 	color: white;
 	text-align: center;
-	background-image: url(../topphoto.png);
+	background-image: url(../image/BeforeLoginTopPhoto.png);
 	margin-left: 600px;
 	
 	animation: slideIn 2s cubic-bezier(0.1, 1, 0.5, 1) forwards;
@@ -83,6 +83,7 @@ h2 {
 	height: 1300px;
 	position: relative;
 
+
 }
 
 .HeadingQuiz{
@@ -91,9 +92,6 @@ h2 {
 	padding: 10px 50px;
 	position: relative;
 	right: 450px;
-/*    bottom: 10px;*/
-
-/*	top: 50px;*/
 }
 
 .QuizDescription{
@@ -102,6 +100,76 @@ h2 {
 	font-size: 40px;
 	padding: 5px;
 }
+
+
+.ComSection{
+	background-image: url(../image/HeaderFooter.jpeg);
+	height: 1300px;
+	position: relative;
+}
+
+
+.HeadingCom{
+	width: auto;
+	height: 80%;
+	font-size: 70px;
+	background-color: pink;
+	padding: 10px 50px;
+	position: relative;
+	right: 280px;
+	margin: 10px;
+}
+
+
+
+.ComDescription{
+	width: 70%;
+	background-color: white;
+	border: 8px solid pink;
+	font-size: 40px;
+	padding: 5px;
+	text-align: center;
+	
+}
+
+.ChatSection{
+	background-image: url(../image/HeaderFooter.jpeg);
+	height: 1300px;
+	position: relative;
+
+}
+
+.ChatBasecolar{
+/*	text-align: center;*/
+	background-color: lemonchiffon;
+	width: 1000px;
+	height: 600px;
+	margin: 50px auto 100px 250px ;
+}
+
+
+.HeadingChat{
+	font-size: 70px;
+	background-color: lemonchiffon;
+	padding: 10px 50px;
+	position: relative;
+	right: 450px;
+	margin: 10px;
+}
+
+
+
+.ChatDescription{
+	width: 70%;
+	background-color: white;
+	border: 8px solid lemonchiffon;
+	font-size: 40px;
+	padding: 5px;
+	text-align: center;
+	margin:auto;
+	
+}
+
 
 .container {
   width: auto;

@@ -22,6 +22,15 @@
 		<!--	formタグにする？-->
 
 		<form method="post" th:action="@{/user/regist/check}" >
+			
+<!--		ユーザーかメンターのどちらを登録するかを選択-->
+			<div>
+				<p>どちらで登録しますか？</p>
+			<label><input type="radio" name="authority" value="ユーザー" class="yomikaki"/>ユーザー</label>
+			<label><input type="radio" name="authority" value="メンター" class="yomikaki"/>メンター</label><br>
+			</div> 
+			
+			
 <!--		ユーザー名-->			
 			<label for="floatingInput">ユーザー名</label><br>
 			<input type="text" name="name" class="form-control" id="floatingInput" placeholder="Username"><br>

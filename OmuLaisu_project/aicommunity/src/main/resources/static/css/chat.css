@@ -136,3 +136,23 @@
 }
 
 /* ここまで追記 */
+
+
+/*チャットユーザー選択画面*/
+.ChatUserChoice{
+	text-align: center;
+	font-size: 48px;
+}
+
+.ChatUserChoiceForm{
+	text-align: center;
+	width: auto;
+}
+
+.ChatUserChoiceBottun{
+	width: auto;
+	height: 100px;
+	font-size: 60px;
+	margin: 15px;
+}
+

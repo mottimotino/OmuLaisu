@@ -66,8 +66,7 @@
 			<div class="chart-wrapper" style="width:400px;height:400px;display: flex;margin-left: 400px;flex-direction: column;flex-wrap: wrap;justify-content: space-around;">
 			  <canvas id="myChart" width="333" height="332" style="display: block; box-sizing: border-box; height: 398.4px; width: 399.6px;"></canvas>
 			  <p class="s1">正答率：<span style="background-color: yellow;"><span th:text="${kanjiCorrect}">nn.nn</span>%</span></p>
-<!--			  <p class="s1">正答率：<span style="background-color: yellow;" th:text=${collectAnswerRate}>%</span></p>-->
-<!--			  ↑<p th:text=${}></p>-->
+
 <!--困ったときはflexbox!!!-->
 			  
 			</div>
@@ -80,7 +79,7 @@
 		const ctx = document.getElementById('myChart')
 	
 	//パーセンテージと色の値を設定
-	const percentage =  /*[[${kanjiCorrect}]]*/50; //グラフのパーセンテージ(50%)
+	const percentage =  /*[[${kanjiCorrect}]]*/50; //グラフのパーセンテージデータベースに正答率が保存されていない場合(50%)
 	const backgroundColor = 'rgb(255, 0, 0)' //グラフの色(赤)
 	const backgroundColor2 = 'rgb(0, 0, 255)' //グラフの色(青)
 	
@@ -132,7 +131,8 @@
 	
 	//この2つの値を設定するだけ!!
 	const percentageB = /*[[${businessCorrect}]]*/50; //グラフのパーセンテージ(50%)	const backgroundColorB = 'rgb(255, 0, 0)' //グラフの色(赤)
-	const backgroundColorB2 = 'rgb(0, 0, 255)' //グラフの色(黒)
+	const backgroundColorB = 'rgb(255, 0, 0)' //グラフの色(赤)
+	const backgroundColorB2 = 'rgb(0, 0, 255)' //グラフの色(青)
 	
 	new Chart(ctxB, {
 	  type: 'doughnut',
