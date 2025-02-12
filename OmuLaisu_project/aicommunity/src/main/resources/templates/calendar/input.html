@@ -17,7 +17,7 @@
 
 	<!--ここにリンクを貼る-->
 	<p target="_blank">発行リンク:</p>
-	<p target="_blank" th:text="${zoom.url}"></p>
+	<a target="_blank" th:href="${zoom.url}" th:text="${zoom.url}"></a>
 	
 	<form method="get" th:action="@{/top/dotop/back}" style="margin-top: 50px;">
 		<input type="submit" name="top" value="トップ画面に戻る" class="TimeReserveBottun">
