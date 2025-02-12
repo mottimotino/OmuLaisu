@@ -117,16 +117,16 @@ public class QuizController {
 		//正答に応じて解答を表示する
 		switch (answer) {
 		case 1:
-			model.addAttribute("answer", quizEntity.getChoise1());
+			model.addAttribute("answer", quizEntity.getChoice1());
 			break;
 		case 2:
-			model.addAttribute("answer", quizEntity.getChoise2());
+			model.addAttribute("answer", quizEntity.getChoice2());
 			break;
 		case 3:
-			model.addAttribute("answer", quizEntity.getChoise3());
+			model.addAttribute("answer", quizEntity.getChoice3());
 			break;
 		case 4:
-			model.addAttribute("answer", quizEntity.getChoise4());
+			model.addAttribute("answer", quizEntity.getChoice4());
 			break;
 		}
 
