@@ -263,5 +263,13 @@ public class ComController {
 
 		return "chat/view";
 	}
+//	@RequestMapping("/zoom/transition")
+//		public String userExternalReference(Model model,HttpSession session) {
+//		UsersEntity users=new UsersEntity();
+//		users.setUsersId((int)session.getAttribute("usersId"));
+//			model.addAttribute("zoomLinkSave",rdRepository.findByUsersEntity(users));
+//			return"/transition";
+//		}
+	}
 
-}
+
