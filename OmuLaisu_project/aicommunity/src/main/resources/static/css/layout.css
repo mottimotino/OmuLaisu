@@ -52,6 +52,10 @@ nav ul li a{
   text-decoration:none;
 }
 
+nav span{
+	font-size: 25px;
+}
+
 .DoHanbarger{
 	height: 70%;
 	display: inline-flex;
@@ -61,7 +65,7 @@ nav ul li a{
 }
 
 .hanbargermenu{
-	padding-right: 80px;
+	padding: 0 60px 0;
 	font-size: 40px;
 }
 
