@@ -57,6 +57,7 @@ public class LoginController {
 		if (users != null) {
 			//入力内容をsessionで保存
 			session.setAttribute("usersId", users.getUsersId());
+			session.setAttribute("name", users.getName());
 			session.setAttribute("mail", mail);
 			session.setAttribute("password", password);
 			session.setAttribute("authority", users.getAuthority());
