@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header th:fragment="layout-header" class="beforeloginheader">
-		<h1 class="header02-logo" >AI Community</h1>
+	<header th:fragment="layout-header" style="height: 130px; font-size: 50px;">
+		<h1 style="font-weight: bold;" >AI Community</h1>
 		
 		<div th:if="${session.usersId != null}">
 		<form method="get" th:action="@{/top/top2}">
@@ -16,10 +16,10 @@
 		</div>
 		<div th:if="${session.usersId == null}">
 		<form method="get" th:action="@{/user/regist/input}" class="LogoutBottun">
-			<input type="submit" value="新規ユーザー登録"class="LogoutBottun">
+			<input type="submit" value="新規登録(Sign up)"class="LogoutBottun">
 		</form>
 		<form method="get" th:action="@{/login}" class="LogoutBottun">
-			<input type="submit" value="ログイン" class="LogoutBottun">
+			<input type="submit" value="ログイン(Login)" class="LogoutBottun">
 		</form>
 		</div>
 	</header>

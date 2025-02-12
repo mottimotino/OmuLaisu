@@ -17,6 +17,7 @@ import jp.co.aico.repository.AccuracyRepository;
 import jp.co.aico.repository.CategoriesRepository;
 import jp.co.aico.repository.ManagementRepository;
 import jp.co.aico.repository.ProgressRepository;
+import jp.co.aico.repository.ReservationDateRepository;
 import jp.co.aico.repository.UsersRepository;
 
 @Controller
@@ -35,6 +36,9 @@ public class ManagementController {
 
 	@Autowired
 	CategoriesRepository categoriesRepository;
+	
+	@Autowired
+	ReservationDateRepository rdRepository;
 
 	/**
 	 * パスワード変更
@@ -100,7 +104,7 @@ public class ManagementController {
 	 * @return user/info.html
 	 */
 	@RequestMapping(path = "user/info/{userId}", method = RequestMethod.GET)
-	public String user_info(@PathVariable Integer userId, Model model) {
+	public String user_info(@PathVariable Integer userId, Model model,HttpSession session) {
 		//ユーザーの情報を検索
 		UsersEntity usersEntity = usersRepository.getReferenceById(userId);
 		//検索した内容を保存
@@ -151,7 +155,9 @@ public class ManagementController {
 			model.addAttribute(category+"Incorrect",wrongAnswerRate);
 			
 		}		
-		
+		UsersEntity users=new UsersEntity();
+		users.setUsersId((int)session.getAttribute("usersId"));
+		model.addAttribute("zoomLinkSave",rdRepository.findByUsersEntity(users));
 		return "user/info";
 	}
 }

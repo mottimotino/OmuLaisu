@@ -560,16 +560,17 @@ display: flex;
 	height: 1700px;
 }
 
-/*footer{*/
-/*	margin-top: 200px;*/
-/*	width: 100%;*/
-/*	height: 100%;*/
-/*	background-image: url(../ヘッダーフッター使用画像.jpeg);*/
-/*	text-align: center;*/
-/*	font-size: 20px;*/
-/*	font-weight: 800;*/
+.RevisedFlex{
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
-/*}*/
+.RevisedBottun{
+	width: 200px;
+	height: 50px;
+}
 
 /*フッターお問い合わせ*/
 .inquiries{
