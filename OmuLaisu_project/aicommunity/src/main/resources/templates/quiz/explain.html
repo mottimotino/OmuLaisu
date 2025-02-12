@@ -20,7 +20,7 @@
 			</form>
 		</span>
 		<span th:if="${session.review}==1">
-			<form method="get" th:action="@{/user/info}+'/'+${session.usersId}" class="quizquit">
+			<form method="get" th:action="@{/user/info/}+${session.usersId}" class="quizquit">
 			<input type="submit" value="×" class="quitbottun">
 			</form>
 		</span>
@@ -61,7 +61,7 @@
 				<input type="submit" name="next" value="次へ→" class="quiznext">
 				<input type="hidden" name="queId" th:value="${question.queId}">
 				<input type="hidden" name="categoryName" th:value="${question.categoriesEntity.categoryName}" />
-				<input type="hidden" name="usersId" value=1>
+				<input type="hidden" name="usersId" th:value=${session.usersId}>
 				</div>
 			</form>
 		</span>

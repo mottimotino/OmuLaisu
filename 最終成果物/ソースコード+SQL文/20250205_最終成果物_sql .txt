@@ -1,7 +1,7 @@
 --ユーザー定義
-ALTER SESSION SET CONTAINER = xepdb1;
-CREATE USER aico_user IDENTIFIED BY kikakuaiit;
-GRANT ALL PRIVILEGES TO aico_user;
+--ALTER SESSION SET CONTAINER = xepdb1;
+--CREATE USER aico_user IDENTIFIED BY kikakuaiit;
+--GRANT ALL PRIVILEGES TO aico_user;
 
 --DB全削除
 DROP TABLE accuracy;
@@ -70,10 +70,10 @@ insert_date DATE DEFAULT sysdate NOT NULL,
 mean VARCHAR2(60 CHAR),
 read VARCHAR2(20 CHAR),
 explanation VARCHAR2(300 CHAR),
-choise1 VARCHAR2(15 CHAR),
-choise2 VARCHAR2(15 CHAR),
-choise3 VARCHAR2(15 CHAR),
-choise4 VARCHAR2(15 CHAR)
+choice1 VARCHAR2(15 CHAR),
+choice2 VARCHAR2(15 CHAR),
+choice3 VARCHAR2(15 CHAR),
+choice4 VARCHAR2(15 CHAR)
 );
 
 --e:進捗度テーブル
@@ -287,8 +287,31 @@ NULL,'この漢字を使った単語:凍結(とうけつ),冷凍(れいとう)',
 INSERT INTO quiz VALUES
 (seq_quiz.NEXTVAL,'工場の誘致について、市長が丁寧に説明し、住民の不安の(  )に努めた。',1,6,0,'2024/11/26','学問や技芸などを教え授けること。',NULL,NULL,'払拭','喪失','破棄','排斥');
 
+--ビジネスマナー
+INSERT INTO quiz (que_id,question,answer,category_id,delete_flag,insert_date,mean,read,explanation,choice1,choice2,choice3,choice4)
+VALUES(seq_quiz.NEXTVAL,'「見る」の謙譲語はどれ？',1,7,0,'2025/02/11','　自分が物を見たり、人に会うことをかしこまって相手に示すこと。','はいけん','例文：「資料を拝見しました。」、「お顔を拝見する」','拝見する','見ます','ご覧になる','見せてください');
+
+INSERT INTO quiz 
+(que_id,question,answer,category_id,delete_flag,insert_date,mean,read,explanation,choice1,choice2,choice3,choice4)
+VALUES(seq_quiz.NEXTVAL,'「来る」の尊敬語はどれ？',4,7,0,'2025/02/11','目上の人がこちらに来てくれることをていねいに伝える時につかう。','おこしになる','例文：「ある会社の社長が遠くからお越しになる。」','まいる','うかがう','行きます','お越しになる');
+
+INSERT INTO quiz 
+(que_id,question,answer,category_id,delete_flag,insert_date,mean,read,explanation,choice1,choice2,choice3,choice4)
+VALUES(seq_quiz.NEXTVAL,'ビジネスメールをおくるときのルールでまちがったものはどちらか。',2,8,0,'2025/02/11',null,null,'メールの件名は相手に何を伝えたいのかを必ず入れること。','本文には最初に宛名を入れる','メールは件名をつけなくてもいい',NULL,NULL);
+
+INSERT INTO quiz 
+(que_id,question,answer,category_id,delete_flag,insert_date,mean,read,explanation,choice1,choice2,choice3,choice4)
+VALUES(seq_quiz.NEXTVAL,'メールの宛先の「Cc」で送る人で正しいのはどちらか。',1,8,0,'2025/02/11',null,null,'Ccは送信したメールの内容を把握しておいてほしい人の宛先をいれます。メールの内容に対応してほしい場合はToに宛先をいれましょう。','とりあえずメールを見てほしい人','メールの内容に対応してほしい人',NULL,NULL);
+
+INSERT INTO quiz 
+(que_id,question,answer,category_id,delete_flag,insert_date,mean,read,explanation,choice1,choice2,choice3,choice4)
+VALUES(seq_quiz.NEXTVAL,'入社してすぐ2人以上でエレベーターに入る順番として正しいのはどちらか。',1,9,0,'2025/02/11',null,null,'エレベーターにはいるばあい、1番最後に入社した人が先にエレベーターに入ってボタンを押します。','先に自分が入ってボタンを押す','上司が先に入ってボタンを押す',NULL,NULL);
+
+INSERT INTO quiz 
+(que_id,question,answer,category_id,delete_flag,insert_date,mean,read,explanation,choice1,choice2,choice3,choice4)
+VALUES(seq_quiz.NEXTVAL,'名刺交換をするときに相手の名刺を受け取る手はどっちか。',2,9,0,'2025/02/11',null,null,'名刺を交換するときは両手をそえて出してから、右手で名刺をさしだし、左手でうけとりましょう。','右手','左手','','');
+
 --ズームURL
 INSERT INTO ca_zoom(zoom_id,url) VALUES(seq_ca_zoom.NEXTVAL,'https://sankogakuen-jp.zoom.us/j/86456067413?pwd=QOSu35bGwPgKUqWnhUsjqGHUb543Wf.1#success');
 
 COMMIT;
-
