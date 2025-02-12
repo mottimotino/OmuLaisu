@@ -51,8 +51,10 @@
 		</div>
 		
 		
+		<div th:if="${session.UsersEntity != null}">
 			<p>ZoomURLはこちら↓</p><br>
 			<p th:text="${zoomId}"></p>
+		</div>
 
 		<div class="RevisedFlex">
 			<p style="font-size: 40px; margin-right: 300px;">漢字クイズ</p>
