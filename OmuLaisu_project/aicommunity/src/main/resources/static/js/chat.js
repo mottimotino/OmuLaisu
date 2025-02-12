@@ -1,7 +1,7 @@
 
 /**テキストエリアの入力値を確認*/
 const $submitBtn = $('input'); //変数にインプット要素をセット
-$submitBtn.prop('disabled', true); //ボタンは最初はdisabledでクリックできない状態に
+//$submitBtn.prop('disabled', true); //ボタンは最初はdisabledでクリックできない状態に
 var name01 = document.querySelector("#message"); //入力フォームを変数化
 
 //「もし各入力欄が空だったら」という内容を関数としてセット
