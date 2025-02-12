@@ -206,6 +206,14 @@ button.a{
     font-size: 40px;
 }
 
+.quizbtnb{
+	width: 300px;
+    height: 200px;
+    margin-right: 80px;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
 .one{
 	border:solid;
 	border-color: red;

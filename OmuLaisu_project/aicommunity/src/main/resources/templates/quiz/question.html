@@ -27,23 +27,39 @@
 <!--	<p>問題文</p>-->
 <div>
 	<span th:text="${question.question}" class="questionline"></span><br>
-	<form th:action="@{/quiz/explain}" method="post" class="mondai">
-		<button type="submit" name = "answer" th:text="${question.choise1}" value=1 class="quizbtn one"/>
-		<button type="submit" name = "answer" th:text="${question.choise2}" value=2 class="quizbtn two"/>
-		<button type="submit" name = "answer" th:text="${question.choise3}" value=3 class="quizbtn three"/>
-		<button type="submit" name = "answer" th:text="${question.choise4}" value=4 class="quizbtn four"/>
-		
+	<form th:action="@{/quiz/explain}" method="post">
+		<!--漢字ー-->
+		<span th:if="${question.categoriesEntity.categoryId}<7" class="mondai">
+			<button type="submit" name = "answer" th:text="${question.choice1}" value=1 class="quizbtn one"/>
+			<button type="submit" name = "answer" th:text="${question.choice2}" value=2 class="quizbtn two"/>
+			<span th:if="${question.choice3} != null">
+				<button type="submit" name = "answer" th:text="${question.choice3}" value=3 class="quizbtn three"/>
+			</span>
+			<span th:if="${question.choice4} != null">
+				<button type="submit" name = "answer" th:text="${question.choice4}" value=4 class="quizbtn four"/>
+			</span>
+		</span>
+		<!--ビジネスマナー-->
+		<span th:if="${question.categoriesEntity.categoryId}>=7" class="mondai">
+			<button type="submit" name = "answer" th:text="${question.choice1}" value=1 class="quizbtnb one"/>
+			<button type="submit" name = "answer" th:text="${question.choice2}" value=2 class="quizbtnb two"/>
+			<span th:if="${question.choice3} != null">
+				<button type="submit" name = "answer" th:text="${question.choice3}" value=3 class="quizbtnb three"/>
+			</span>
+			<span th:if="${question.choice4} != null">
+				<button type="submit" name = "answer" th:text="${question.choice4}" value=4 class="quizbtnb four"/>
+			</span>
+		</span>
 		<input type="hidden" name="queId" th:value="${question.queId}">
 		<span th:if="${session.usersId}!=null">
 			
-			<input type="hidden" name="usersId" th:value=${session.usersId}>
+		<input type="hidden" name="usersId" th:value=${session.usersId}>
 	</span>
 	</form>
 	
 </div>
 			
 	</main>
-	
 <!--フッター -->
 
 		
