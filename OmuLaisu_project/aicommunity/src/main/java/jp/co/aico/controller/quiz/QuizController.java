@@ -87,29 +87,7 @@ public class QuizController {
 			//問題の情報をテーブルに保存
 			progressRepository.save(progressEntity);
 
-			/** 正解率を更新 */
-			//カテゴリーとユーザーで正答率を取得
-			//			AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
-			//					usersEntity);
-			//			//正答率が存在しない(初回の)場合ユーザーIDとカテゴリーで登録する
-			//			if (accuracyEntity == null) {
-			//				accuracyEntity = new AccuracyEntity();
-			//				accuracyEntity.setCategoriesEntity(categoriesEntity);
-			//				accuracyEntity.setUsersEntity(usersEntity);
-			//			}
-			//			//正答率をエンティティに保存
-			//			//ユーザーの問題を解いた数を数える
-			//			int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity);
-			//			//正解数を数える
-			//			int collect = progressRepository
-			//					.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
-			//			//正答率をスコープに格納,正答率テーブルに保存
-			//			double collectAnswerRate = 0;
-			//			if (total != 0) {
-			//				collectAnswerRate = (double) collect / total * 100;
-			//			}
-			//			accuracyEntity.setProgress(collectAnswerRate);
-			//			accuracyRepository.save(accuracyEntity);
+
 		}
 		//quiz/questionと同じ処理、htmlで解説を表示する
 
@@ -141,7 +119,22 @@ public class QuizController {
 	 * @return quiz/question.html
 	 */
 	@RequestMapping(path = "/quiz/question", method = RequestMethod.POST)
-	public String quiz_select(Model model, QuizForm quizForm, UsersForm usersForm) {
+	public String quiz_select(Model model, QuizForm quizForm, UsersForm usersForm,HttpSession session) {
+		//ログイン前判定
+		Integer usersId = (Integer)session.getAttribute("usersId");
+		if(usersId == null) {
+			Integer count = (Integer)session.getAttribute("count");
+			if(count == null) {
+				session.setAttribute("count", 1);
+			} else if(count >= 10){
+				session.invalidate();
+				return "redirect:/user/regist/input";
+			}else {
+				count += 1;
+				session.setAttribute("count", count);
+			}
+		}
+		
 		//オブジェクト生成
 		CategoriesEntity categoriesEntity = new CategoriesEntity();
 		//categoryName(htmlのnameの値)をセットする

@@ -40,21 +40,6 @@ public class ManagementController {
 	@Autowired
 	ReservationDateRepository rdRepository;
 
-	/**
-	 * パスワード変更
-	 * 入力フォーム
-	 * @param manaId
-	 * @param model
-	 * @return input
-	 * 
-	 */
-//	@RequestMapping("user/update/input/{usersId}")
-//	public String kousin(@PathVariable Integer usersId, Model model) {
-//		UsersEntity Entity = usersRepository.getReferenceById(usersId);
-//		model.addAttribute("oldPassword", Entity);
-//		return "user/update/input";
-//
-//	}
 	
 	@RequestMapping("/user/update/input/{select}")
 	public String kousin(@PathVariable String select,HttpSession session) {
@@ -70,7 +55,18 @@ public class ManagementController {
 	 * @return check
 	 */
 	@RequestMapping(path="/user/update/check",method=RequestMethod.POST)
-	public String check(Managementform form, Model model) {
+	public String check(Managementform form, Model model,HttpSession session) {
+		String select = (String)session.getAttribute("select");
+		if(select.equals("mail")) {
+			UsersEntity usersEntity = usersRepository.findByMail(form.getInput());
+			if(usersEntity != null) {
+				model.addAttribute("select",select);
+				model.addAttribute("msg","※入力したメールアドレスは使われています(The email address you entered is in use)");
+				return "user/update/input";
+			}
+			
+		}
+		
 		model.addAttribute("save", form.getInput());
 		return "user/update/check";
 

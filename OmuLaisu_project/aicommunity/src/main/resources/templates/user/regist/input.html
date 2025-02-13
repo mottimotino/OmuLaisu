@@ -21,7 +21,8 @@
 		<!--画像の中の文-->
 		<!--	formタグにする？-->
 
-		<form method="post" th:action="@{/user/regist/check}" >
+		<form method="post" th:action="@{/user/regist/check}">
+			<p th:text="${msg}" class="errormsg"></p>
 			
 <!--		ユーザーかメンターのどちらを登録するかを選択-->
 			<div>
@@ -32,7 +33,7 @@
 			
 <!--		ユーザー名-->			
 			<label for="floatingInput">ユーザー名</label><br>
-			<input type="text" name="name" class="form-control" id="floatingInput" placeholder="Username"><br>
+			<input type="text" name="name" class="form-control" id="floatingInput" placeholder="UserName"><br>
 
 <!--		メールアドレス-->
 			<label for="floatingInput">メールアドレス</label><br>

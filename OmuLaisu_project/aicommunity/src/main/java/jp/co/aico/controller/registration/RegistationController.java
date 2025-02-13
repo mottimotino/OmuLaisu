@@ -36,6 +36,11 @@ public class RegistationController {
 	 */
 	@RequestMapping("/user/regist/check")
 	public String registCheck(Model model, UsersForm form) {
+		UsersEntity usersEntity = repository.findByMail(form.getMail());
+		if(usersEntity != null) {
+			model.addAttribute("msg","※入力したメールアドレスは使われています(The email address you entered is in use)");
+			return "user/regist/input";
+		}
 		model.addAttribute("Users", form);
 		return "/user/regist/check";
 	}
