@@ -26,11 +26,11 @@ main {
 
 
 
-h2 {
- color: #000000;
- text-decoration: none;
- padding-top: 100px;
-}
+/*h2 {*/
+/* color: #000000;*/
+/* text-decoration: none;*/
+/* padding-top: 100px;*/
+/*}*/
 
 rt{
 	text-align: center;
@@ -436,6 +436,40 @@ nav ul li a:hover {
 
 
 /*ログイン前サイドバー▲*/
+
+/*Q&A▼▼*/
+.QABase{
+	width: 70%;
+	background-color: lavender;
+	margin:auto;
+	height: auto;
+	padding: 20px 30px;
+	
+}
+
+.QABase h1{
+	font-size: 90px;
+	padding-bottom: 40px;
+}
+
+.QAFrame{
+	border: 2px solid black;
+	height: auto;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.QAFrame p{
+	font-size: 30px;
+	padding: 30px 5px;
+}
+
+.QAFrame h2{
+	font-size: 50px;
+}
 
 
 

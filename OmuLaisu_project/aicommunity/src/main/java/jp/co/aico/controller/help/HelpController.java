@@ -19,4 +19,9 @@ public class HelpController {
 	public String useMentor() {
 		return "help/guide/mentor";
 	}
+	
+	@RequestMapping("/help/qa")
+	public String QandA() {
+		return "/help/question/answer/view";
+	}
 }
