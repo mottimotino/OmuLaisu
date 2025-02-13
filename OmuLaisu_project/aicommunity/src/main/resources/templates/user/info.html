@@ -17,20 +17,6 @@
 
 </head>
 <body>
-<!--	<header>-->
-<!--	<h1 class="header02-logo" >AI Community-->
-<!--	</h1>-->
-
-<!--	</header>-->
-<!--			ナビ①-->
-<!--	<nav class="nav">-->
-<!--	 <ul class="menu">-->
-<!--	<li><a href="#">Top</a></li>-->
-<!--	<li><a href="#">Q&A</a></li>-->
-<!--	<li><a href="#">クイズ</a></li>-->
-<!--	<li><a href="#">チャット</a></li>-->
-<!--	 </ul>-->
-<!--	</nav>-->
 	
 
 
@@ -118,6 +104,7 @@
 				<p style="margin-top: 100px; font-size: 40px; margin-right: 300px;">ビジネスマナークイズ</p>
 				<!--解きなおしボタン-->
 				<form th:action="@{/quiz/review}" method="post" class="RevisedBottun">
+					<input type="hidden" name="categoryName" value="編">
 					<span th:if="${session.usersId}!=null">
 						<input type="hidden" name="usersId" th:value=${session.usersId}>
 					</span>

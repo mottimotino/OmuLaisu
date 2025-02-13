@@ -117,14 +117,18 @@ public class LoginController {
 	@RequestMapping(path = "/login/passwordForget", method = RequestMethod.POST)
 	public String Forgetpass(UsersForm form, Model model, HttpSession session) {
 		UsersEntity usersEntity = usersRepository.findByMail(form.getMail());
-
+		
+		if(usersEntity == null) {
+			return "login/mailCheck";
+		}
+		
 		if (form.getMail().equals(usersEntity.getMail())) {
 			model.addAttribute("mail", form.getMail());
 			session.setAttribute("user", usersEntity);
 
 			return "login/passwordForget";
 		} else {
-			return "user/mailCheck";
+			return "login/mailCheck";
 		}
 
 	}
@@ -141,7 +145,6 @@ public class LoginController {
 	 */
 	@RequestMapping(path = "/login/passwordCommit", method = RequestMethod.POST)
 	public String PassChange(String password, UsersForm form, HttpSession session) {
-		//		public String PassChange(UsersForm form, Model model) {
 		UsersEntity users = (UsersEntity) session.getAttribute("user");
 		users.setPassword(password);
 		usersRepository.save(users);

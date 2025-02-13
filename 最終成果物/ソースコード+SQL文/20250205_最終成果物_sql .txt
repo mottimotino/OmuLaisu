@@ -5,7 +5,6 @@
 
 --DB全削除
 DROP TABLE accuracy;
-DROP TABLE all_reservation;
 DROP TABLE chat;
 DROP TABLE management;
 DROP TABLE prize;
@@ -20,7 +19,6 @@ DROP TABLE categories;
 DROP TABLE ca_zoom;
 
 DROP SEQUENCE seq_acc;
-DROP SEQUENCE seq_allreservation;
 DROP SEQUENCE seq_categories;
 DROP SEQUENCE seq_chat;
 DROP SEQUENCE seq_mana;

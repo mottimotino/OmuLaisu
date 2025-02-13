@@ -140,38 +140,6 @@ public class ComController {
 		return "calendar/input";
 	}
 
-	/**
-	 * チャット画面
-	 * @author 水野
-	 * @param usersId ログイン中のid
-	 * @param model メッセージ,ログイン中のユーザー
-	 * @return チャット画面
-	 */
-	//	@RequestMapping("/chat/view/{usersId}")
-	//	public String chat(@PathVariable String usersId, Model model) {
-	//		UsersEntity usersEntity = new UsersEntity();
-	//		usersEntity.setUsersId(Integer.parseInt(usersId));
-	//		//メッセージを格納
-	//		List<ChatEntity> chatEntity = chatRepository.findByUsersEntity(usersEntity);
-	//		//一般ユーザーが送ったメッセージの処理
-	//		//送られたユーザーIDをnullにしない為に仮で0を入れる
-	//		for (int i = 0; i < chatEntity.size(); i++) {
-	//			ChatEntity chat = chatEntity.get(i);
-	//			if (chat.getReceUsersEntity() == null) {
-	//				UsersEntity users = new UsersEntity();
-	//				users.setUsersId(0);
-	//				chat.setReceUsersEntity(users);
-	//				chatEntity.set(i, chat);
-	//			}
-	//		}
-	//
-	//		model.addAttribute("messages", chatEntity);
-	//		//ユーザーの情報をmodelに格納
-	//		model.addAttribute("user", usersRepository.getReferenceById(Integer.parseInt(usersId)));
-	//
-	//		return "chat/view";
-	//	}
-
 	@RequestMapping(path = "/chat/select", method = RequestMethod.GET)
 	public String chat(Model model, HttpSession session) {
 		//自身のユーザー情報を取得
@@ -263,13 +231,7 @@ public class ComController {
 
 		return "chat/view";
 	}
-//	@RequestMapping("/zoom/transition")
-//		public String userExternalReference(Model model,HttpSession session) {
-//		UsersEntity users=new UsersEntity();
-//		users.setUsersId((int)session.getAttribute("usersId"));
-//			model.addAttribute("zoomLinkSave",rdRepository.findByUsersEntity(users));
-//			return"/transition";
-//		}
+
 	}
 
 

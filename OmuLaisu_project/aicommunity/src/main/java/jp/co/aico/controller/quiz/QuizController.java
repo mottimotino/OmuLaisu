@@ -87,29 +87,7 @@ public class QuizController {
 			//問題の情報をテーブルに保存
 			progressRepository.save(progressEntity);
 
-			/** 正解率を更新 */
-			//カテゴリーとユーザーで正答率を取得
-			//			AccuracyEntity accuracyEntity = accuracyRepository.findByCategoriesEntityAndUsersEntity(categoriesEntity,
-			//					usersEntity);
-			//			//正答率が存在しない(初回の)場合ユーザーIDとカテゴリーで登録する
-			//			if (accuracyEntity == null) {
-			//				accuracyEntity = new AccuracyEntity();
-			//				accuracyEntity.setCategoriesEntity(categoriesEntity);
-			//				accuracyEntity.setUsersEntity(usersEntity);
-			//			}
-			//			//正答率をエンティティに保存
-			//			//ユーザーの問題を解いた数を数える
-			//			int total = progressRepository.findByUsersEntityAndCategoriesEntity(usersEntity, categoriesEntity);
-			//			//正解数を数える
-			//			int collect = progressRepository
-			//					.findByUsersEntityAndMissFlagAndCategoriesEntity(usersEntity, 0, categoriesEntity);
-			//			//正答率をスコープに格納,正答率テーブルに保存
-			//			double collectAnswerRate = 0;
-			//			if (total != 0) {
-			//				collectAnswerRate = (double) collect / total * 100;
-			//			}
-			//			accuracyEntity.setProgress(collectAnswerRate);
-			//			accuracyRepository.save(accuracyEntity);
+
 		}
 		//quiz/questionと同じ処理、htmlで解説を表示する
 

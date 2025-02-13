@@ -16,8 +16,7 @@
 		</p>
 			
 		<p th:text="${save}" class="update_input"></p>	
-<!--		来週変える01/24↓-->
-		<form method="post" th:action="@{/user/update/complete/1/} + ${session.select}">
+		<form method="post" th:action="@{/user/update/complete/}+ ${session.usersId} + '/' + ${session.select}">
 <!--		<form method="post" th:action="@{/user/update/complete/two(usersId=${session.usersId},select=${session.select})}">-->
 			<input type="hidden" name="input" th:value="${save}">
 			<input type="submit" name="update" class="check_submit" value="変更">		

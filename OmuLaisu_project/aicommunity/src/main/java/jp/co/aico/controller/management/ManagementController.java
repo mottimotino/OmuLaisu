@@ -40,21 +40,6 @@ public class ManagementController {
 	@Autowired
 	ReservationDateRepository rdRepository;
 
-	/**
-	 * パスワード変更
-	 * 入力フォーム
-	 * @param manaId
-	 * @param model
-	 * @return input
-	 * 
-	 */
-//	@RequestMapping("user/update/input/{usersId}")
-//	public String kousin(@PathVariable Integer usersId, Model model) {
-//		UsersEntity Entity = usersRepository.getReferenceById(usersId);
-//		model.addAttribute("oldPassword", Entity);
-//		return "user/update/input";
-//
-//	}
 	
 	@RequestMapping("/user/update/input/{select}")
 	public String kousin(@PathVariable String select,HttpSession session) {
