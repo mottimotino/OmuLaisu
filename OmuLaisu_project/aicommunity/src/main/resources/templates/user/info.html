@@ -37,9 +37,9 @@
 		</div>
 		
 		
-		<p style="font-size: 40px;">zoomのURL</p>
+		<p style="font-size: 40px;">zoom_url</p>
 		<span th:each="zoom:${zoomLinkSave}">
-			<a th:href="${zoom.caZoomEntity.url}" th:text="${zoom.caZoomEntity.url}"></a>
+			<a th:href="${zoom.caZoomEntity.url}" th:text="${zoom.caZoomEntity.url}"></a><br>
 		</span>
 		<div class="RevisedFlex">
 			<p style="font-size: 40px; margin-right: 300px;">漢字クイズ</p>

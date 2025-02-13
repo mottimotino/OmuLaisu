@@ -21,7 +21,8 @@
 		<!--画像の中の文-->
 		<!--	formタグにする？-->
 
-		<form method="post" th:action="@{/user/regist/check}" >
+		<form method="post" th:action="@{/user/regist/check}">
+			<p th:text="${msg}" class="errormsg"></p>
 			
 <!--		ユーザーかメンターのどちらを登録するかを選択-->
 			<div>

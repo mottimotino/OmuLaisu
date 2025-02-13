@@ -55,7 +55,18 @@ public class ManagementController {
 	 * @return check
 	 */
 	@RequestMapping(path="/user/update/check",method=RequestMethod.POST)
-	public String check(Managementform form, Model model) {
+	public String check(Managementform form, Model model,HttpSession session) {
+		String select = (String)session.getAttribute("select");
+		if(select.equals("mail")) {
+			UsersEntity usersEntity = usersRepository.findByMail(form.getInput());
+			if(usersEntity != null) {
+				model.addAttribute("select",select);
+				model.addAttribute("msg","※入力したメールアドレスは使われています(The email address you entered is in use)");
+				return "user/update/input";
+			}
+			
+		}
+		
 		model.addAttribute("save", form.getInput());
 		return "user/update/check";
 

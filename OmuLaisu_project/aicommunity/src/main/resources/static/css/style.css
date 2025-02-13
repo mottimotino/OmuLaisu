@@ -549,6 +549,12 @@ display: flex;
 /*	height: 60%;*/
 /*}*/
 
+.errormsg{
+	font-size: 20px;
+	color: #ff0000;
+}
+
+
 /*▼会員情報表示画面*/
 .userinfo{
 	display: flex;

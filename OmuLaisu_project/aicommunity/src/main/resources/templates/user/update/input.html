@@ -14,6 +14,7 @@
 		<div th:if="${select} == 'mail'" class="mail_update">
 			<h2>メールアドレス変更</h2>
 			<form method="post" th:action="@{/user/update/check}">
+				<p th:text="${msg}" class="errormsg"></p>
 				<p>変更後メールアドレス</p>
 				<input type="email" name="input" placeholder="メールアドレスを入力" required>
 				<p>変更後メールアドレス(確認)</p>

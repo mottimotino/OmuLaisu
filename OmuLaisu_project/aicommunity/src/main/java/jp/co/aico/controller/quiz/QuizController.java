@@ -119,7 +119,22 @@ public class QuizController {
 	 * @return quiz/question.html
 	 */
 	@RequestMapping(path = "/quiz/question", method = RequestMethod.POST)
-	public String quiz_select(Model model, QuizForm quizForm, UsersForm usersForm) {
+	public String quiz_select(Model model, QuizForm quizForm, UsersForm usersForm,HttpSession session) {
+		//ログイン前判定
+		Integer usersId = (Integer)session.getAttribute("usersId");
+		if(usersId == null) {
+			Integer count = (Integer)session.getAttribute("count");
+			if(count == null) {
+				session.setAttribute("count", 1);
+			} else if(count >= 10){
+				session.invalidate();
+				return "redirect:/user/regist/input";
+			}else {
+				count += 1;
+				session.setAttribute("count", count);
+			}
+		}
+		
 		//オブジェクト生成
 		CategoriesEntity categoriesEntity = new CategoriesEntity();
 		//categoryName(htmlのnameの値)をセットする
