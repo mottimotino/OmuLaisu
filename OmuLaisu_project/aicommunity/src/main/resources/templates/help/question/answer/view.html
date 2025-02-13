@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/BeforeLoginLayout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="QABase">
+<!--	見出し-->
+	<div>
+		<h1>AICommunity Q&A<br>(よくある質問)</h1>
+		
+	</div>
+<!--	質問-->
+	<div class="QAFrame">
+		<h2>Question(質問)</h2>
+		<p>
+			メンターとはなんですか？
+		</p>
+	</div>
+	
+	
+	<p>↓</p>
+	
+<!--	解答-->
+	<div class="QAFrame">
+		<h2>Answer(解答)</h2>
+		<p>
+			メンターとは、ユーザーの日本語を教え、日本語学習を支える利用者のことを指します。
+			<br>zoomやチャットをつかってユーザーとコミュニケーションをとり、ユーザーの学習をサポートします。
+		</p>
+	</div>
+	</div>
+	
+
 
 </body>
 </html>
