@@ -114,6 +114,11 @@ rt{
 	margin: 50px auto 100px 250px ;
 }
 
+img .Qsample{
+	width: 90%;
+	height: 90%;
+}
+
 .HeadingQuiz{
 	font-size: 70px;
 	background-color: lightcyan;
