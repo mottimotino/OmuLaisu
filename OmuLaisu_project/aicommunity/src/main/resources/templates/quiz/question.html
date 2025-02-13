@@ -51,6 +51,7 @@
 			</span>
 		</span>
 		<input type="hidden" name="queId" th:value="${question.queId}">
+		<input type="hidden" id="answer" th:value="${question.answer}">
 		<span th:if="${session.usersId}!=null">
 			
 		<input type="hidden" name="usersId" th:value=${session.usersId}>
@@ -69,5 +70,7 @@
 <!--		<input type="button" name="three" value="選択肢3">-->
 <!--		<input type="button" name="four" value="選択肢4">-->
 <!--	</form>-->
+
+<script type="text/javascript" th:src="@{/js/quiz.js}" charset="UTF-8"></script>
 </body>
 </html>
