@@ -1,17 +1,5 @@
 @charset "UTF-8";
 
-/*header .beforeloginheader{*/
-/*  height: 130%;*/
-/*  padding: 5px;*/
-/*  background-image: url(../image/HeaderFooter.jpeg);*/
-/*  background:#00DAFC;*/
-/*  color:white;*/
-/*  width:100%;*/
-/*  font-size: 150%;*/
-/*  display: inline-flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*}*/
 
 body {
     margin: 0;
@@ -100,11 +88,9 @@ rt{
 /* トップ画面 */
 
 .QuizSection{
-	
 	background-image: url(../image/HeaderFooter.jpeg);
 	height: 2300px;
 	position: relative;
-
 
 }
 
@@ -117,10 +103,11 @@ rt{
 }
 
 .Qsample{
-	background-image: url(../image/top/quiztop.png);
+/*	background-image: url(../image/top/topphoto.png);*/
 	top: 30px;
 	left: 30px;
 	position: absolute;
+/*	z-index: 1;*/
 }
 
 .HeadingQuiz{
@@ -156,10 +143,12 @@ rt{
 }
 
 .Comsample{
-	background-image: url(../image/top/Comtop.png);
-/*	top: 30px;*/
-/*	left: 30px;*/
+/*	background-image: url(../image/top/comtop.png);*/
+	top: 30px;
+	left: 30px;
 	position: absolute;
+	width: 70%;
+	height: 70%;
 	
 }
 
