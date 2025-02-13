@@ -15,6 +15,7 @@
 
 body {
     margin: 0;
+    background-color: whitesmoke;
 }
 
 
@@ -29,6 +30,11 @@ h2 {
  color: #000000;
  text-decoration: none;
  padding-top: 100px;
+}
+
+rt{
+	text-align: center;
+	margin-top: 10px;
 }
 
 /*ログイン前トップ見出し▼*/
@@ -94,7 +100,7 @@ h2 {
 .QuizSection{
 	
 	background-image: url(../image/HeaderFooter.jpeg);
-	height: 1300px;
+	height: 2500px;
 	position: relative;
 
 
@@ -130,19 +136,21 @@ h2 {
 	background-color: pink;
 	padding: 10px 50px;
 	position: relative;
-	right: 280px;
+	right: 270px;
+/*	left: 50px;*/
 	margin: 10px;
 }
 
 
 
 .ComDescription{
-	width: 70%;
+	width: auto;
 	background-color: white;
 	border: 8px solid pink;
 	font-size: 40px;
 	padding: 5px;
 	text-align: center;
+	margin:100px;
 	
 }
 
@@ -174,7 +182,7 @@ h2 {
 
 
 .ChatDescription{
-	width: 70%;
+	width: 60%;
 	background-color: white;
 	border: 8px solid lemonchiffon;
 	font-size: 40px;
@@ -256,7 +264,7 @@ h2 {
 
 .col.jlptn3 {
   width: 280px;
-  height: 300px;
+  height: 380px;
   margin: 0 10px;
   background-color: lightpink;
   border-radius: 20%;
@@ -264,7 +272,7 @@ h2 {
 
 .col.jlptn2 {
   width: 280px;
-  height: 300px;
+  height: 380px;
   margin: 0 10px;
   background-color: lightsalmon;
   border-radius: 20%;
@@ -272,7 +280,7 @@ h2 {
 
 .col.jlptn1 {
   width: 280px;
-  height: 300px;
+  height: 380px;
   margin: 0 10px;
   background-color: lightcoral;
   border-radius: 20%;
