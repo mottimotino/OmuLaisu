@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout::layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<p>ZoomURLはこちら↓</p><br>
+	<p th:text="${zoomId}"></p>
+	
 
 </body>
 </html>
