@@ -102,7 +102,7 @@ rt{
 .QuizSection{
 	
 	background-image: url(../image/HeaderFooter.jpeg);
-	height: 2500px;
+	height: 2300px;
 	position: relative;
 
 
@@ -111,14 +111,16 @@ rt{
 .QuizBasecolar{
 	background-color: lightcyan;
 	width: 1000px;
-	height: 600px;
-	margin: 50px auto 100px 250px ;
+	height: 550px;
+	margin: 50px auto 200px 250px ;
+	position: relative;
 }
 
-img .Qsample{
-	width: 90%;
-	height: 90%;
-	margin-left:10px;
+.Qsample{
+	background-image: url(../image/top/quiztop.png);
+	top: 30px;
+	left: 30px;
+	position: absolute;
 }
 
 .HeadingQuiz{
@@ -143,11 +145,22 @@ img .Qsample{
 	position: relative;
 }
 
+
+
 .ComBasecolar{
 	background-color: pink;
 	width: 1000px;
 	height: 600px;
 	margin: 50px auto 100px 250px ;
+	position: relative;
+}
+
+.Comsample{
+	background-image: url(../image/top/Comtop.png);
+/*	top: 30px;*/
+/*	left: 30px;*/
+	position: absolute;
+	
 }
 
 
