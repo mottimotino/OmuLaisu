@@ -25,7 +25,7 @@
 		<input type="hidden" name="day" th:value="${day}">
 		<input type="hidden" name="weekday" th:value="${weekDay}">
 <!--		<input type="hidden" name="usersId" th:value="${session.usersId}">-->
-		<input type="hidden" name="usersId" value="1">
+		<input type="hidden" name="usersId" th:value="${session.usersId}">
 		<input type="submit" name="yes" value="予約する" class="registbottun">
 
 	</form>
