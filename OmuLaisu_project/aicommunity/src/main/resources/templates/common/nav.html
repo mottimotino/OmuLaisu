@@ -34,7 +34,7 @@
 		</ul>
 		
 		<div>
-		<span>UserName:<span th:text="${session.name}">ユーザー名</span></span>
+		<span th:if="${session.name}!=null">UserName:<span th:text="${session.name}">ユーザー名</span></span>
 		
 		<a th:href="@{/top/sidebar}" class="hanbargermenu">＝</a>
 		</div>
