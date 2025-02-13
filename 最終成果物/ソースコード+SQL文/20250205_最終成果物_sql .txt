@@ -189,10 +189,10 @@ INSERT INTO times VALUES (seq_times.NEXTVAL,'19:00','19:30');
 
 --categoriesのINSERT文
 INSERT INTO categories VALUES (seq_categories.NEXTVAL,'初級読み');
-INSERT INTO categories VALUES (seq_categories.NEXTVAL,'初級書き');
 INSERT INTO categories VALUES (seq_categories.NEXTVAL,'中級読み');
-INSERT INTO categories VALUES (seq_categories.NEXTVAL,'中級書き');
 INSERT INTO categories VALUES (seq_categories.NEXTVAL,'上級読み');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'初級書き');
+INSERT INTO categories VALUES (seq_categories.NEXTVAL,'中級書き');
 INSERT INTO categories VALUES (seq_categories.NEXTVAL,'上級書き');
 INSERT INTO categories VALUES (seq_categories.NEXTVAL,'挨拶編');
 INSERT INTO categories VALUES (seq_categories.NEXTVAL,'メール編');
@@ -265,21 +265,21 @@ INSERT INTO quiz VALUES
 --N2書き--
 
 INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
-'健康のために体をノばす。',1,4,0,'2024/11/27','空間的に広げる。また、長くする。',
+'健康のために体をノばす。',1,5,0,'2024/11/27','空間的に広げる。また、長くする。',
 NULL,'この漢字を使った単語:伸縮(伸縮),伸張(しんちょう)など','伸','似','延','促');
 
 INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
-'ブッキョウが伝わる。',3,4,0,'2024/11/27',
+'ブッキョウが伝わる。',3,5,0,'2024/11/27',
 '釈迦 (しゃか) の説いた、仏となるための教え',
 NULL,NULL,'仏式','仏壇','仏教','主教');
 
 INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
-'耳をカタムける。',1,4,0,'2024/11/27',
+'耳をカタムける。',1,5,0,'2024/11/27',
 '注意して聞く。 熱心にじっと聞く。',
 NULL,'この漢字を使った単語:傾向(けいこう),傾斜(けいしゃ)など','傾ける','頃ける','像ける','象ける');
 
 INSERT INTO quiz VALUES(seq_quiz.NEXTVAL,
-'カイトウ機能がついてる電子レンジ',1,4,0,'2024/11/27',
+'カイトウ機能がついてる電子レンジ',1,5,0,'2024/11/27',
 '凍結しているものが解けること。',
 NULL,'この漢字を使った単語:凍結(とうけつ),冷凍(れいとう)','解凍','解冷','解滴','解浴');
 
