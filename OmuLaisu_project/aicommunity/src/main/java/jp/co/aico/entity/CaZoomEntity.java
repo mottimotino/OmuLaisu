@@ -16,7 +16,7 @@ public class CaZoomEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_ca_zoom_gen")
-	@SequenceGenerator(name = "seq_ca_zoom_gen", sequenceName = "seq_ca_zoom_date", allocationSize = 1)
+	@SequenceGenerator(name = "seq_ca_zoom_gen", sequenceName = "seq_ca_zoom", allocationSize = 1)
 	private Integer zoomId;
 	
 	@Column
