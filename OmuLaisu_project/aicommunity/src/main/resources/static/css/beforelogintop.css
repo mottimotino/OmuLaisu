@@ -16,6 +16,7 @@
 body {
     margin: 0;
     background-color: whitesmoke;
+/*    position: absolute;*/
 }
 
 
@@ -39,13 +40,13 @@ rt{
 
 /*ログイン前トップ見出し▼*/
 .TopTitleBack{
-/*	background-color: lightcyan;*/
-	background-image:url(../image/white_board.jpeg);
-	height: 700px;
-	width: auto;
-	
+	background-image: url(../image/top/top3.jpeg);
+ 	background-size: 100% auto;
+ 	height: 700px;
+
     display: flex;
     flex-direction: column;
+/*    position: relative;*/
 }
 
 /*.title{*/
@@ -62,7 +63,7 @@ rt{
 	font-weight: bold;
 	color: white;
 	text-align: center;
-	background-image: url(../image/BeforeLoginTopPhoto.png);
+	background-color: darkorange;
 	margin: 80px 0 170px 20px;
 	
 	animation: slideIn 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -75,7 +76,7 @@ rt{
 	font-weight: bold;
 	color: white;
 	text-align: center;
-	background-image: url(../image/BeforeLoginTopPhoto.png);
+	background-color: darkorange;
 	margin-left: 600px;
 	
 	animation: slideIn 2s cubic-bezier(0.1, 1, 0.5, 1) forwards;
@@ -107,6 +108,13 @@ rt{
 
 }
 
+.QuizBasecolar{
+	background-color: lightcyan;
+	width: 1000px;
+	height: 600px;
+	margin: 50px auto 100px 250px ;
+}
+
 .HeadingQuiz{
 	font-size: 70px;
 	background-color: lightcyan;
@@ -127,6 +135,13 @@ rt{
 	background-image: url(../image/HeaderFooter.jpeg);
 	height: 1300px;
 	position: relative;
+}
+
+.ComBasecolar{
+	background-color: pink;
+	width: 1000px;
+	height: 600px;
+	margin: 50px auto 100px 250px ;
 }
 
 
@@ -163,7 +178,6 @@ rt{
 }
 
 .ChatBasecolar{
-/*	text-align: center;*/
 	background-color: lemonchiffon;
 	width: 1000px;
 	height: 600px;
